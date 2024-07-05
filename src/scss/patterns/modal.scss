@@ -1,0 +1,88 @@
+:root {
+	#{$varPrefix}-box-szg: border-box;
+}
+#{$appPrefix} {
+	&-modal {
+		&:not(#{$prjPrefix}-guide__modal) {
+			#{$varPrefix}-w: 900px;
+			width: var(#{$varPrefix}-w);
+		}
+		.components-modal__header {
+			padding: 24px 32px 24px;
+		}
+	}
+}
+#{$prjPrefix} {
+	&-modal {
+		&:not(#{$prjPrefix}-guide__modal) {
+			#{$varPrefix}-w: 900px;
+			width: var(#{$varPrefix}-w);
+		}
+		&__open {
+			#{$varPrefix}-ovf: hidden;
+			overflow: var(#{$varPrefix}-ovf);
+		}
+
+		&__close {
+			#{$varPrefix}-pos: absolute;
+			#{$varPrefix}-t: -15px;
+			#{$varPrefix}-r: -15px;
+
+			#{$appPrefix} {
+				&-svg {
+					#{$varPrefix}-w: 18px;
+					#{$varPrefix}-h: 18px;
+				}
+			}
+		}
+
+		&--cont {
+			#{$varPrefix}-pos: relative;
+		}
+	}
+	&-404__modal {
+		#{$appPrefix} {
+			&-404 {
+				#{$appPrefix} {
+					&-txt {
+						#{$varPrefix}-fnt-sz: 32px;
+						#{$varPrefix}-fnt-wt: 600;
+						#{$varPrefix}-cl: var(--wp--preset--color--base, #2e312f);
+						#{$varPrefix}-fnt-fam: var(
+							--wp--preset--font-family--heading,
+							Arial,
+							Helvetica,
+							sans-serif
+						);
+					}
+					&-404-cont-desc {
+						#{$varPrefix}-fnt-sz: 14px;
+						#{$varPrefix}-fnt-wt: 400;
+						#{$varPrefix}-m: 0;
+						#{$varPrefix}-cl: var(--wp--preset--color--accent, #9da29f);
+						#{$varPrefix}-fnt-fam: var(
+							--wp--preset--font-family--body,
+							Arial,
+							Helvetica,
+							sans-serif
+						);
+						margin: var(#{$varPrefix}-m);
+					}
+					&-btn {
+						#{$varPrefix}-bdr-w: initial;
+						#{$varPrefix}-bdr-sty: initial;
+						#{$varPrefix}-bdr-cl: initial;
+						#{$varPrefix}-p: 6px 12px;
+						#{$varPrefix}-fnt-sz: 14px;
+						#{$varPrefix}-ln-h: normal;
+						#{$varPrefix}-bg-cl: var(--wp--preset--color--primary, #48b44f);
+						#{$varPrefix}-cl: var(--wp--preset--color--white, #fff);
+						&-grp {
+							#{$varPrefix}-m: 30px 0 0 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,91 @@
+#{$prjPrefix} {
+	&-guide {
+		&__modal {
+			#{$varPrefix}-max-w: 400px;
+			max-width: var(#{$varPrefix}-max-w);
+
+			#{$prjPrefix} {
+				&-modal {
+					&__close {
+						#{$varPrefix}-t: -20px;
+						#{$varPrefix}-r: -25px;
+					}
+				}
+			}
+
+			#{$appPrefix} {
+				&-fig {
+					#{$varPrefix}-m: 0 0 15px 0;
+				}
+
+				&-txt {
+					#{$varPrefix}-cl: var(--wp--preset--color--base, #2e312f);
+				}
+
+				&-ls {
+					#{$varPrefix}-ls-typ: decimal;
+					#{$varPrefix}-m: 0 0 0 15px;
+					#{$varPrefix}-gap: 15px;
+
+					li {
+						#{$appPrefix} {
+							&-txt {
+								#{$varPrefix}-cl: var(--wp--preset--color--base, #2e312f);
+								#{$varPrefix}-fnt-fam: var(
+									--wp--preset--font-family--body,
+									Arial,
+									Helvetica,
+									sans-serif
+								);
+								#{$varPrefix}-fnt-sz: 14px;
+								#{$varPrefix}-ln-h: 1.4;
+								#{$varPrefix}-m: 0;
+							}
+						}
+						&:not(:last-child) {
+							#{$varPrefix}-m: 0 0 15px 0;
+						}
+
+						&::marker {
+							#{$varPrefix}-mkr-sz: 14px;
+							#{$varPrefix}-mkr-cl: var(--wp--preset--color--base, #2e312f);
+						}
+					}
+				}
+			}
+
+			&--ttl {
+				#{$varPrefix}-fnt-fam: var(
+					--wp--preset--font-family--heading,
+					Arial,
+					Helvetica,
+					sans-serif
+				);
+				#{$varPrefix}-fnt-wt: 700;
+				#{$varPrefix}-fnt-sz: 20px;
+				#{$varPrefix}-ln-h: 1.1;
+				#{$varPrefix}-m: 0 0 25px 0;
+			}
+			&--desc {
+				#{$varPrefix}-fnt-fam: var(
+					--wp--preset--font-family--body,
+					Arial,
+					Helvetica,
+					sans-serif
+				);
+			}
+		}
+
+		&__shortcut {
+			#{$varPrefix}-bg-cl: var(--wp--preset--color--secondary, #e8f3eb);
+			#{$varPrefix}-bdr-cl: var(--wp--preset--color--secondary--hover, #c7e6cf);
+			#{$varPrefix}-bdr-sty: solid;
+			#{$varPrefix}-bdr-w: 1px;
+			#{$varPrefix}-p: 2px 5px;
+			#{$varPrefix}-fnt-wt: 600;
+			#{$varPrefix}-fnt-sz: 13px;
+			font-weight: var(#{$varPrefix}-fnt-wt);
+			font-size: var(#{$varPrefix}-fnt-sz);
+		}
+	}
+}

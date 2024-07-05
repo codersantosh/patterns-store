@@ -1,0 +1,83 @@
+@import '../scss/prefix-vars';
+@import '../scss/_mixins';
+
+/* public CSS goes here */
+@import '../scss/patterns/modal';
+@import '../scss/patterns/preview-modal.scss';
+@import '../scss/patterns/pricing-modal.scss';
+@import '../scss/patterns/preview-list-item.scss';
+@import '../scss/patterns/copy-modal.scss';
+@import '../scss/patterns/guide-modal.scss';
+
+//Atrc Wrap float Style Reset
+#{$appPrefix} {
+	&-wrp-flt {
+		#{$varPrefix}-pos: fixed;
+		#{$varPrefix}-z-idx: 9999;
+
+		&-br {
+			#{$varPrefix}-b: 0;
+			#{$varPrefix}-r: 0;
+		}
+
+		&-bl {
+			#{$varPrefix}-b: 0;
+			#{$varPrefix}-l: 0;
+		}
+
+		&-tl {
+			#{$varPrefix}-t: 0;
+			#{$varPrefix}-l: 0;
+		}
+
+		&-tr {
+			#{$varPrefix}-t: 0;
+			#{$varPrefix}-r: 0;
+		}
+	}
+}
+
+#{$prjPrefix} {
+	&-ls {
+		&-itm {
+			#{$appPrefix} {
+				&-btn {
+					#{$varPrefix}-fnt-sz: 12px;
+					#{$varPrefix}-bdr-cl: var(--wp--preset--color--quinary, #d3d9de);
+				}
+			}
+			#{$prjPrefix} {
+				&-auth {
+					&-avatar {
+						&-img {
+							#{$varPrefix}-w: 24px;
+							#{$varPrefix}-h: 24px;
+							#{$varPrefix}-bdr-rad: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&-preview {
+		&__modal {
+			&--cont {
+				#{$varPrefix}-fnt-fam: var(
+					--wp--preset--font-family--body,
+					Arial,
+					Helvetica,
+					sans-serif
+				);
+			}
+		}
+	}
+	&-action-msg {
+		#{$varPrefix}-fnt-fam: var(
+			--wp--preset--font-family--body,
+			Arial,
+			Helvetica,
+			sans-serif
+		);
+	}
+}

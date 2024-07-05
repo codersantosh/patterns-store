@@ -1,0 +1,176 @@
+#{$prjPrefix} {
+	&-pricing {
+		&__modal {
+			#{$varPrefix}-w: 1140px !important;
+			width: var(#{$varPrefix}-w);
+
+			&--cont {
+				#{$varPrefix}-pos: relative;
+
+				&-hdr {
+					#{$varPrefix}-txt-al: center;
+					#{$varPrefix}-m: 0 0 15px 0;
+
+					#{$appPrefix} {
+						&-txt {
+							#{$varPrefix}-m: 0;
+							#{$varPrefix}-fnt-fam: var(
+								--wp--preset--font-family--body,
+								Arial,
+								Helvetica,
+								sans-serif
+							);
+							&-h1 {
+								#{$varPrefix}-fnt-sz: 40px;
+								#{$varPrefix}-fnt-wt: 600;
+							}
+							&-p {
+								#{$varPrefix}-m: 0;
+								#{$varPrefix}-fnt-sz: 14px;
+								#{$varPrefix}-cl: var(--wp--preset--color--accent, #9da29f);
+							}
+						}
+					}
+				}
+
+				&-flt {
+					#{$varPrefix}-m: 25px 0;
+
+					.components-base-control__field {
+						#{$varPrefix}-m: 0;
+						margin: var(#{$varPrefix}-m) !important;
+					}
+				}
+			}
+			#{$appPrefix} {
+				&-btn {
+					#{$varPrefix}-bdr-w: initial;
+					#{$varPrefix}-bdr-sty: initial;
+					#{$varPrefix}-bdr-cl: initial;
+					#{$varPrefix}-p: 6px 12px;
+					#{$varPrefix}-fnt-sz: 14px;
+					#{$varPrefix}-ln-h: normal;
+
+					&-light {
+						#{$varPrefix}-cl: var(--wp--preset--color--base, #2e312f);
+						#{$varPrefix}-bg-cl: var(--wp--preset--color--quinary, #d3d9de);
+						#{$varPrefix}-bdr-cl: var(--wp--preset--color--quinary, #d3d9de);
+					}
+					&-active {
+						#{$varPrefix}-cl: var(--wp--preset--color--white, #fff) !important;
+						#{$varPrefix}-bg-cl: var(--wp--preset--color--primary, #48b44f);
+						#{$varPrefix}-bdr-cl: var(--wp--preset--color--primary, #48b44f);
+					}
+				}
+				&-spinner {
+					&:not(#{$appPrefix}-spinner-inline) {
+						#{$varPrefix}-w: 30px;
+						#{$varPrefix}-h: 30px;
+						#{$varPrefix}-pos: absolute;
+						#{$varPrefix}-l: 50%;
+						#{$varPrefix}-t: 50%;
+						#{$varPrefix}-tf: translate(-50%, -50%);
+
+						left: var(#{$varPrefix}-l);
+						top: var(#{$varPrefix}-t);
+						position: var(#{$varPrefix}-pos) !important;
+						height: var(#{$varPrefix}-h) !important;
+						width: var(#{$varPrefix}-w) !important;
+						transform: var(#{$varPrefix}-tf);
+					}
+				}
+			}
+		}
+	}
+
+	&-plan {
+		&__desc {
+			#{$varPrefix}-m: 15px 0;
+			#{$varPrefix}-p: 15px 0;
+			#{$varPrefix}-bdr-w: 1px 0 0 0;
+			#{$varPrefix}-bdr-sty: solid;
+			#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color, #d3d9de);
+			#{$varPrefix}-gap: 5px 0;
+
+			#{$appPrefix} {
+				&-li {
+					#{$varPrefix}-fnt-sz: 14px;
+					#{$varPrefix}-ln-h: 1.2;
+					#{$varPrefix}-cl: var(#{$varPrefix}-base-color, #2e312f);
+					#{$varPrefix}-gap: 0 5px;
+					#{$varPrefix}-bdr-w: 0;
+
+					&:not(:last-child) {
+						#{$varPrefix}-p: 10px 0;
+						#{$varPrefix}-bdr-w: 0 0 1px 0;
+						#{$varPrefix}-bdr-sty: dashed;
+						#{$varPrefix}-bdr-cl: var(#{$varPrefix}-border-color, #d3d9de);
+					}
+
+					&:last-child {
+						#{$varPrefix}-p: 10px 0 0 0;
+					}
+				}
+
+				&-svg {
+					#{$varPrefix}-h: 14px;
+					#{$varPrefix}-w: 14px;
+					#{$varPrefix}-cl: var(#{$varPrefix}-primary, #48b44f);
+
+					&-wrp {
+						#{$varPrefix}-ln-h: 1.5;
+					}
+				}
+			}
+		}
+
+		&__price {
+			#{$varPrefix}-fnt-wt: 600;
+			#{$varPrefix}-fnt-sz: 28px;
+			#{$varPrefix}-m: 25px 0;
+		}
+
+		&__ttl {
+			#{$varPrefix}-fnt-sz: 18px;
+			#{$varPrefix}-fnt-wt: 600;
+			#{$varPrefix}-fnt-fam: var(
+				--wp--preset--font-family--body,
+				Arial,
+				Helvetica,
+				sans-serif
+			);
+			&-sub {
+				#{$varPrefix}-fnt-sz: 14px;
+				#{$varPrefix}-cl: var(--wp--preset--color--accent, #9da29f);
+				#{$varPrefix}-m: 0 0 15px 0;
+			}
+		}
+
+		&__btn {
+			&-grp {
+				#{$varPrefix}-m: 25px 0;
+				#{$varPrefix}-gap: 0 5px;
+			}
+
+			&--purchase {
+				.edd-submit {
+					#{$varPrefix}-pos: relative;
+					#{$varPrefix}-bdr-rad: 0;
+					#{$varPrefix}-p: 6px 12px;
+					background: var(--wp--preset--color--primary, #48b44f) !important;
+					border-color: var(--wp--preset--color--primary, #48b44f) !important;
+					color: var(--wp--preset--color--white, #fff) !important;
+					border-radius: var(#{$varPrefix}-bdr-rad);
+					position: var(#{$varPrefix}-pos);
+					padding: var(#{$varPrefix}-p);
+
+					&:hover,
+					&:focus {
+						background: var(--wp--preset--color--hover, #3ea245) !important;
+						border-color: var(--wp--preset--color---hover, #3ea245) !important;
+					}
+				}
+			}
+		}
+	}
+}

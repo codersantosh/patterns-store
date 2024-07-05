@@ -1,0 +1,1108 @@
+# Copyright (C) 2024 codersantosh
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Patterns Store - Creates a store to manage and display patterns & pattern kits 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/patterns-store\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-07-05T17:42:14+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: patterns-store\n"
+
+#. Plugin Name of the plugin
+msgid "Patterns Store - Creates a store to manage and display patterns & pattern kits"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/codersantosh/patterns-store"
+msgstr ""
+
+#. Description of the plugin
+msgid "Congratulations on choosing the Patterns Store for your website development. This plugin is designed to help you quickly and efficiently build your patters store ie patterns and pattern kits store."
+msgstr ""
+
+#. Author of the plugin
+msgid "codersantosh"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/codersantosh"
+msgstr ""
+
+#: build/blocks/pattern-copy/index.php:40
+#: build/editor/blocks/pattern-copy/index.php:40
+#: build/public/blocks/pattern-copy/index.php:40
+#: deploy/build/blocks/pattern-copy/index.php:40
+#: deploy/build/editor/blocks/pattern-copy/index.php:40
+#: deploy/build/public/blocks/pattern-copy/index.php:40
+msgid "View Patterns"
+msgstr ""
+
+#: build/blocks/pattern-copy/index.php:43
+#: build/editor/blocks/pattern-copy/index.php:43
+#: build/public/blocks/pattern-copy/index.php:43
+#: deploy/build/blocks/pattern-copy/index.php:43
+#: deploy/build/editor/blocks/pattern-copy/index.php:43
+#: deploy/build/public/blocks/pattern-copy/index.php:43
+msgid "Access Denied ! "
+msgstr ""
+
+#: build/blocks/pattern-copy/index.php:46
+#: build/editor/blocks/pattern-copy/index.php:46
+#: build/public/blocks/pattern-copy/index.php:46
+#: deploy/build/blocks/pattern-copy/index.php:46
+#: deploy/build/editor/blocks/pattern-copy/index.php:46
+#: deploy/build/public/blocks/pattern-copy/index.php:46
+msgid "Copy"
+msgstr ""
+
+#: build/blocks/pattern-copy/index.php:47
+#: build/editor/blocks/pattern-copy/index.php:47
+#: build/public/blocks/pattern-copy/index.php:47
+#: deploy/build/blocks/pattern-copy/index.php:47
+#: deploy/build/editor/blocks/pattern-copy/index.php:47
+#: deploy/build/public/blocks/pattern-copy/index.php:47
+msgid "Copied"
+msgstr ""
+
+#. translators: %s: the result count.
+#: build/blocks/query-total/index.php:56
+#: build/editor/blocks/query-total/index.php:56
+#: build/public/blocks/query-total/index.php:56
+#: deploy/build/blocks/query-total/index.php:56
+#: deploy/build/editor/blocks/query-total/index.php:56
+#: deploy/build/public/blocks/query-total/index.php:56
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: Property name.
+#: deploy/includes/api/class-api-settings.php:157
+#: includes/api/class-api-settings.php:157
+msgid "The %s property has an invalid stored value, and cannot be updated to null."
+msgstr ""
+
+#: deploy/includes/api/class-api.php:115
+#: deploy/includes/api/class-api.php:127
+#: deploy/includes/class-blocks-css.php:118
+#: deploy/includes/class-blocks-css.php:130
+#: includes/api/class-api.php:115
+#: includes/api/class-api.php:127
+#: includes/class-blocks-css.php:118
+#: includes/class-blocks-css.php:130
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: deploy/includes/block-bindings/class-pattern-data.php:59
+#: includes/block-bindings/class-pattern-data.php:59
+msgid "Pattern related meta data"
+msgstr ""
+
+#: deploy/includes/block-bindings/class-pattern-data.php:68
+#: includes/block-bindings/class-pattern-data.php:68
+msgid "Pattern type link"
+msgstr ""
+
+#: deploy/includes/block-bindings/class-pattern-data.php:76
+#: includes/block-bindings/class-pattern-data.php:76
+msgid "Pattern related items title"
+msgstr ""
+
+#: deploy/includes/block-bindings/class-pattern-data.php:113
+#: includes/block-bindings/class-pattern-data.php:113
+msgid "in"
+msgstr ""
+
+#: deploy/includes/block-bindings/class-pattern-data.php:126
+#: deploy/includes/class-post-type-manager.php:292
+#: includes/block-bindings/class-pattern-data.php:126
+#: includes/class-post-type-manager.php:292
+msgid "Patterns"
+msgstr ""
+
+#. Translators: %1$d is the number of patterns, %2$s is the title of the post.
+#: deploy/includes/block-bindings/class-pattern-data.php:221
+#: includes/block-bindings/class-pattern-data.php:221
+msgid "%1$d patterns in %2$s"
+msgstr ""
+
+#. Translators: %1$d is the number of patterns.
+#: deploy/includes/block-bindings/class-pattern-data.php:228
+#: includes/block-bindings/class-pattern-data.php:228
+msgid "%1$d related patterns"
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:163
+#: includes/class-custom-theme-json-manager.php:163
+msgid "Unique pattern id for the theme JSON package."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:344
+#: includes/class-custom-theme-json-manager.php:344
+msgid "The pattern was not found."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:353
+#: includes/class-custom-theme-json-manager.php:353
+msgid "The issue on getting the theme JSON package."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:357
+#: includes/class-custom-theme-json-manager.php:357
+msgid "The theme JSON package does not have a theme.json file."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:363
+#: includes/class-custom-theme-json-manager.php:363
+msgid "Failed to fetch the theme JSON file."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:369
+#: includes/class-custom-theme-json-manager.php:369
+msgid "The theme JSON package is empty."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:375
+#: includes/class-custom-theme-json-manager.php:375
+msgid "Invalid JSON in the theme JSON package."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:380
+#: includes/class-custom-theme-json-manager.php:380
+msgid "Invalid or empty theme.json."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:397
+#: includes/class-custom-theme-json-manager.php:397
+msgid "Empty CSS."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:402
+#: includes/class-custom-theme-json-manager.php:402
+msgid "Empty minified CSS."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:413
+#: includes/class-custom-theme-json-manager.php:413
+msgid "Permission denied to create CSS file."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:466
+#: includes/class-custom-theme-json-manager.php:466
+msgid "No file provided."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:473
+#: includes/class-custom-theme-json-manager.php:473
+msgid "Invalid file type or extension."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:485
+#: includes/class-custom-theme-json-manager.php:485
+msgid "Error on unzipping, Please try again!"
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:516
+#: includes/class-custom-theme-json-manager.php:516
+msgid "Invalid directory in zip."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:525
+#: includes/class-custom-theme-json-manager.php:525
+msgid "Invalid files in zip."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:553
+#: includes/class-custom-theme-json-manager.php:553
+msgid "The theme json package does not exist."
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:766
+#: includes/class-custom-theme-json-manager.php:766
+msgid "THEME JSON PACKAGE"
+msgstr ""
+
+#: deploy/includes/class-custom-theme-json-manager.php:769
+#: includes/class-custom-theme-json-manager.php:769
+msgid "GENERATED CSS"
+msgstr ""
+
+#: deploy/includes/class-post-type-manager.php:291
+#: includes/class-post-type-manager.php:291
+msgid "Pattern"
+msgstr ""
+
+#: deploy/includes/class-post-type-manager.php:365
+#: includes/class-post-type-manager.php:365
+msgctxt "block pattern"
+msgid "Add New"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:368
+#: includes/class-post-type-manager.php:368
+msgid "Add New %s"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:373
+#: includes/class-post-type-manager.php:373
+msgid "Edit %s"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:378
+#: includes/class-post-type-manager.php:378
+msgid "New %s"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#. translators: %s is the post type plural name
+#: deploy/includes/class-post-type-manager.php:383
+#: deploy/includes/class-post-type-manager.php:388
+#: includes/class-post-type-manager.php:383
+#: includes/class-post-type-manager.php:388
+msgid "View %s"
+msgstr ""
+
+#. translators: %s is the post type plural name
+#: deploy/includes/class-post-type-manager.php:393
+#: includes/class-post-type-manager.php:393
+msgid "Search %s"
+msgstr ""
+
+#. translators: %s is the post type plural name
+#: deploy/includes/class-post-type-manager.php:398
+#: includes/class-post-type-manager.php:398
+msgid "No %s found."
+msgstr ""
+
+#. translators: %s is the post type plural name
+#: deploy/includes/class-post-type-manager.php:403
+#: includes/class-post-type-manager.php:403
+msgid "No %s found in trash."
+msgstr ""
+
+#. translators: %s is the post type plural name
+#: deploy/includes/class-post-type-manager.php:408
+#: includes/class-post-type-manager.php:408
+msgid "All %s"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:413
+#: includes/class-post-type-manager.php:413
+msgid "%s Archives"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:418
+#: includes/class-post-type-manager.php:418
+msgid "%s Attributes"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:423
+#: includes/class-post-type-manager.php:423
+msgid "Insert into %s"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:428
+#: includes/class-post-type-manager.php:428
+msgid "Uploaded to this %s"
+msgstr ""
+
+#. translators: %s is the post type plural name
+#: deploy/includes/class-post-type-manager.php:433
+#: includes/class-post-type-manager.php:433
+msgid "Filter %s list"
+msgstr ""
+
+#. translators: %s is the post type plural name
+#: deploy/includes/class-post-type-manager.php:438
+#: includes/class-post-type-manager.php:438
+msgid " %s list navigation"
+msgstr ""
+
+#. translators: %s is the post type plural name
+#: deploy/includes/class-post-type-manager.php:443
+#: includes/class-post-type-manager.php:443
+msgid " %s list"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:448
+#: includes/class-post-type-manager.php:448
+msgid " %s published"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:453
+#: includes/class-post-type-manager.php:453
+msgid " %s published privately"
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:458
+#: includes/class-post-type-manager.php:458
+msgid " %s reverted to draft."
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:463
+#: includes/class-post-type-manager.php:463
+msgid " %s scheduled."
+msgstr ""
+
+#. translators: %s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:468
+#: includes/class-post-type-manager.php:468
+msgid " %s updated."
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:505
+#: includes/class-post-type-manager.php:505
+msgctxt "taxonomy general name"
+msgid "%1$s Categories"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:507
+#: includes/class-post-type-manager.php:507
+msgctxt "taxonomy singular name"
+msgid "%1$s Category"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:509
+#: includes/class-post-type-manager.php:509
+msgid "Search %1$s Categories"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:511
+#: includes/class-post-type-manager.php:511
+msgid "Popular %1$s Categories"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:513
+#: includes/class-post-type-manager.php:513
+msgid "All %1$s Categories"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:515
+#: includes/class-post-type-manager.php:515
+msgid "Edit %1$s Category"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:517
+#: includes/class-post-type-manager.php:517
+msgid "View %1$s Category"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:519
+#: includes/class-post-type-manager.php:519
+msgid "Update %1$s Category"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:521
+#: includes/class-post-type-manager.php:521
+msgid "Add New %1$s Category"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:523
+#: includes/class-post-type-manager.php:523
+msgid "New %1$s Category Name"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:525
+#: includes/class-post-type-manager.php:525
+msgid "Separate %2$s categories with commas"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:527
+#: includes/class-post-type-manager.php:527
+msgid "Add or remove %2$s categories"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:529
+#: includes/class-post-type-manager.php:529
+msgid "Choose from the most used %2$s categories"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:531
+#: includes/class-post-type-manager.php:531
+msgid "No %2$s categories found."
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:533
+#: includes/class-post-type-manager.php:533
+msgid "No %2$s categories"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:535
+#: includes/class-post-type-manager.php:535
+msgid "%1$s categories list navigation"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:537
+#: includes/class-post-type-manager.php:537
+msgid "%1$s categories list"
+msgstr ""
+
+#. translators: Tab heading when selecting from the most used terms.
+#: deploy/includes/class-post-type-manager.php:539
+#: includes/class-post-type-manager.php:539
+msgctxt "categories"
+msgid "Most Used"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:541
+#: includes/class-post-type-manager.php:541
+msgid "&larr; Go to %2$s categories"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:574
+#: includes/class-post-type-manager.php:574
+msgctxt "taxonomy general name"
+msgid "%1$s Tags"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:576
+#: includes/class-post-type-manager.php:576
+msgctxt "taxonomy singular name"
+msgid "%1$s Tag"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:578
+#: includes/class-post-type-manager.php:578
+msgid "Search %1$s Tags"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:580
+#: includes/class-post-type-manager.php:580
+msgid "Popular %1$s Tags"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:582
+#: includes/class-post-type-manager.php:582
+msgid "All %1$s Tags"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:584
+#: includes/class-post-type-manager.php:584
+msgid "Edit %1$s Tag"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:586
+#: includes/class-post-type-manager.php:586
+msgid "View %1$s Tag"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:588
+#: includes/class-post-type-manager.php:588
+msgid "Update %1$s Tag"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:590
+#: includes/class-post-type-manager.php:590
+msgid "Add New %1$s Tag"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:592
+#: includes/class-post-type-manager.php:592
+msgid "New %1$s Tag Name"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:594
+#: includes/class-post-type-manager.php:594
+msgid "Separate %2$s tags with commas"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:596
+#: includes/class-post-type-manager.php:596
+msgid "Add or remove %2$s tags"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:598
+#: includes/class-post-type-manager.php:598
+msgid "Choose from the most used %2$s tags"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:600
+#: includes/class-post-type-manager.php:600
+msgid "No %2$s tags found."
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:602
+#: includes/class-post-type-manager.php:602
+msgid "No %2$s tags"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:604
+#: includes/class-post-type-manager.php:604
+msgid "%1$s tags list navigation"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:606
+#: includes/class-post-type-manager.php:606
+msgid "%1$s tags list"
+msgstr ""
+
+#. translators: Tab heading when selecting from the most used terms.
+#: deploy/includes/class-post-type-manager.php:608
+#: includes/class-post-type-manager.php:608
+msgctxt "tags"
+msgid "Most Used"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:610
+#: includes/class-post-type-manager.php:610
+msgid "&larr; Go to %2$s tags"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:653
+#: includes/class-post-type-manager.php:653
+msgctxt "taxonomy general name"
+msgid "%1$s Plugins"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:655
+#: includes/class-post-type-manager.php:655
+msgctxt "taxonomy singular name"
+msgid "%1$s Plugin"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:657
+#: includes/class-post-type-manager.php:657
+msgid "Search %1$s Plugins"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:659
+#: includes/class-post-type-manager.php:659
+msgid "Popular %1$s Plugins"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:661
+#: includes/class-post-type-manager.php:661
+msgid "All %1$s Plugins"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:663
+#: includes/class-post-type-manager.php:663
+msgid "Edit %1$s Plugin"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:665
+#: includes/class-post-type-manager.php:665
+msgid "View %1$s Plugin"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:667
+#: includes/class-post-type-manager.php:667
+msgid "Update %1$s Plugin"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:669
+#: includes/class-post-type-manager.php:669
+msgid "Add New %1$s Plugin"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:671
+#: includes/class-post-type-manager.php:671
+msgid "New %1$s Plugin Name"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:673
+#: includes/class-post-type-manager.php:673
+msgid "Separate %2$s plugins with commas"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:675
+#: includes/class-post-type-manager.php:675
+msgid "Add or remove %2$s plugins"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:677
+#: includes/class-post-type-manager.php:677
+msgid "Choose from the most used %2$s plugins"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:679
+#: includes/class-post-type-manager.php:679
+msgid "No %2$s plugins found."
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:681
+#: includes/class-post-type-manager.php:681
+msgid "No %2$s plugins"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:683
+#: includes/class-post-type-manager.php:683
+msgid "%1$s plugins list navigation"
+msgstr ""
+
+#. translators: %1$s is the post type singular name
+#: deploy/includes/class-post-type-manager.php:685
+#: includes/class-post-type-manager.php:685
+msgid "%1$s plugins list"
+msgstr ""
+
+#. translators: Tab heading when selecting from the most used terms.
+#: deploy/includes/class-post-type-manager.php:687
+#: includes/class-post-type-manager.php:687
+msgctxt "plugins"
+msgid "Most Used"
+msgstr ""
+
+#. translators: %2$s is the post type singular lowercase name
+#: deploy/includes/class-post-type-manager.php:689
+#: includes/class-post-type-manager.php:689
+msgid "&larr; Go to %2$s plugins"
+msgstr ""
+
+#: deploy/includes/class-post-type-manager.php:891
+#: deploy/includes/class-post-type-manager.php:894
+#: includes/class-post-type-manager.php:891
+#: includes/class-post-type-manager.php:894
+msgid "Error occurred on update_contains_block_types_meta: "
+msgstr ""
+
+#: deploy/includes/class-post-type-manager.php:948
+#: includes/class-post-type-manager.php:948
+msgid "Top-level parent post acts as a \"Pattern Kit\" and their children acts as \"Patterns\""
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:76
+#: includes/db/pattern-meta/class-api-pattern-meta.php:76
+msgid "Unique pattern id for the pattern-meta."
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:156
+#: includes/db/pattern-meta/class-api-pattern-meta.php:156
+msgid "Sorry, invalid data."
+msgstr ""
+
+#. translators: time
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:220
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:228
+#: includes/db/pattern-meta/class-api-pattern-meta.php:220
+#: includes/db/pattern-meta/class-api-pattern-meta.php:228
+msgid "%s ago"
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:266
+#: includes/db/pattern-meta/class-api-pattern-meta.php:266
+msgid "Unique identifier for the pattern meta.(Post id)"
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:271
+#: includes/db/pattern-meta/class-api-pattern-meta.php:271
+msgid "Image sources used in pattern."
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:276
+#: includes/db/pattern-meta/class-api-pattern-meta.php:276
+msgid "Pattern view port width."
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:281
+#: includes/db/pattern-meta/class-api-pattern-meta.php:281
+msgid "Pattern block types."
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:286
+#: includes/db/pattern-meta/class-api-pattern-meta.php:286
+msgid "Pattern language."
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:291
+#: includes/db/pattern-meta/class-api-pattern-meta.php:291
+msgid "Pattern lest WordPress version."
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:296
+#: includes/db/pattern-meta/class-api-pattern-meta.php:296
+msgid "Pattern contain block types."
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:301
+#: includes/db/pattern-meta/class-api-pattern-meta.php:301
+msgid "Pattern footnotes."
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:306
+#: includes/db/pattern-meta/class-api-pattern-meta.php:306
+msgid "The date the pattern-meta was published, in the site's timezone."
+msgstr ""
+
+#: deploy/includes/db/pattern-meta/class-api-pattern-meta.php:315
+#: includes/db/pattern-meta/class-api-pattern-meta.php:315
+msgid "The date the pattern-meta was updated, in the site's timezone."
+msgstr ""
+
+#: deploy/includes/functions.php:174
+#: deploy/includes/functions.php:182
+#: includes/functions.php:174
+#: includes/functions.php:182
+msgid "Patterns Store"
+msgstr ""
+
+#: deploy/includes/functions.php:181
+#: includes/functions.php:181
+msgid "Patterns Store Page"
+msgstr ""
+
+#. translators: %s is the plugin name
+#: deploy/includes/functions.php:191
+#: includes/functions.php:191
+msgid "Congratulations on choosing the %s for your website development. This plugin is designed to help you quickly and efficiently build your patterns store ie patterns and pattern kits. To ensure a smooth process, we recommend taking a few minutes to read the following information on how the plugin works. This page is not just another 'getting started' page, but rather a comprehensive resource that will help you save hundreds of hours in the long run. Please read it carefully to fully understand the plugin's capabilities and how to use them effectively."
+msgstr ""
+
+#. translators: %s is the plugin name
+#: deploy/includes/functions.php:203
+#: includes/functions.php:203
+msgid "Congratulations! You have successfully installed %s and ready for you to embark on crafting captivating designs for your users."
+msgstr ""
+
+#. translators: %s is the plugin name
+#: deploy/includes/functions.php:211
+#: includes/functions.php:211
+msgid "If you have any questions or need assistance, please do not hesitate to contact us for support. The %1$s plugin caters to WordPress developers and designers seeking to create and display patterns and pattern kits for their users or clients. It is specifically crafted to facilitate the development and showcasing of various design elements within the WordPress platform. If you decide to sell patterns, you can upgrade to the premium version of %2$s. The premium version seamlessly integrates with the Easy Digital Download Plugin (EDD). We hope you enjoy using %3$s and we cannot wait to see the amazing designs you offer with it."
+msgstr ""
+
+#: deploy/includes/functions.php:222
+#: includes/functions.php:222
+msgid "Get started"
+msgstr ""
+
+#: deploy/includes/functions.php:228
+#: includes/functions.php:228
+msgid "Docmentation"
+msgstr ""
+
+#: deploy/includes/functions.php:234
+#: includes/functions.php:234
+msgid "Get support"
+msgstr ""
+
+#: deploy/includes/functions.php:248
+#: includes/functions.php:248
+msgid "Visit site"
+msgstr ""
+
+#: deploy/includes/functions.php:254
+#: deploy/includes/functions.php:266
+#: includes/functions.php:254
+#: includes/functions.php:266
+msgid "Get Support"
+msgstr ""
+
+#: deploy/includes/functions.php:261
+#: includes/functions.php:261
+msgid "Contact Information"
+msgstr ""
+
+#: deploy/includes/functions.php:265
+#: includes/functions.php:265
+msgid "Support"
+msgstr ""
+
+#: deploy/includes/functions.php:272
+#: includes/functions.php:272
+msgid "Email"
+msgstr ""
+
+#: deploy/includes/functions.php:273
+#: includes/functions.php:273
+msgid "codersantosh@gmail.com"
+msgstr ""
+
+#: deploy/includes/functions.php:279
+#: includes/functions.php:279
+msgid "Location"
+msgstr ""
+
+#: deploy/includes/functions.php:280
+#: includes/functions.php:280
+msgid "Kathmandu, Nepal"
+msgstr ""
+
+#: deploy/includes/functions.php:304
+#: includes/functions.php:304
+msgid "Create Patterns"
+msgstr ""
+
+#: deploy/includes/functions.php:308
+#: includes/functions.php:308
+msgid "Bundle to Patterns Kits"
+msgstr ""
+
+#: deploy/includes/functions.php:312
+#: includes/functions.php:312
+msgid "Start for free or sell them"
+msgstr ""
+
+#: deploy/includes/functions.php:318
+#: includes/functions.php:318
+msgid "Knowledge base"
+msgstr ""
+
+#: deploy/includes/functions.php:319
+#: includes/functions.php:319
+msgid "The utilization of this plugin can be facilitated by perusing comprehensive and well-documented articles."
+msgstr ""
+
+#: deploy/includes/functions.php:323
+#: includes/functions.php:323
+msgid "Visit knowledge base"
+msgstr ""
+
+#: deploy/includes/functions.php:329
+#: includes/functions.php:329
+msgid "Community"
+msgstr ""
+
+#. translators: %s is the plugin name
+#: deploy/includes/functions.php:332
+#: includes/functions.php:332
+msgid "Our objective is to enhance the customer experience, we invite you to join our community where you can receive immediate support."
+msgstr ""
+
+#: deploy/includes/functions.php:338
+#: includes/functions.php:338
+msgid "Visit community page"
+msgstr ""
+
+#: deploy/includes/functions.php:343
+#: includes/functions.php:343
+msgid "24x7 support"
+msgstr ""
+
+#. translators: %s is the plugin name
+#: deploy/includes/functions.php:346
+#: includes/functions.php:346
+msgid "Our support team is available 24/7 to assist you in the event that you encounter any problems while utilizing this plugin."
+msgstr ""
+
+#: deploy/includes/functions.php:352
+#: includes/functions.php:352
+msgid "Create a support thread"
+msgstr ""
+
+#: deploy/includes/functions.php:358
+#: includes/functions.php:358
+msgid "Video guide"
+msgstr ""
+
+#. translators: %s is the plugin name
+#: deploy/includes/functions.php:361
+#: includes/functions.php:361
+msgid "The plugin is accompanied by comprehensive video tutorials that provide practical demonstrations for most customization."
+msgstr ""
+
+#: deploy/includes/functions.php:367
+#: includes/functions.php:367
+msgid "View video guide"
+msgstr ""
+
+#: deploy/includes/functions.php:374
+#: includes/functions.php:374
+msgid "Quick links to settings"
+msgstr ""
+
+#: deploy/includes/functions.php:387
+#: includes/functions.php:387
+msgid "Changelog"
+msgstr ""
+
+#. translators: %s: the post count.
+#: deploy/public/class-public.php:214
+#: public/class-public.php:214
+msgid "%s pattern kits"
+msgid_plural "%s pattern kits"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: the post count.
+#: deploy/public/class-public.php:217
+#: public/class-public.php:217
+msgid "%s pattern"
+msgid_plural "%s patterns"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s list of terms used for filtering.
+#: deploy/public/class-public.php:375
+#: public/class-public.php:375
+msgid "Patterns: %s"
+msgstr ""
+
+#. Translators: %s is the display name of the author.
+#: deploy/public/class-public.php:380
+#: public/class-public.php:380
+msgid "Author: %s"
+msgstr ""
+
+#: deploy/public/class-public.php:382
+#: public/class-public.php:382
+msgid "All patterns"
+msgstr ""
+
+#: deploy/public/class-public.php:387
+#: public/class-public.php:387
+msgid "Search results"
+msgstr ""
+
+#: build/admin/blocks/parent-link/block.json
+#: build/blocks/parent-link/block.json
+#: build/editor/blocks/parent-link/block.json
+#: build/public/blocks/parent-link/block.json
+#: deploy/build/admin/blocks/parent-link/block.json
+#: deploy/build/blocks/parent-link/block.json
+#: deploy/build/editor/blocks/parent-link/block.json
+#: deploy/build/public/blocks/parent-link/block.json
+msgctxt "block title"
+msgid "Pattern Kits (Parent) link"
+msgstr ""
+
+#: build/admin/blocks/parent-link/block.json
+#: build/blocks/parent-link/block.json
+#: build/editor/blocks/parent-link/block.json
+#: build/public/blocks/parent-link/block.json
+#: deploy/build/admin/blocks/parent-link/block.json
+#: deploy/build/blocks/parent-link/block.json
+#: deploy/build/editor/blocks/parent-link/block.json
+#: deploy/build/public/blocks/parent-link/block.json
+msgctxt "block description"
+msgid "A button which will show parent link."
+msgstr ""
+
+#: build/admin/blocks/pattern-copy/block.json
+#: build/blocks/pattern-copy/block.json
+#: build/editor/blocks/pattern-copy/block.json
+#: build/public/blocks/pattern-copy/block.json
+#: deploy/build/admin/blocks/pattern-copy/block.json
+#: deploy/build/blocks/pattern-copy/block.json
+#: deploy/build/editor/blocks/pattern-copy/block.json
+#: deploy/build/public/blocks/pattern-copy/block.json
+msgctxt "block title"
+msgid "Pattern Copy"
+msgstr ""
+
+#: build/admin/blocks/pattern-copy/block.json
+#: build/blocks/pattern-copy/block.json
+#: build/editor/blocks/pattern-copy/block.json
+#: build/public/blocks/pattern-copy/block.json
+#: deploy/build/admin/blocks/pattern-copy/block.json
+#: deploy/build/blocks/pattern-copy/block.json
+#: deploy/build/editor/blocks/pattern-copy/block.json
+#: deploy/build/public/blocks/pattern-copy/block.json
+msgctxt "block description"
+msgid "A button which will copy the current pattern code to the clipboard."
+msgstr ""
+
+#: build/admin/blocks/pattern-preview/block.json
+#: build/blocks/pattern-preview/block.json
+#: build/editor/blocks/pattern-preview/block.json
+#: build/public/blocks/pattern-preview/block.json
+#: deploy/build/admin/blocks/pattern-preview/block.json
+#: deploy/build/blocks/pattern-preview/block.json
+#: deploy/build/editor/blocks/pattern-preview/block.json
+#: deploy/build/public/blocks/pattern-preview/block.json
+msgctxt "block title"
+msgid "Pattern Preview"
+msgstr ""
+
+#: build/admin/blocks/pattern-preview/block.json
+#: build/blocks/pattern-preview/block.json
+#: build/editor/blocks/pattern-preview/block.json
+#: build/public/blocks/pattern-preview/block.json
+#: deploy/build/admin/blocks/pattern-preview/block.json
+#: deploy/build/blocks/pattern-preview/block.json
+#: deploy/build/editor/blocks/pattern-preview/block.json
+#: deploy/build/public/blocks/pattern-preview/block.json
+msgctxt "block description"
+msgid "A button which will show preview the current pattern on click."
+msgstr ""
+
+#: build/admin/blocks/query-total/block.json
+#: build/blocks/query-total/block.json
+#: build/editor/blocks/query-total/block.json
+#: build/public/blocks/query-total/block.json
+#: deploy/build/admin/blocks/query-total/block.json
+#: deploy/build/blocks/query-total/block.json
+#: deploy/build/editor/blocks/query-total/block.json
+#: deploy/build/public/blocks/query-total/block.json
+msgctxt "block title"
+msgid "Query Total"
+msgstr ""
+
+#: build/admin/blocks/query-total/block.json
+#: build/blocks/query-total/block.json
+#: build/editor/blocks/query-total/block.json
+#: build/public/blocks/query-total/block.json
+#: deploy/build/admin/blocks/query-total/block.json
+#: deploy/build/blocks/query-total/block.json
+#: deploy/build/editor/blocks/query-total/block.json
+#: deploy/build/public/blocks/query-total/block.json
+msgctxt "block description"
+msgid "Display the total items found in the current query."
+msgstr ""

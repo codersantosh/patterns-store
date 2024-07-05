@@ -1,0 +1,22 @@
+#{$prjPrefix} {
+	&-action-msg {
+		&-ttl {
+			#{$varPrefix}-m: 0 0 5px 0;
+			#{$varPrefix}-fnt-sz: 16px;
+			#{$varPrefix}-fnt-wt: 600;
+			&-sub {
+				#{$varPrefix}-fnt-sz: 14px;
+				#{$varPrefix}-m: 0 0 15px 0;
+			}
+		}
+		#{$appPrefix} {
+			&-btn {
+				#{$varPrefix}-fnt-sz: 13px;
+				#{$varPrefix}-p: 6px 12px;
+				font-family: var(#{$varPrefix}-fnt-fam);
+				#{$varPrefix}-cl: var(--wp--preset--color--white, #fff);
+				#{$varPrefix}-bg-cl: var(--wp--preset--color--primary, #48b44f);
+			}
+		}
+	}
+}

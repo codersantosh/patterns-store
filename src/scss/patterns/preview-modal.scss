@@ -1,0 +1,361 @@
+:root {
+	--ps-sidebar-w: 270px;
+}
+#{$prjPrefix} {
+	&-preview {
+		&__modal {
+			@include respond-below(sm) {
+				#{$varPrefix}-m: 0;
+				margin: var(#{$varPrefix}-m);
+			}
+			#{$appPrefix} {
+				&-btn {
+					&[disabled] {
+						opacity: 0.5;
+						cursor: not-allowed;
+					}
+					&-icon {
+						#{$varPrefix}-gap: 0 5px;
+					}
+				}
+				&-hr {
+					#{$varPrefix}-bdr-w: 1px 0 0 0;
+					#{$varPrefix}bdr-sty: solid;
+					#{$varPrefix}-bdr-cl: var(--wp--preset--color--quinary, #d3d9de);
+					border-width: var(#{$varPrefix}-bdr-w);
+					border-style: var(#{$varPrefix}-bdr-sty);
+					border-color: var(#{$varPrefix}-bdr-cl);
+				}
+			}
+
+			&--body {
+				#{$varPrefix}-h: 100vh;
+				#{$varPrefix}-pos: fixed;
+				#{$varPrefix}-l: 0;
+				#{$varPrefix}-r: 0;
+				#{$varPrefix}-t: 0;
+				#{$varPrefix}-b: 0;
+				#{$varPrefix}-w: 100%;
+				#{$varPrefix}-bg-cl: #2e312f;
+
+				&:not(#{$prjPrefix}-preview__modal--hide-ctrl) {
+					#{$prjPrefix} {
+						&-preview {
+							&__modal {
+								&--main {
+									#{$varPrefix}-p: 0 0 0 var(--ps-sidebar-w, initial);
+								}
+							}
+						}
+					}
+				}
+
+				&#{$prjPrefix}-preview__modal--hide-ctrl {
+					#{$prjPrefix} {
+						&-preview {
+							&__modal {
+								&--sidebar {
+									#{$varPrefix}-l: calc(-1 * var(--ps-sidebar-w));
+								}
+							}
+						}
+					}
+				}
+
+				#{$appPrefix} {
+					&-spinner {
+						&:not(#{$appPrefix}-spinner-inline) {
+							#{$varPrefix}-w: 30px;
+							#{$varPrefix}-h: 30px;
+							#{$varPrefix}-pos: absolute;
+							#{$varPrefix}-l: 50%;
+							#{$varPrefix}-t: 50%;
+							#{$varPrefix}-tf: translate(-50%, -50%);
+
+							left: var(#{$varPrefix}-l);
+							top: var(#{$varPrefix}-t);
+							position: var(#{$varPrefix}-pos) !important;
+							height: var(#{$varPrefix}-h) !important;
+							width: var(#{$varPrefix}-w) !important;
+							transform: var(#{$varPrefix}-tf);
+						}
+					}
+				}
+			}
+
+			.components-modal__content {
+				#{$varPrefix}-p: 0;
+				padding: var(#{$varPrefix}-p);
+			}
+
+			&--sidebar {
+				#{$varPrefix}-pos: fixed;
+				#{$varPrefix}-w: 100%;
+				#{$varPrefix}-h: 40px;
+				#{$varPrefix}-t: 0;
+				#{$varPrefix}-b: 0;
+				#{$varPrefix}-l: 0;
+				#{$varPrefix}-z-idx: 10;
+				#{$varPrefix}-bg-cl: #f1f1f1;
+				#{$varPrefix}-bdr-w: 0 1px 0 0;
+				#{$varPrefix}-bdr-sty: solid;
+				#{$varPrefix}-bdr-cl: #d3d9de;
+				#{$varPrefix}-trs: all 0.2s ease;
+				#{$varPrefix}-box-szg: border-box;
+
+				@include respond-above(md) {
+					#{$varPrefix}-w: var(--ps-sidebar-w);
+					#{$varPrefix}-h: 100%;
+				}
+			}
+
+			&--hdr {
+				#{$varPrefix}-pos: absolute;
+				#{$varPrefix}-l: 0;
+				#{$varPrefix}-r: 0;
+				#{$varPrefix}-t: 0;
+				#{$varPrefix}-b: initial;
+				#{$varPrefix}-z-idx: 10;
+				#{$varPrefix}-bdr-w: 0 0 1px 0;
+				#{$varPrefix}-bdr-sty: solid;
+				#{$varPrefix}-bdr-cl: #ddd;
+				#{$varPrefix}-bg-cl: #eee;
+
+				&-actions {
+					#{$varPrefix}-gap: 0;
+				}
+
+				#{$appPrefix} {
+					&-btn {
+						#{$varPrefix}-bdr-w: 0 1px;
+						#{$varPrefix}-bdr-sty: solid;
+						#{$varPrefix}-bdr-cl: #ddd;
+						#{$varPrefix}-h: 40px;
+						#{$varPrefix}-p: 6px 12px;
+						#{$varPrefix}-bg-cl: #eee;
+						#{$varPrefix}-fnt-sz: 14px;
+						#{$varPrefix}-cl: #2e312f;
+
+						&:hover {
+							#{$varPrefix}-bg-cl: #fff;
+						}
+					}
+
+					&-svg {
+						#{$varPrefix}-h: 20px;
+						#{$varPrefix}-w: 20px;
+					}
+				}
+			}
+
+			&--cont {
+				#{$varPrefix}-pos: absolute;
+				#{$varPrefix}-l: 0;
+				#{$varPrefix}-t: 40px;
+				#{$varPrefix}-b: 0;
+				#{$varPrefix}-w: 100%;
+				#{$varPrefix}-h: 90%;
+				#{$varPrefix}-ovf: hidden auto;
+				#{$varPrefix}-p: 20px;
+				#{$varPrefix}-z-idx: -1;
+
+				&-itm {
+					#{$appPrefix} {
+						&-hr {
+							#{$varPrefix}-m: 30px 0;
+							#{$varPrefix}-bdr-cl: #d3d9de;
+						}
+						&-txt-h4 {
+							#{$varPrefix}-fnt-sz: 24px;
+							#{$varPrefix}-fnt-wt: 500;
+							#{$varPrefix}-fnt-fam: var(
+								--wp--preset--font-family--body,
+								Arial,
+								Helvetica,
+								sans-serif
+							);
+							#{$varPrefix}-ln-h: 1.5;
+							#{$varPrefix}-m: 0 0 20px 0;
+							margin: var(#{$varPrefix}-m);
+						}
+					}
+				}
+			}
+
+			&--ftr {
+				#{$varPrefix}-pos: fixed;
+				#{$varPrefix}-b: 0;
+				#{$varPrefix}-t: initial;
+				#{$varPrefix}-z-idx: 10;
+				#{$varPrefix}-bdr-w: 1px 1px 0 0;
+				#{$varPrefix}-bdr-sty: solid;
+				#{$varPrefix}-bdr-cl: #ddd;
+
+				#{$varPrefix}-h: 45px;
+
+				#{$prjPrefix} {
+					&-preview {
+						&__collapse {
+							&--btn {
+								#{$varPrefix}-pos: fixed;
+								#{$varPrefix}-b: 8px;
+								#{$varPrefix}-l: 0;
+								#{$varPrefix}-r: initial;
+								#{$varPrefix}-z-idx: 99999;
+								#{$varPrefix}-bg-cl: transparent;
+								#{$varPrefix}-cl: #9da29f;
+
+								#{$varPrefix}-bdr-w: initial;
+								#{$varPrefix}-bdr-sty: initial;
+								#{$varPrefix}-bdr-cl: initial;
+								#{$varPrefix}-fnt-fam: var(
+									--wp--preset--font-family--body,
+									Arial,
+									Helvetica,
+									sans-serif
+								);
+								#{$varPrefix}-fnt-sz: 13px;
+								#{$varPrefix}-p: 6px 12px;
+
+								&:focus {
+									#{$varPrefix}-cl: var(--wp--preset--color--primary, #48b44f);
+								}
+							}
+
+							&--arrow {
+								#{$varPrefix}-trs: all 0.5s ease;
+								#{$varPrefix}-tf: rotate(-180deg);
+								#{$varPrefix}-tf-org: center;
+
+								&-open {
+									#{$varPrefix}-tf: rotate(0deg);
+								}
+							}
+						}
+					}
+				}
+
+				#{$appPrefix} {
+					&-svg {
+						#{$varPrefix}-h: 20px;
+						#{$varPrefix}-w: 20px;
+					}
+				}
+			}
+
+			&--main {
+				#{$varPrefix}-w: 100%;
+				#{$varPrefix}-l: 0;
+				#{$varPrefix}-r: 0;
+				#{$varPrefix}-b: 0;
+				#{$varPrefix}-pos: absolute;
+				#{$varPrefix}-z-idx: 99;
+				#{$varPrefix}-h: 100%;
+				#{$varPrefix}-trs: all 0.2s ease;
+				#{$varPrefix}-bg-cl: var(--wp--preset--color--white, #fff);
+			}
+
+			&--prev {
+				#{$varPrefix}-m: 0 -1px;
+			}
+
+			&--devices {
+				#{$varPrefix}-gap: 5px 8px;
+				#{$appPrefix} {
+					&-btn {
+						#{$varPrefix}-bdr-w: initial;
+						#{$varPrefix}-bdr-sty: initial;
+						#{$varPrefix}-bdr-cl: initial;
+						#{$varPrefix}-p: 6px 12px;
+						#{$varPrefix}-bg-cl: #eee;
+						#{$varPrefix}-fnt-sz: 14px;
+						#{$varPrefix}-cl: #9da29f;
+						#{$varPrefix}-ln-h: normal;
+
+						&-active {
+							#{$varPrefix}-bg-cl: var(--wp--preset--color--primary, #48b44f);
+							#{$varPrefix}-cl: var(--wp--preset--color--white, #fff);
+						}
+					}
+					&-svg {
+						#{$varPrefix}-h: 14px;
+						#{$varPrefix}-w: 14px;
+					}
+				}
+			}
+
+			&--device {
+				&-t {
+					#{$prjPrefix} {
+						&-preview {
+							&__modal {
+								&--main {
+									#{$varPrefix}-w: 768px;
+									#{$varPrefix}-h: 1024px;
+									#{$varPrefix}-m: auto;
+									#{$varPrefix}-l: inherit;
+									#{$varPrefix}-tf: inherit;
+								}
+							}
+						}
+					}
+					&:not(#{$prjPrefix}-preview__modal--hide-ctrl) {
+						#{$prjPrefix} {
+							&-preview {
+								&__modal {
+									&--main {
+										#{$varPrefix}-p: 0 !important;
+										#{$varPrefix}-tf: translate(
+											calc(50% - var(--ps-sidebar-w) + 30px),
+											0
+										);
+									}
+								}
+							}
+						}
+					}
+				}
+
+				&-m {
+					#{$prjPrefix} {
+						&-preview {
+							&__modal {
+								&--main {
+									#{$varPrefix}-w: 320px;
+									#{$varPrefix}-h: 480px;
+									#{$varPrefix}-m: auto;
+									#{$varPrefix}-l: inherit;
+									#{$varPrefix}-tf: inherit;
+								}
+							}
+						}
+					}
+					&:not(#{$prjPrefix}-preview__modal--hide-ctrl) {
+						#{$prjPrefix} {
+							&-preview {
+								&__modal {
+									&--main {
+										#{$varPrefix}-p: 0 !important;
+										#{$varPrefix}-tf: translate(
+											calc(50% - var(--ps-sidebar-w) + 220px),
+											0
+										);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&--close {
+				#{$varPrefix}-m: 0 auto 0 0;
+			}
+
+			&-open {
+				#{$varPrefix}-ovf: hidden;
+				overflow: var(#{$varPrefix}-ovf);
+			}
+		}
+	}
+}

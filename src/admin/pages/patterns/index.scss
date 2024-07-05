@@ -1,0 +1,109 @@
+@import '../../../scss/prefix-vars';
+@import '../../../scss/_mixins';
+
+@import '../../../scss/patterns/modal';
+@import '../../../scss/patterns/preview-modal';
+@import '../../../scss/patterns/pricing-modal';
+@import '../../../scss/patterns/preview-list-item';
+@import '../../../scss/patterns/copy-modal';
+@import '../../../scss/patterns/guide-modal';
+@import '../../../scss/patterns/admin';
+
+/* for the message: pattern copied */
+// .components-modal__screen-overlay {
+// 	z-index: 9999;
+// }
+
+#{$prjPrefix} {
+	&-social-icon {
+		#{$appPrefix} {
+			&-svg {
+				#{$varPrefix}-w: 16px;
+				#{$varPrefix}-h: 16px;
+			}
+		}
+	}
+
+	&__single {
+		&--feature {
+			&-img {
+				#{$varPrefix}-pos: relative;
+
+				#{$appPrefix} {
+					&-btn {
+						#{$varPrefix}-pos: absolute;
+						#{$varPrefix}-t: 15px;
+						#{$varPrefix}-l: 15px;
+						#{$varPrefix}-z-idx: 10;
+					}
+				}
+			}
+		}
+
+		&-actions {
+			#{$varPrefix}-m: 25px 0;
+		}
+
+		&--ttl {
+			#{$varPrefix}-m: 0;
+
+			&-sub {
+				#{$varPrefix}-m: 0;
+				#{$varPrefix}-gap: 5px;
+				#{$varPrefix}-fnt-sz: 13px;
+				#{$varPrefix}-fnt-w: 400;
+				#{$varPrefix}-ln-h: normal;
+
+				#{$appPrefix} {
+					&-txt {
+						#{$varPrefix}-fnt-sz: inherit;
+						#{$varPrefix}-fnt-w: inherit;
+						#{$varPrefix}-ln-h: inherit;
+						#{$varPrefix}-cl: var(#{$varPrefix}-primary, #48b44f);
+					}
+				}
+			}
+		}
+
+		&--desc {
+			#{$varPrefix}-m: 25px 0 0 0;
+		}
+
+		&--pattern-grid {
+			#{$varPrefix}-m: 40px 0 0 0;
+
+			&-ttl {
+				#{$varPrefix}-m: 25px 0 0 0;
+			}
+		}
+
+		&--purchase {
+			#{$appPrefix} {
+				&-btn {
+					#{$varPrefix}-txt-al: center;
+					text-align: var(#{$varPrefix}-txt-al);
+				}
+			}
+		}
+
+		&--sidebar {
+			#{$varPrefix}-m: 25px 0 0 0;
+
+			@include respond-above(sm) {
+				#{$varPrefix}-m: 0;
+			}
+
+			#{$appPrefix} {
+				&-txt-h6 {
+					#{$varPrefix}-m: 0;
+				}
+			}
+		}
+	}
+}
+
+/* Testing css */
+.patterns-store-patterns-container {
+	#{$varPrefix}-pos: relative;
+	position: var(#{$varPrefix}-pos);
+}

@@ -1,0 +1,59 @@
+{
+	"name": "patterns-store",
+	"version": "1.0.0",
+	"description": "Creates a store to manage and sell block patterns and pattern kits.",
+	"author": "codersantosh",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"build:admin": "wp-scripts build src/admin.js --output-path=build/admin",
+		"build:public": "wp-scripts build src/public.js --webpack-copy-php --output-path=build/public",
+		"build:editor": "wp-scripts build src/editor.js --webpack-copy-php --output-path=build/editor",
+		"build:blocks": "wp-scripts build --experimental-modules --webpack-src-dir=src/blocks --webpack-copy-php --output-path=build/blocks",
+		"build": "npm-run-all build:admin build:public build:editor build:blocks",
+		"start:admin": "wp-scripts start src/admin.js --webpack-src-dir=src/admin --output-path=build/admin",
+		"start:public": "wp-scripts start src/public.js --webpack-src-dir=src/admin --webpack-copy-php --output-path=build/public",
+		"start:editor": "wp-scripts start src/editor.js --webpack-src-dir=src/admin --webpack-copy-php --output-path=build/editor",
+		"start:blocks": "wp-scripts start --experimental-modules --webpack-src-dir=src/blocks --webpack-copy-php --output-path=build/blocks",
+		"start": "npm-run-all --parallel start:admin start:public start:editor start:blocks",
+		"copy": "node .bin/copy.js",
+		"replace": "node .bin/replace-texts.js",
+		"makejsstring": "node .bin/make-string.js",
+		"makepot": "wp i18n make-pot . languages/patterns-store.pot --skip-js --exclude=src,vendor,node_modules --merge=languages/js.pot",
+		"deploy": "npm-run-all build replace makepot copy",
+		"packages-update": "wp-scripts packages-update",
+		"postpackages-update": "npm run build"
+	},
+	"dependencies": {
+		"@wordpress/a11y": "^3.57.0",
+		"@wordpress/api-fetch": "^6.54.0",
+		"@wordpress/components": "^27.5.0",
+		"@wordpress/compose": "^6.34.0",
+		"@wordpress/core-data": "^6.34.0",
+		"@wordpress/data": "^9.27.0",
+		"@wordpress/edit-post": "^7.34.0",
+		"@wordpress/editor": "^13.34.0",
+		"@wordpress/element": "^5.34.0",
+		"@wordpress/hooks": "^3.57.0",
+		"@wordpress/i18n": "^4.57.0",
+		"@wordpress/interactivity": "^5.6.0",
+		"@wordpress/notices": "^4.25.0",
+		"@wordpress/plugins": "^6.25.0",
+		"atrc": "^1.0.28",
+		"react": "^18.2.0",
+		"react-icons": "^5.0.1",
+		"react-router-dom": "^6.3.0",
+		"react-use-gesture": "^9.1.3",
+		"replace-in-file": "^7.1.0",
+		"use-deep-compare-effect": "^1.8.1"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^27.8.0",
+		"autoprefixer": "^10.4.16",
+		"ncp": "^2.0.0",
+		"npm-run-all": "^4.1.5"
+	},
+	"browserslist": [
+		"last 3 versions",
+		"> 1%"
+	]
+}

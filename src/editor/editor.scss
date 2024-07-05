@@ -1,0 +1,136 @@
+@import '../scss/prefix-vars';
+@import '../scss/_mixins';
+
+@import '../../node_modules/atrc/build/index.css';
+@import '../../node_modules/atrc/build/wp-admin.css';
+
+#{$prjPrefix} {
+    &-edit-pnl {
+        #{$appPrefix} {
+            &-txt-p {
+                #{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+                #{$varPrefix}-fnt-sz: 13px;
+            }
+
+            &-wrp-lib {
+                .components-base-control__label {
+                    #{$varPrefix}-fnt-wt: 400;
+                    #{$varPrefix}-fnt-sz: 12px;
+                }
+            }
+        }
+    }
+
+    &-notice {
+        --at-pos: relative;
+    }
+
+    &-theme-json-modal {
+        .components-modal__header {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 32px;
+        }
+
+        &-sidebar {
+            #{$varPrefix}-bdr-w: 0 1px 0 0;
+            #{$varPrefix}-bdr-sty: solid;
+            #{$varPrefix}-bdr-cl: #ddd;
+            #{$varPrefix}-h: 78vh;
+            #{$varPrefix}-p: 20px 0 0 0;
+
+            #{$appPrefix} {
+                &-svg {
+                    #{$varPrefix}-h: 16px;
+                }
+            }
+        }
+
+        #{$prjPrefix} {
+            &-file {
+                &-type-info {
+                    #{$varPrefix}-m: 0 0 20px 0;
+                }
+
+                &-structure {
+                    #{$varPrefix}-m: 0 0 20px 0;
+                }
+
+                &-uploader {
+                    #{$varPrefix}-m: 40px 0;
+                    #{$varPrefix}-bdr-w: 2px;
+                    #{$varPrefix}-bdr-sty: dashed;
+                    #{$varPrefix}-bdr-cl: #d3d9de;
+                    #{$varPrefix}-p: 100px;
+                    #{$varPrefix}-pos: relative;
+                }
+
+                &-upload {
+                    &-size {
+                        #{$varPrefix}-fnt-sz: 13px !important;
+                        #{$varPrefix}-m: 5px 0;
+                        #{$varPrefix}-cl: #9da29f !important;
+                    }
+
+                    &-info {
+                        #{$appPrefix} {
+                            &-txt {
+                                &-p {
+                                    #{$varPrefix}-fnt-sz: 14px;
+                                    #{$varPrefix}-cl: var(--wp--preset--color--accent, #9da29f);
+                                }
+                            }
+
+                            &-btn {
+                                #{$varPrefix}-p: p;
+                                #{$varPrefix}-cl: var(--wp--preset--color--primary, #48b44f);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .components-button {
+            &.is-primary {
+                background: var(--wp--preset--color--primary, #48b44f);
+
+                &:hover {
+                    background: var(--wp--preset--color--primary-hover, #3ea245);
+                }
+            }
+        }
+
+        #{$appPrefix} {
+            &-txt {
+                &-p {
+                    #{$varPrefix}-fnt-sz: 16px;
+                    #{$varPrefix}-cl: var(--wp--preset--color--base, #2e312f);
+                }
+
+                &-span {
+                    #{$varPrefix}-fnt-sz: 15px;
+                    #{$varPrefix}-cl: var(--wp--preset--color--base, #2e312f);
+
+                    #{$prjPrefix} {
+                        &-allowed-types {
+                            #{$varPrefix}-cl: var(--wp--preset--color--primary, #48b44f);
+                            #{$varPrefix}-fnt-wt: bold;
+                            #{$varPrefix}-fnt-sz: 13px;
+                        }
+                    }
+                }
+            }
+
+            &-notice {
+                #{$varPrefix}-m: 40px 0;
+
+                #{$appPrefix} {
+                    &-txt-p {
+                        #{$varPrefix}-m: 0;
+                        #{$varPrefix}-fnt-sz: 13px;
+                    }
+                }
+            }
+        }
+    }
+}

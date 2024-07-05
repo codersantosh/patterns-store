@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "patterns-store/query-total",
+	"title": "Query Total",
+	"icon": "chart-area",
+	"category": "layout",
+	"description": "Display the total items found in the current query.",
+	"textdomain": "patterns-store",
+	"supports": {
+		"align": true,
+		"color": {
+			"text": true,
+			"background": true,
+			"link": false
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"usesContext": ["queryId", "query"],
+	"editorScript": "file:./index.js"
+}

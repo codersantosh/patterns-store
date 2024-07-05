@@ -1,0 +1,8 @@
+.sass-cache
+node_modules/
+node_modules.zip
+build/
+deploy/
+assets/blocks
+/vendor/
+git-source

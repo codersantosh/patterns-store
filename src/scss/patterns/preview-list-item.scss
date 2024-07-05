@@ -1,0 +1,194 @@
+#{$prjPrefix} {
+	&-card {
+		#{$varPrefix}-p: 15px;
+		#{$varPrefix}-bdr-w: 1px;
+		#{$varPrefix}-bdr-sty: solid;
+		#{$varPrefix}-bdr-cl: var(--wp--preset--color--quinary, #d3d9de);
+		#{$varPrefix}-bg-cl: #fff;
+		#{$varPrefix}-fnt-fam: var(
+			--wp--preset--font-family--body,
+			Arial,
+			Helvetica,
+			sans-serif
+		);
+
+		#{$appPrefix} {
+			&-hr {
+				#{$varPrefix}-m: 15px 0;
+			}
+
+			&-li {
+				&-has-icon {
+					#{$varPrefix}-gap: 0 5px;
+
+					#{$appPrefix} {
+						&-svg {
+							#{$varPrefix}-cl: var(--wp--preset--color--primary, #48b44f);
+							#{$varPrefix}-w: 18px;
+							#{$varPrefix}-h: 18px;
+						}
+					}
+				}
+			}
+		}
+	}
+	&-auth {
+		&-avatar {
+			#{$varPrefix}-gap: 10px;
+			#{$varPrefix}-fnt-sz: 12px;
+		}
+	}
+
+	&-ls {
+		&-itm {
+			&-ttl {
+				#{$varPrefix}-m: 0;
+				#{$varPrefix}-fnt-sz: 16px;
+				#{$varPrefix}-fnt-wt: 600;
+				#{$varPrefix}-ln-h: 1;
+
+				&-lnk {
+					#{$varPrefix}-fnt-sz: 14px;
+					#{$varPrefix}-cl: var(--wp--preset--color--base, #2e312f);
+				}
+
+				&-sub {
+					#{$varPrefix}-gap: 5px;
+					#{$varPrefix}-fnt-sz: 13px;
+					#{$varPrefix}-fnt-w: 400;
+					#{$varPrefix}-ln-h: normal;
+					#{$varPrefix}-m: 5px 0 0 0;
+
+					#{$appPrefix} {
+						&-txt {
+							#{$varPrefix}-fnt-sz: inherit;
+							#{$varPrefix}-fnt-w: inherit;
+							#{$varPrefix}-ln-h: inherit;
+							#{$varPrefix}-cl: var(#{$varPrefix}-primary, #48b44f);
+						}
+					}
+				}
+			}
+
+			&-pricing {
+				#{$varPrefix}-fnt-sz: 14px;
+				#{$varPrefix}-fnt-w: 600;
+				#{$varPrefix}-ln-h: normal;
+				#{$varPrefix}-cl: var(--wp--preset--color--base, #2e312f);
+			}
+
+			&-actions {
+				#{$varPrefix}-pos: absolute;
+				#{$varPrefix}-z-idx: 2;
+				#{$varPrefix}-t: 15px;
+				#{$varPrefix}-r: 15px;
+				#{$varPrefix}-l: initial;
+				#{$varPrefix}-opa: 0;
+				#{$varPrefix}-tf: translateX(10px);
+				#{$varPrefix}-trs: all 0.5s ease;
+				#{$varPrefix}-vis: hidden;
+
+				#{$appPrefix} {
+					&-btn {
+						#{$varPrefix}-bdr-w: initial;
+						#{$varPrefix}-bdr-sty: initial;
+						#{$varPrefix}-bdr-cl: initial;
+						#{$varPrefix}-p: 6px 12px;
+						#{$varPrefix}-fnt-sz: 14px;
+						#{$varPrefix}-ln-h: normal;
+
+						#{$varPrefix}-bg-cl: var(--wp--preset--color--primary, #48b44f);
+						#{$varPrefix}-cl: var(--wp--preset--color--white, #fff);
+					}
+				}
+			}
+
+			&-preview {
+				#{$varPrefix}-pos: relative;
+				#{$varPrefix}-z-idx: 1;
+				#{$varPrefix}-t: initial;
+
+				&:hover {
+					#{$prjPrefix} {
+						&-ls {
+							&-itm {
+								&-actions {
+									#{$varPrefix}-opa: 1;
+									#{$varPrefix}-vis: visible;
+									#{$varPrefix}-tf: translateX(0);
+								}
+							}
+						}
+					}
+				}
+			}
+
+			#{$prjPrefix} {
+				&-auth {
+					&-avatar {
+						&-img {
+							#{$varPrefix}-w: 30px;
+							#{$varPrefix}-h: 30px;
+							#{$varPrefix}-bdr-rad: 100px;
+						}
+					}
+				}
+			}
+
+			#{$appPrefix} {
+				&-btn {
+					#{$varPrefix}-fnt-sz: 13px;
+					#{$varPrefix}-p: 6px 12px;
+					font-family: var(#{$varPrefix}-fnt-fam);
+
+					@include respond-between(md, lg) {
+						#{$varPrefix}-p: 6px;
+						#{$varPrefix}-fnt-sz: 12px;
+					}
+
+					@include respond-between(sm, md) {
+						#{$varPrefix}-p: 6px;
+						#{$varPrefix}-fnt-sz: 11px;
+					}
+				}
+
+				&-cont {
+					#{$varPrefix}-p: 15px;
+				}
+			}
+		}
+	}
+
+	&-preview {
+		&__modal {
+			&--cont {
+				&-ls {
+					#{$varPrefix}-gap: 15px;
+					&-itm {
+						#{$varPrefix}-opa: 0.5;
+						#{$varPrefix}-trs: all 0.2s ease;
+
+						&:hover {
+							#{$varPrefix}-opa: 1;
+						}
+
+						&#{$prjPrefix} {
+							&-current-itm {
+								#{$varPrefix}-opa: 1;
+
+								#{$prjPrefix} {
+									&-ls-itm {
+										#{$varPrefix}-bdr-cl: var(
+											--wp--preset--color--primary,
+											#48b44f
+										);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

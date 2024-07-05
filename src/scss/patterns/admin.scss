@@ -1,0 +1,101 @@
+// Atomic Style Reset
+#{$appPrefix} {
+	&-row {
+		#{$varPrefix}-gap: 15px;
+
+		@include respond-above(sm) {
+			#{$varPrefix}-gap: 30px 0;
+		}
+	}
+}
+
+//Project Style
+#{$prjPrefix} {
+	&-cat {
+		#{$varPrefix}-m: 25px 0 0 0;
+	}
+
+	&-hdr {
+		&-fl {
+			#{$varPrefix}-m: 25px 0;
+
+			@include respond-above(sm) {
+				#{$varPrefix}-m: 0 0 25px 0;
+			}
+
+			#{$appPrefix} {
+				&-wrp-lib {
+					.components-base-control__field {
+						#{$varPrefix}-m: 0;
+						margin: var(#{$varPrefix}-m) !important;
+					}
+				}
+
+				&-search {
+					.components-input-control__input {
+						#{$varPrefix}-h: 34px;
+						#{$varPrefix}-min-h: 34px;
+						height: var(#{$varPrefix}-h) !important;
+						min-height: var(#{$varPrefix}-min-h) !important;
+					}
+				}
+			}
+		}
+	}
+	//Infor Modal Styles
+	&-info-modal {
+		#{$appPrefix} {
+			&-txt {
+				#{$varPrefix}-cl: var(#{$varPrefix}-body-color);
+				&-h6 {
+					#{$varPrefix}-cl: var(#{$varPrefix}-base-color);
+					#{$varPrefix}-m: 15px 0;
+				}
+			}
+			&-li {
+				#{$varPrefix}-m: 0;
+			}
+			&-ls {
+				#{$varPrefix}-ls-typ: number;
+				#{$varPrefix}-gap: 20px;
+				#{$appPrefix} {
+					&-txt {
+						&-h6 {
+							#{$varPrefix}-fnt-wt: 600;
+							#{$varPrefix}-fnt-sz: 14px;
+							#{$varPrefix}-m: 0;
+						}
+					}
+				}
+
+				#{$appPrefix} {
+					&-ls {
+						#{$varPrefix}-m: 10px 0 0 20px;
+						#{$varPrefix}-gap: 5px;
+						#{$varPrefix}-ls-typ: disc;
+						#{$varPrefix}-ls-pos: outside;
+					}
+				}
+			}
+		}
+		&-footer {
+			#{$varPrefix}-m: 15px 0 0 0;
+		}
+	}
+	//Preview Modal Style Reset
+	&-preview {
+		&__modal {
+			&--cont {
+				&-ls {
+					&-itm {
+						#{$prjPrefix} {
+							&-ls-itm-ttl {
+								#{$varPrefix}-fnt-sz: 14px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
