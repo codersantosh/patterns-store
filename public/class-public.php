@@ -264,7 +264,7 @@ class Patterns_Store_Public {
 		Check if $_GET['search'] is set and has a value.
 		*/
 		if ( isset( $_GET['search'] ) && $_GET['search'] ) {/* phpcs:ignore */
-			$query->set( 's', esc_attr( $_GET['search'] ) );//phpcs:ignore
+			$query->set( 's', sanitize_text_field( $_GET['search'] ) );//phpcs:ignore
 		}
 
 		/*
@@ -276,7 +276,7 @@ class Patterns_Store_Public {
 				array(
 					'taxonomy'         => patterns_store_post_type_manager()->category,
 					'field'            => 'slug',
-					'terms'            => esc_attr( $_GET['pattern-categories'] ),/* phpcs:ignore */
+					'terms'            => sanitize_text_field( $_GET['pattern-categories'] ),/* phpcs:ignore */
 					'include_children' => false,
 				),
 			);
@@ -307,7 +307,7 @@ class Patterns_Store_Public {
 		// Check if $_GET['search'] is set and has a value.
 		if ( isset( $_GET['search'] ) && $_GET['search'] ) {/* phpcs:ignore */
 			// Replace the value in the input field.
-			$block_content = preg_replace( '/<input.*?value=""/', '<input value="' . esc_attr( $_GET['search'] ) . '"', $block_content );/* phpcs:ignore */
+			$block_content = preg_replace( '/<input.*?value=""/', '<input value="' . sanitize_text_field( $_GET['search'] ) . '"', $block_content );/* phpcs:ignore */
 		}
 
 		$category_inputs = '';

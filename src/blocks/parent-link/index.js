@@ -9,11 +9,11 @@ import Save from '../pattern-copy/save';
 import metadata from './block.json';
 
 registerBlockType(metadata.name, {
-	edit: (props) => {
-		return Edit({
-			...props,
-			tagName: 'a',
-		});
-	},
-	save: Save,
+    edit: (props) => {
+        return Edit({
+            ...props,
+            tagName: 'a',
+        });
+    },
+    save: Save,
 });

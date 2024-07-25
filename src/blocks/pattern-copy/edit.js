@@ -6,34 +6,34 @@ import { AtrcWrap } from 'atrc';
 
 /*Local*/
 function Edit({ attributes, clientId, tagName = 'button' }) {
-	const blockProps = useBlockProps({
-		className: 'wp-block-buttons',
-	});
+    const blockProps = useBlockProps({
+        className: 'wp-block-buttons',
+    });
 
-	/* Inner blocks template and props */
-	const TEMPLATE = [
-		[
-			'core/button',
-			{
-				tagName: tagName,
-			},
-		],
-	];
+    /* Inner blocks template and props */
+    const TEMPLATE = [
+        [
+            'core/button',
+            {
+                tagName: tagName,
+            },
+        ],
+    ];
 
-	const innerProps = {
-		allowedBlocks: ['core/button'],
-		template: TEMPLATE,
-		templateLock: true,
-		renderAppender: false,
-	};
+    const innerProps = {
+        allowedBlocks: ['core/button'],
+        template: TEMPLATE,
+        templateLock: true,
+        renderAppender: false,
+    };
 
-	const InnerBlocksProps = useInnerBlocksProps(blockProps, innerProps);
+    const InnerBlocksProps = useInnerBlocksProps(blockProps, innerProps);
 
-	return (
-		<AtrcWrap {...blockProps}>
-			<AtrcWrap {...InnerBlocksProps} />
-		</AtrcWrap>
-	);
+    return (
+        <AtrcWrap {...blockProps}>
+            <AtrcWrap {...InnerBlocksProps} />
+        </AtrcWrap>
+    );
 }
 
 export default Edit;

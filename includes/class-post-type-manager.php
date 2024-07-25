@@ -274,6 +274,10 @@ class Patterns_Store_Post_Type_Manager {
 			/* Dont expose EDD products via api */
 			add_filter( 'edd_api_products', array( $this, 'filter_edd_api_products' ) );
 			add_filter( 'edd_api_public_query_modes', array( $this, 'filter_edd_api_products' ) );
+
+			if ( ! $this->product_data['offKits'] ) {
+				add_action( 'manage_pages_custom_column', 'edd_render_download_columns', 10, 2 );
+			}
 		}
 	}
 
@@ -354,7 +358,15 @@ class Patterns_Store_Post_Type_Manager {
 	 */
 	public function register_data() {
 		/* Post type */
-		$slug     = $this->post_type_slug ? $this->post_type_slug : 'patterns';
+		$slug     = 'default-' . $this->default_post_type;
+		$cat_slug = 'default-' . $this->default_category;
+		$tag_slug = 'default-' . $this->default_tag;
+		if ( ! $this->is_download() ) {
+			$slug     = $this->post_type_slug ? $this->post_type_slug : 'patterns';
+			$cat_slug = $this->category_slug ? $this->category_slug : 'pattern-category';
+			$tag_slug = $this->tag_slug ? $this->tag_slug : 'pattern-tag';
+		}
+
 		$off_kits = rest_sanitize_boolean( $this->product_data['offKits'] );
 
 		$patterns_labels = apply_filters(
@@ -474,8 +486,8 @@ class Patterns_Store_Post_Type_Manager {
 
 		$pattern_args = array(
 			'labels'             => $patterns_labels,
-			'public'             => true,
-			'publicly_queryable' => true,
+			'public'             => ! $this->is_download(),
+			'publicly_queryable' => ! $this->is_download(),
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
@@ -483,6 +495,7 @@ class Patterns_Store_Post_Type_Manager {
 			'rewrite'            => array( 'slug' => $slug ),
 			'hierarchical'       => ! $off_kits,
 			'show_in_rest'       => true,
+			'has_archive'        => true,
 			'rest_base'          => 'patterns-store-patterns',
 			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions' ),
 		);
@@ -544,21 +557,20 @@ class Patterns_Store_Post_Type_Manager {
 		// Apply filters to allow modification of the category labels.
 		$category_labels = apply_filters( 'patterns_store_category_labels', $this->replace_placeholders_in_labels( $category_labels ) );
 
-		$cat_slug = $this->category_slug ? $this->category_slug : 'pattern-category';
-
 		$category_args = apply_filters(
 			'patterns_store_category_args',
 			array(
-				'labels'       => $category_labels,
-				'hierarchical' => true,
-				'public'       => true,
-				'show_ui'      => true,
-				'query_var'    => 'pattern-store-categories',
-				'rewrite'      => array(
+				'labels'            => $category_labels,
+				'hierarchical'      => true,
+				'public'            => ! $this->is_download(),
+				'show_ui'           => true,
+				'show_admin_column' => true,
+				'query_var'         => 'pattern-store-categories',
+				'rewrite'           => array(
 					'slug' => $cat_slug,
 				),
-				'show_in_rest' => true,
-				'rest_base'    => 'patterns-store-categories',
+				'show_in_rest'      => true,
+				'rest_base'         => 'patterns-store-categories',
 			)
 		);
 
@@ -611,21 +623,21 @@ class Patterns_Store_Post_Type_Manager {
 		);
 		// Apply filters to allow modification of the tag labels.
 		$tag_labels = apply_filters( 'patterns_store_tag_labels', $this->replace_placeholders_in_labels( $tag_labels ) );
-		$tag_slug   = $this->tag_slug ? $this->tag_slug : 'pattern-tag';
 
 		$tag_args = apply_filters(
 			'patterns_store_tag_args',
 			array(
-				'labels'       => $tag_labels,
-				'hierarchical' => false,
-				'public'       => true,
-				'show_ui'      => true,
-				'query_var'    => 'pattern-store-tags',
-				'rewrite'      => array(
+				'labels'            => $tag_labels,
+				'hierarchical'      => false,
+				'public'            => ! $this->is_download(),
+				'show_ui'           => true,
+				'show_admin_column' => true,
+				'query_var'         => 'pattern-store-tags',
+				'rewrite'           => array(
 					'slug' => $tag_slug,
 				),
-				'show_in_rest' => true,
-				'rest_base'    => 'patterns-store-tags',
+				'show_in_rest'      => true,
+				'rest_base'         => 'patterns-store-tags',
 			)
 		);
 
@@ -696,16 +708,17 @@ class Patterns_Store_Post_Type_Manager {
 		$plugin_args = apply_filters(
 			'patterns_store_plugin_args',
 			array(
-				'labels'       => $plugin_labels,
-				'hierarchical' => false,
-				'public'       => true,
-				'show_ui'      => true,
-				'query_var'    => 'pattern-store-plugins',
-				'rewrite'      => array(
+				'labels'            => $plugin_labels,
+				'hierarchical'      => false,
+				'public'            => true,
+				'show_ui'           => true,
+				'show_admin_column' => true,
+				'query_var'         => 'pattern-store-plugins',
+				'rewrite'           => array(
 					'slug' => $plugin_slug,
 				),
-				'show_in_rest' => true,
-				'rest_base'    => 'patterns-store-plugins',
+				'show_in_rest'      => true,
+				'rest_base'         => 'patterns-store-plugins',
 			)
 		);
 

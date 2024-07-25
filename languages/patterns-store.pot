@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-05T18:08:26+00:00\n"
+"POT-Creation-Date: 2024-07-25T11:51:35+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: patterns-store\n"
@@ -96,17 +96,17 @@ msgid "in"
 msgstr ""
 
 #: includes/block-bindings/class-pattern-data.php:126
-#: includes/class-post-type-manager.php:292
+#: includes/class-post-type-manager.php:296
 msgid "Patterns"
 msgstr ""
 
 #. Translators: %1$d is the number of patterns, %2$s is the title of the post.
-#: includes/block-bindings/class-pattern-data.php:221
+#: includes/block-bindings/class-pattern-data.php:214
 msgid "%1$d patterns in %2$s"
 msgstr ""
 
 #. Translators: %1$d is the number of patterns.
-#: includes/block-bindings/class-pattern-data.php:228
+#: includes/block-bindings/class-pattern-data.php:221
 msgid "%1$d related patterns"
 msgstr ""
 
@@ -186,417 +186,417 @@ msgstr ""
 msgid "GENERATED CSS"
 msgstr ""
 
-#: includes/class-post-type-manager.php:291
+#: includes/class-post-type-manager.php:295
 msgid "Pattern"
 msgstr ""
 
-#: includes/class-post-type-manager.php:365
+#: includes/class-post-type-manager.php:377
 msgctxt "block pattern"
 msgid "Add New"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:368
+#: includes/class-post-type-manager.php:380
 msgid "Add New %s"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:373
+#: includes/class-post-type-manager.php:385
 msgid "Edit %s"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:378
+#: includes/class-post-type-manager.php:390
 msgid "New %s"
 msgstr ""
 
 #. translators: %s is the post type singular name
 #. translators: %s is the post type plural name
-#: includes/class-post-type-manager.php:383
-#: includes/class-post-type-manager.php:388
+#: includes/class-post-type-manager.php:395
+#: includes/class-post-type-manager.php:400
 msgid "View %s"
 msgstr ""
 
 #. translators: %s is the post type plural name
-#: includes/class-post-type-manager.php:393
+#: includes/class-post-type-manager.php:405
 msgid "Search %s"
 msgstr ""
 
 #. translators: %s is the post type plural name
-#: includes/class-post-type-manager.php:398
+#: includes/class-post-type-manager.php:410
 msgid "No %s found."
 msgstr ""
 
 #. translators: %s is the post type plural name
-#: includes/class-post-type-manager.php:403
+#: includes/class-post-type-manager.php:415
 msgid "No %s found in trash."
 msgstr ""
 
 #. translators: %s is the post type plural name
-#: includes/class-post-type-manager.php:408
+#: includes/class-post-type-manager.php:420
 msgid "All %s"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:413
+#: includes/class-post-type-manager.php:425
 msgid "%s Archives"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:418
+#: includes/class-post-type-manager.php:430
 msgid "%s Attributes"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:423
+#: includes/class-post-type-manager.php:435
 msgid "Insert into %s"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:428
+#: includes/class-post-type-manager.php:440
 msgid "Uploaded to this %s"
 msgstr ""
 
 #. translators: %s is the post type plural name
-#: includes/class-post-type-manager.php:433
+#: includes/class-post-type-manager.php:445
 msgid "Filter %s list"
 msgstr ""
 
 #. translators: %s is the post type plural name
-#: includes/class-post-type-manager.php:438
+#: includes/class-post-type-manager.php:450
 msgid " %s list navigation"
 msgstr ""
 
 #. translators: %s is the post type plural name
-#: includes/class-post-type-manager.php:443
+#: includes/class-post-type-manager.php:455
 msgid " %s list"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:448
+#: includes/class-post-type-manager.php:460
 msgid " %s published"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:453
+#: includes/class-post-type-manager.php:465
 msgid " %s published privately"
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:458
+#: includes/class-post-type-manager.php:470
 msgid " %s reverted to draft."
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:463
+#: includes/class-post-type-manager.php:475
 msgid " %s scheduled."
 msgstr ""
 
 #. translators: %s is the post type singular name
-#: includes/class-post-type-manager.php:468
+#: includes/class-post-type-manager.php:480
 msgid " %s updated."
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:505
+#: includes/class-post-type-manager.php:518
 msgctxt "taxonomy general name"
 msgid "%1$s Categories"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:507
+#: includes/class-post-type-manager.php:520
 msgctxt "taxonomy singular name"
 msgid "%1$s Category"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:509
+#: includes/class-post-type-manager.php:522
 msgid "Search %1$s Categories"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:511
+#: includes/class-post-type-manager.php:524
 msgid "Popular %1$s Categories"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:513
+#: includes/class-post-type-manager.php:526
 msgid "All %1$s Categories"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:515
+#: includes/class-post-type-manager.php:528
 msgid "Edit %1$s Category"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:517
+#: includes/class-post-type-manager.php:530
 msgid "View %1$s Category"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:519
+#: includes/class-post-type-manager.php:532
 msgid "Update %1$s Category"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:521
+#: includes/class-post-type-manager.php:534
 msgid "Add New %1$s Category"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:523
+#: includes/class-post-type-manager.php:536
 msgid "New %1$s Category Name"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:525
+#: includes/class-post-type-manager.php:538
 msgid "Separate %2$s categories with commas"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:527
+#: includes/class-post-type-manager.php:540
 msgid "Add or remove %2$s categories"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:529
+#: includes/class-post-type-manager.php:542
 msgid "Choose from the most used %2$s categories"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:531
+#: includes/class-post-type-manager.php:544
 msgid "No %2$s categories found."
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:533
+#: includes/class-post-type-manager.php:546
 msgid "No %2$s categories"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:535
+#: includes/class-post-type-manager.php:548
 msgid "%1$s categories list navigation"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:537
+#: includes/class-post-type-manager.php:550
 msgid "%1$s categories list"
 msgstr ""
 
 #. translators: Tab heading when selecting from the most used terms.
-#: includes/class-post-type-manager.php:539
+#: includes/class-post-type-manager.php:552
 msgctxt "categories"
 msgid "Most Used"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:541
+#: includes/class-post-type-manager.php:554
 msgid "&larr; Go to %2$s categories"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:574
+#: includes/class-post-type-manager.php:586
 msgctxt "taxonomy general name"
 msgid "%1$s Tags"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:576
+#: includes/class-post-type-manager.php:588
 msgctxt "taxonomy singular name"
 msgid "%1$s Tag"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:578
+#: includes/class-post-type-manager.php:590
 msgid "Search %1$s Tags"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:580
+#: includes/class-post-type-manager.php:592
 msgid "Popular %1$s Tags"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:582
+#: includes/class-post-type-manager.php:594
 msgid "All %1$s Tags"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:584
+#: includes/class-post-type-manager.php:596
 msgid "Edit %1$s Tag"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:586
+#: includes/class-post-type-manager.php:598
 msgid "View %1$s Tag"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:588
+#: includes/class-post-type-manager.php:600
 msgid "Update %1$s Tag"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:590
+#: includes/class-post-type-manager.php:602
 msgid "Add New %1$s Tag"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:592
+#: includes/class-post-type-manager.php:604
 msgid "New %1$s Tag Name"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:594
+#: includes/class-post-type-manager.php:606
 msgid "Separate %2$s tags with commas"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:596
+#: includes/class-post-type-manager.php:608
 msgid "Add or remove %2$s tags"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:598
+#: includes/class-post-type-manager.php:610
 msgid "Choose from the most used %2$s tags"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:600
+#: includes/class-post-type-manager.php:612
 msgid "No %2$s tags found."
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:602
+#: includes/class-post-type-manager.php:614
 msgid "No %2$s tags"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:604
+#: includes/class-post-type-manager.php:616
 msgid "%1$s tags list navigation"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:606
+#: includes/class-post-type-manager.php:618
 msgid "%1$s tags list"
 msgstr ""
 
 #. translators: Tab heading when selecting from the most used terms.
-#: includes/class-post-type-manager.php:608
+#: includes/class-post-type-manager.php:620
 msgctxt "tags"
 msgid "Most Used"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:610
+#: includes/class-post-type-manager.php:622
 msgid "&larr; Go to %2$s tags"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:653
+#: includes/class-post-type-manager.php:665
 msgctxt "taxonomy general name"
 msgid "%1$s Plugins"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:655
+#: includes/class-post-type-manager.php:667
 msgctxt "taxonomy singular name"
 msgid "%1$s Plugin"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:657
+#: includes/class-post-type-manager.php:669
 msgid "Search %1$s Plugins"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:659
+#: includes/class-post-type-manager.php:671
 msgid "Popular %1$s Plugins"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:661
+#: includes/class-post-type-manager.php:673
 msgid "All %1$s Plugins"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:663
+#: includes/class-post-type-manager.php:675
 msgid "Edit %1$s Plugin"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:665
+#: includes/class-post-type-manager.php:677
 msgid "View %1$s Plugin"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:667
+#: includes/class-post-type-manager.php:679
 msgid "Update %1$s Plugin"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:669
+#: includes/class-post-type-manager.php:681
 msgid "Add New %1$s Plugin"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:671
+#: includes/class-post-type-manager.php:683
 msgid "New %1$s Plugin Name"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:673
+#: includes/class-post-type-manager.php:685
 msgid "Separate %2$s plugins with commas"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:675
+#: includes/class-post-type-manager.php:687
 msgid "Add or remove %2$s plugins"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:677
+#: includes/class-post-type-manager.php:689
 msgid "Choose from the most used %2$s plugins"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:679
+#: includes/class-post-type-manager.php:691
 msgid "No %2$s plugins found."
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:681
+#: includes/class-post-type-manager.php:693
 msgid "No %2$s plugins"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:683
+#: includes/class-post-type-manager.php:695
 msgid "%1$s plugins list navigation"
 msgstr ""
 
 #. translators: %1$s is the post type singular name
-#: includes/class-post-type-manager.php:685
+#: includes/class-post-type-manager.php:697
 msgid "%1$s plugins list"
 msgstr ""
 
 #. translators: Tab heading when selecting from the most used terms.
-#: includes/class-post-type-manager.php:687
+#: includes/class-post-type-manager.php:699
 msgctxt "plugins"
 msgid "Most Used"
 msgstr ""
 
 #. translators: %2$s is the post type singular lowercase name
-#: includes/class-post-type-manager.php:689
+#: includes/class-post-type-manager.php:701
 msgid "&larr; Go to %2$s plugins"
 msgstr ""
 
-#: includes/class-post-type-manager.php:891
-#: includes/class-post-type-manager.php:894
+#: includes/class-post-type-manager.php:904
+#: includes/class-post-type-manager.php:907
 msgid "Error occurred on update_contains_block_types_meta: "
 msgstr ""
 
-#: includes/class-post-type-manager.php:948
+#: includes/class-post-type-manager.php:961
 msgid "Top-level parent post acts as a \"Pattern Kit\" and their children acts as \"Patterns\""
 msgstr ""
 
@@ -788,6 +788,10 @@ msgstr ""
 
 #: includes/functions.php:374
 msgid "Quick links to settings"
+msgstr ""
+
+#: includes/functions.php:378
+msgid "General settings"
 msgstr ""
 
 #: includes/functions.php:387

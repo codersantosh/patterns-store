@@ -12,8 +12,7 @@ global $post;
 $pattern_content           = patterns_store_decode_pattern_content( $post->post_content );
 $do_blocks_pattern_content = do_blocks( $pattern_content );
 
-
-global $_wp_current_template_id, $_wp_current_template_content, $wp_embed, $wp_query;
+global $wp_embed;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -36,9 +35,7 @@ global $_wp_current_template_id, $_wp_current_template_content, $wp_embed, $wp_q
 	$content = convert_smilies( $content );
 	$content = wp_filter_content_tags( $content, 'template' );
 	$content = str_replace( ']]>', ']]&gt;', $content );
-
-	echo $content;//phpcs:ignore
-	/* Wp footer */
+	echo wp_kses_post( $content );
 	wp_footer();
 	?>
 </body>

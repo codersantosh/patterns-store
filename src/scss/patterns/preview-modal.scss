@@ -27,6 +27,27 @@
 					border-color: var(#{$varPrefix}-bdr-cl);
 				}
 			}
+			&--loading {
+				#{$prjPrefix} {
+					&-preview {
+						&__modal {
+							&--main {
+								&-loading {
+									#{$varPrefix}-h: 100vh;
+									#{$appPrefix} {
+										&-spinner {
+											#{$varPrefix}-w: 30px;
+											#{$varPrefix}-h: 30px;
+											height: var(#{$varPrefix}-h) !important;
+											width: var(#{$varPrefix}-w) !important;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 
 			&--body {
 				#{$varPrefix}-h: 100vh;

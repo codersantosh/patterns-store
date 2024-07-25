@@ -89,6 +89,22 @@ abstract class ATOMIC_WP_CUSTOM_TABLE {
 	public function __construct() {}
 
 	/**
+	 * Get format specifiers or placeholders for the column.
+	 *
+	 * @param string $column id of row column.
+	 * @return  boolean|string if column not found return false, otherwise format_specifiers of the column.
+	 * @since  1.0.0
+	 */
+	private function get_column_format_specifiers( $column ) {
+		// Check if the column is in the list of valid columns.
+		$valid_columns = array_keys( $this->table_columns );
+		if ( ! in_array( $column, $valid_columns, true ) ) {
+			return false;
+		}
+		return $this->table_columns[ $column ];
+	}
+
+	/**
 	 * Sets the last_changed cache key for topics.
 	 *
 	 * @since  1.0.0
@@ -210,62 +226,7 @@ abstract class ATOMIC_WP_CUSTOM_TABLE {
 	 * @return  object row values.
 	 */
 	public function get( $row_id ) {
-		try {
-
-			$id = absint( $row_id );
-			if ( ! $id ) {
-				throw new InvalidArgumentException(
-					sprintf(
-						// Translators: %s is a placeholder for the row ID.
-						esc_html__( '$row_id must be a non-zero integer but provided "%s"', 'atomic-wp-custom-table-and-query' ),
-						$row_id
-					)
-				);
-			}
-			global $wpdb;
-
-			$sql = "SELECT * FROM {$this->table_name} WHERE {$this->primary_key} = {$id} LIMIT 1;";
-
-			$cache_key   = $this->generate_cache_key( $sql );
-			$cache_value = $this->get_cache_value( $cache_key );
-
-			if ( false === $cache_value ) {
-				$cache_value = $wpdb->get_row( $sql );//phpcs:ignore
-				$this->add_cache_value( $cache_key, $cache_value );
-			}
-
-			return $this->escaping_data( $cache_value );
-		} catch ( InvalidArgumentException $e ) {
-
-			$error_message = $this->get_error_message(
-				$e->getMessage(),
-				'get'
-			);
-
-            //phpcs:ignore
-			error_log(
-				$error_message
-			);
-
-			return new WP_Error(
-				'invalid_argument',
-				$error_message
-			);
-		} catch ( Exception $e ) {
-			$error_message = $this->get_error_message(
-				$e->getMessage(),
-				'get'
-			);
-             //phpcs:ignore
-			error_log(
-				$error_message
-			);
-
-			return new WP_Error(
-				'db_error',
-				$error_message
-			);
-		}
+		return $this->get_by( $this->primary_key, $row_id );
 	}
 
 	/**
@@ -280,42 +241,35 @@ abstract class ATOMIC_WP_CUSTOM_TABLE {
 	public function get_by( $column, $column_value ) {
 		try {
 
-			$column = esc_sql( $column );
+			$where_column = esc_sql( $column );
 			if ( ! $column || ! is_string( $column ) ) {
 				throw new InvalidArgumentException(
 					sprintf(
 						// Translators: %s is a placeholder for the row ID.
 						esc_html__( '$column must be a non-empty string but provided "%s"', 'atomic-wp-custom-table-and-query' ),
-						$column
+						$where_column
 					)
 				);
 			}
 
-			// Check if the column is in the list of valid columns.
-			$valid_columns = array_keys( $this->table_columns );
-			if ( ! in_array( $column, $valid_columns, true ) ) {
+			// get placeholder for the column.
+			$column_placeholder = $this->get_column_format_specifiers( $where_column );
+			if ( ! $column_placeholder ) {
 				throw new InvalidArgumentException(
 					sprintf(
 						// Translators: %s is a placeholder for the row ID.
 						esc_html__( '"%s" must be a valid column', 'atomic-wp-custom-table-and-query' ),
-						$column
+						$where_column
 					)
 				);
 			}
 
-			$column_value = esc_sql( $column_value );
-			if ( ! $column_value ) {
-				throw new InvalidArgumentException(
-					sprintf(
-						// Translators: %s is a placeholder for the row ID.
-						esc_html__( '$column_value must be a non-empty value but provided "%s"', 'atomic-wp-custom-table-and-query' ),
-						$column_value
-					)
-				);
-			}
 			global $wpdb;
 
-			$sql = "SELECT * FROM {$this->table_name} WHERE {$column} = {$column_value} LIMIT 1;";
+			$sql = $wpdb->prepare(
+				"SELECT * FROM {$this->table_name} WHERE {$where_column} = {$column_placeholder} LIMIT 1;",
+				$column_value
+			);
 
 			$cache_key   = $this->generate_cache_key( $sql );
 			$cache_value = $this->get_cache_value( $cache_key );
@@ -362,59 +316,7 @@ abstract class ATOMIC_WP_CUSTOM_TABLE {
 	 * @return  string|object|null
 	 */
 	public function get_column( $column, $row_id ) {
-		try {
-
-			$column = esc_sql( $column );
-			if ( ! $column || ! is_string( $column ) ) {
-				throw new InvalidArgumentException( esc_html__( '$column must be a non-empty string', 'atomic-wp-custom-table-and-query' ) );
-			}
-
-			// Check if the column is in the list of valid columns.
-			$valid_columns = array_keys( $this->table_columns );
-			if ( ! in_array( $column, $valid_columns, true ) ) {
-				throw new InvalidArgumentException(
-					sprintf(
-						// Translators: %s is a placeholder for the row ID.
-						esc_html__( '"%s" must be a valid column', 'atomic-wp-custom-table-and-query' ),
-						$column
-					)
-				);
-			}
-
-			$row_id = absint( $row_id );
-			if ( ! $row_id ) {
-				throw new InvalidArgumentException( esc_html__( '$row_id must be a non-zero integer', 'atomic-wp-custom-table-and-query' ) );
-			}
-			global $wpdb;
-			$sql = "SELECT {$column} FROM {$this->table_name} WHERE {$this->primary_key} = {$row_id} LIMIT 1;";
-
-			$cache_key   = $this->generate_cache_key( $sql );
-			$cache_value = $this->get_cache_value( $cache_key );
-
-			if ( false === $cache_value ) {
-				$cache_value = $wpdb->get_var( $sql );//phpcs:ignore
-				$this->add_cache_value( $cache_key, $cache_value );
-			}
-
-			return $this->escaping_column( $cache_value, $column );
-
-		} catch ( InvalidArgumentException $e ) {
-			$error_message = $this->get_error_message(
-				$e->getMessage(),
-				'get_column'
-			);
-			error_log( $error_message );//phpcs:ignore
-			return new WP_Error( 'invalid_argument', $error_message );
-
-		} catch ( Exception $e ) {
-			$error_message = $this->get_error_message(
-				$e->getMessage(),
-				'get_column'
-			);
-			error_log( $error_message );//phpcs:ignore
-			return new WP_Error( 'db_error', $error_message );
-
-		}
+		return $this->get_column_by( $column, $this->primary_key, $row_id );
 	}
 
 	/**
@@ -422,9 +324,9 @@ abstract class ATOMIC_WP_CUSTOM_TABLE {
 	 *
 	 * @since   1.0.0
 	 * @throws WP_Error||InvalidArgumentException If the function encounters a specific condition.
-	 * @param string $column id of row column.
-	 * @param string $column_where where sql.
-	 * @param any    $column_value id of table row.
+	 * @param string $column id of row.
+	 * @param string $column_where where column.
+	 * @param any    $column_value value of column.
 	 * @return  integer|object|null
 	 */
 	public function get_column_by( $column, $column_where, $column_value ) {
@@ -435,36 +337,26 @@ abstract class ATOMIC_WP_CUSTOM_TABLE {
 				throw new InvalidArgumentException( esc_html__( '$column must be a non-empty string', 'atomic-wp-custom-table-and-query' ) );
 			}
 
-			$valid_columns = array_keys( $this->table_columns );
-			if ( ! in_array( $column, $valid_columns ) ) {
+			$where_column = esc_sql( $column_where );
+
+			// get placeholder for the column.
+			$column_placeholder = $this->get_column_format_specifiers( $where_column );
+			if ( ! $column_placeholder ) {
 				throw new InvalidArgumentException(
 					sprintf(
 						// Translators: %s is a placeholder for the row ID.
 						esc_html__( '"%s" must be a valid column', 'atomic-wp-custom-table-and-query' ),
-						$column
+						$where_column
 					)
 				);
 			}
-
-			$column_where = esc_sql( $column_where );
-			if ( ! $column_where || ! is_string( $column_where ) ) {
-				throw new InvalidArgumentException( esc_html__( '$row_id must be a non-zero integer', 'atomic-wp-custom-table-and-query' ) );
-			}
-
-			if ( ! in_array( $column_where, $valid_columns ) ) {
-				throw new InvalidArgumentException(
-					sprintf(
-						// Translators: %s is a placeholder for the row ID.
-						esc_html__( '"%s" must be a valid column', 'atomic-wp-custom-table-and-query' ),
-						$column_where
-					)
-				);
-			}
-
-			$column_value = esc_sql( $column_value );
 
 			global $wpdb;
-			$sql = "SELECT {$column} FROM {$this->table_name} WHERE {$column_where} = {$column_value} LIMIT 1;";
+
+			$sql = $wpdb->prepare(
+				"SELECT {$column} FROM {$this->table_name} WHERE {$where_column} = {$column_placeholder} LIMIT 1;",
+				$column_value
+			);
 
 			$cache_key   = $this->generate_cache_key( $sql );
 			$cache_value = $this->get_cache_value( $cache_key );

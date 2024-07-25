@@ -515,7 +515,8 @@ abstract class ATOMIC_WP_CUSTOM_QUERY {
 
 			global $wpdb;
 			// phpcs:ignore
-			$this->found_items = (int) $wpdb->get_var( $found_items_query );
+            $this->found_items = (int) $wpdb->get_var( $found_items_query );
+
 		}
 	}
 

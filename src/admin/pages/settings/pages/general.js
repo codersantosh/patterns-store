@@ -50,7 +50,6 @@ const ModalPostTypeChange = ({ onChange, value }) => {
 				'Important information about changing Post Type',
 				'patterns-store'
 			)}>
-
 			<AtrcList
 				type='ol'
 				className={classNames('at-flx', 'at-flx-col', 'at-gap')}>
@@ -176,11 +175,13 @@ const MainContent = () => {
 			value: '',
 			label: __('Default', 'patterns-store'),
 		},
-		{
+	];
+	if (PatternsStoreLocalize.is_edd_active) {
+		postTypeOptions.push({
 			value: 'download',
 			label: __('Easy Digital Downloads(EDD)', 'patterns-store'),
-		},
-	];
+		});
+	}
 
 	return (
 		<>
@@ -198,7 +199,7 @@ const MainContent = () => {
 								{__('Easy Digital Downloads (EDD)', 'patterns-store')}
 							</a>
 							{__(
-								' if you have plan to sell Patterns, or choose Default for distributing Free patterns.',
+								' if you have plan to sell Patterns, or choose Default for distributing Free patterns. After activating EDD, you can select Easy Digital Downloads (EDD) in the options.',
 								'patterns-store'
 							)}
 						</>
@@ -214,7 +215,6 @@ const MainContent = () => {
 							to: newVal,
 						});
 					}}
-					postType={PatternsStoreLocalize.postType}
 				/>
 				<ModalPostTypeChange
 					onChange={(newVal) => {
@@ -224,6 +224,33 @@ const MainContent = () => {
 						});
 					}}
 					value={postTypeChangeNotice}
+				/>
+			</AtrcPanelRow>
+			<AtrcPanelRow className={classNames('at-m')}>
+				<AtrcControlToggle
+					label={__('Disable Pattern Kits', 'patterns-store')}
+					help={__(
+						'Disabling this option will break the Parent-Child Relationship between Pattern Kits and Patterns. In this mode, every post will be considered as an individual Pattern, and Pattern Kits will not be available.',
+						'patterns-store'
+					)}
+					checked={offKits}
+					onChange={() => updateSettingKey('offKits', !offKits)}
+				/>
+			</AtrcPanelRow>
+			<AtrcPanelRow className={classNames('at-m')}>
+				<AtrcControlSelectPost
+					label={__(
+						'Exclude items from patterns and patters kits',
+						'patterns-store'
+					)}
+					wrapProps={{
+						className: 'at-flx-grw-1',
+					}}
+					value={excluded}
+					onChange={(newVal) => updateSettingKey('excluded', newVal)}
+					postType={postType || PatternsStoreLocalize.postType}
+					isMulti={true}
+					multiValType='array'
 				/>
 			</AtrcPanelRow>
 			<AtrcPanelRow className={classNames('at-m')}>
@@ -268,34 +295,6 @@ const MainContent = () => {
 					)}
 					value={pluginSlug}
 					onChange={(newVal) => updateSettingKey('pluginSlug', newVal)}
-				/>
-			</AtrcPanelRow>
-			<AtrcPanelRow className={classNames('at-m')}>
-				<AtrcControlToggle
-					label={__('Disable Pattern Kits', 'patterns-store')}
-					help={__(
-						'Disabling this option will break the Parent-Child Relationship between Pattern Kits and Patterns. In this mode, every post will be considered as an individual Pattern, and Pattern Kits will not be available.',
-						'patterns-store'
-					)}
-					checked={offKits}
-					onChange={() => updateSettingKey('offKits', !offKits)}
-				/>
-			</AtrcPanelRow>
-
-			<AtrcPanelRow className={classNames('at-m')}>
-				<AtrcControlSelectPost
-					label={__(
-						'Exclude items from patterns and patters kits',
-						'patterns-store'
-					)}
-					wrapProps={{
-						className: 'at-flx-grw-1',
-					}}
-					value={excluded}
-					onChange={(newVal) => updateSettingKey('excluded', newVal)}
-					postType={PatternsStoreLocalize.postType}
-					isMulti={true}
-					multiValType='array'
 				/>
 			</AtrcPanelRow>
 		</>

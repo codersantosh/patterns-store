@@ -64,6 +64,21 @@ class Patterns_Store_Admin {
 		$white_label     = patterns_store_include()->get_white_label();
 		$this->menu_info = $white_label['admin_menu_page'];
 
+		/* Menu position */
+		$post_type_menu_slug = 'edit.php?post_type=' . patterns_store_post_type_manager()->post_type;
+
+		$menu_position = $this->menu_info['position'];
+
+		if ( ! $menu_position ) {
+			global $menu;
+			foreach ( $menu as $index => $item ) {
+				if ( $item[2] === $post_type_menu_slug ) {
+					$menu_position = $index + 0.0001;
+					break;
+				}
+			}
+		}
+
 		add_menu_page(
 			$this->menu_info['page_title'],
 			$this->menu_info['menu_title'],
@@ -71,7 +86,7 @@ class Patterns_Store_Admin {
 			$this->menu_info['menu_slug'],
 			array( $this, 'add_setting_root_div' ),
 			$this->menu_info['icon_url'],
-			$this->menu_info['position'],
+			$menu_position,
 		);
 	}
 
@@ -136,6 +151,7 @@ class Patterns_Store_Admin {
 				'postType'           => patterns_store_post_type_manager()->post_type,
 				'white_label'        => patterns_store_include()->get_white_label(),
 				'wp_block_link'      => admin_url( 'edit.php?post_type=wp_block' ),
+				'is_edd_active'      => class_exists( 'EDD_Download' ),
 			)
 		);
 

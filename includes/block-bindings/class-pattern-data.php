@@ -131,7 +131,7 @@ if ( ! class_exists( 'Patterns_Store_Bb_Pattern_Data' ) ) {
 
 
 		/**
-		 * Gets value of pattern data.
+		 * Return URL with added or removed product-type query param.
 		 *
 		 * @since 1.0.0
 		 *
@@ -148,29 +148,22 @@ if ( ! class_exists( 'Patterns_Store_Bb_Pattern_Data' ) ) {
 				return null;
 			}
 
-			if ( ! ( isset( $_SERVER['REQUEST_URI'] ) && ! empty( $_SERVER['REQUEST_URI'] ) ) ) {
-				return null;
-			}
-
-			$request_uri = sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
-			$current_url = strtok( $request_uri, '?' );
+			/* https://wordpress.stackexchange.com/questions/83999/get-the-current-page-url-including-pagination */
+			$parts       = wp_parse_url( home_url() );
+			$current_url = "{$parts['scheme']}://{$parts['host']}" . add_query_arg( null, null );
 
 			if ( 'all' === $source_args['key'] ) {
-				return esc_url( $current_url );
+				return esc_url( remove_query_arg( 'product-type', $current_url ) );
 			}
 
-			$query_args = array();
-            if ( isset( $_GET ) && ! empty( $_GET ) ) {//phpcs:ignore
-                foreach ( $_GET as $key => $value ) {//phpcs:ignore
-					$sanitized_key                = sanitize_text_field( $key );
-					$sanitized_value              = sanitize_text_field( $value );
-					$query_args[ $sanitized_key ] = $sanitized_value;
-				}
-			}
-
-			$query_args['product-type'] = $source_args['key'];
-
-			return esc_url( add_query_arg( $query_args, $current_url ) );
+			return esc_url(
+				add_query_arg(
+					array(
+						'product-type' => $source_args['key'],
+					),
+					$current_url
+				)
+			);
 		}
 
 

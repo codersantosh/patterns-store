@@ -45,7 +45,6 @@ function patterns_store_relation_pre_render_block( $pre_render, $parsed_block ) 
 				} else {
 					$query['post_parent'] = $post_id;
 				}
-
 				return $query;
 			}
 		);
