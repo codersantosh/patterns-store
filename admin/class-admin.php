@@ -267,6 +267,9 @@ class Patterns_Store_Admin {
 		wp_enqueue_style( 'wp-codemirror' );
 
 		if ( get_post_type() === patterns_store_post_type_manager()->post_type ) {
+			/* Atomic CSS */
+			wp_enqueue_style( 'atomic' );
+
 			/*Scripts dependency files*/
 			$deps_file = PATTERNS_STORE_PATH . 'build/editor/editor.asset.php';
 

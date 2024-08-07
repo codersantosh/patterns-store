@@ -32,7 +32,7 @@ async function PatternsStoreGetCurrentPageItems({ currentPattern, postIds }) {
             urlObject.searchParams.append('orderby', 'include');
             const response = await fetch(urlObject.toString());
             if (!response.ok) {
-                throw new Error(`Error fetching posts: ${response.statusText}`);
+                throw new Error(__('Error fetching posts:', 'patterns-store') + `${response.statusText}`);
             }
             const data = await response.json();
 
@@ -41,7 +41,7 @@ async function PatternsStoreGetCurrentPageItems({ currentPattern, postIds }) {
         }
         return PatternsStoreGlobalRelatedItems[cacheKey];
     } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error(__('Error fetching posts:', 'patterns-store'), error);
     }
     return null;
 }

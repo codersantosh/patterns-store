@@ -11,4 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-require_once trailingslashit( __DIR__ ) . 'db/index.php';
+if ( ! ( class_exists( 'ATOMIC_WP_CUSTOM_QUERY' ) || class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) ) {
+	require_once trailingslashit( __DIR__ ) . 'db/index.php';
+}

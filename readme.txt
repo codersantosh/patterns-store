@@ -30,7 +30,7 @@ The purpose of patterns is to simplify the website-building process by providing
 
 == Pattern kits ==
 
-Pattern kits are collections of similar patterns bundled together. 
+Pattern kits are collections of similar patterns bundled together. Pattern kits can be considered as a single theme, where a theme's design and corresponding design patterns and theme.json are collectively added to the pattern kits.
 
 These kits act as a set of related or cohesive design patterns that users can apply to their websites collectively.
 
