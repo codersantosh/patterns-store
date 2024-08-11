@@ -1,7 +1,6 @@
 .sass-cache
 node_modules/
 node_modules.zip
-build/
 assets/blocks
 /vendor/
 git-source
