@@ -20,6 +20,8 @@ Whether you are developing custom patterns for specific niche or building a publ
 
 We hope you enjoy using Patterns Store and look forward to seeing the amazing designs you create with it. Your feedback and suggestions are always welcome as we strive to improve and expand the capabilities of this plugin.
 
+The plugin is open source and developing on [GitHub](https://github.com/codersantosh/patterns-store/)
+
 == Patterns ==
 
 WordPress patterns are reusable groups of blocks that let you quickly add pre-designed layouts to your pages and posts.
