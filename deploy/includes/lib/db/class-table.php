@@ -691,7 +691,7 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 				global $wpdb;
 
 				$result = $wpdb->delete( $this->table_name, array( $this->primary_key => $row_id ) );//phpcs:ignore
-				if ( false !== $result || $wpdb->last_error ) {
+				if ( false === $result || $wpdb->last_error ) {
 					throw new Exception( $wpdb->last_error );
 				}
 
