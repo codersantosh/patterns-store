@@ -20,7 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string Content replace by given attributes.
  */
 function patterns_store_gutenberg_blocks_query_total( $attributes, $content, $block ) {
-	$page_key    = isset( $block->context['queryId'] ) ? 'query-' . $block->context['queryId'] . '-page' : 'query-page';
+	$page_key = isset( $block->context['queryId'] ) ? 'query-' . $block->context['queryId'] . '-page' : 'query-page';
+
+	// This code reads public query arguments which are generally safe and do not require nonce verification.
+	// Nonce is not required here as we are processing mostly public query arguments from users.
+	// PHPCS ignore next line for WordPress.Security.NonceVerification.Recommended.
+    // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	$get_page    = isset( $_GET[ $page_key ] ) ? absint( $_GET[ $page_key ] ) : 1;
 	$page        = $get_page ? $get_page : 1;
 	$found_posts = 0;

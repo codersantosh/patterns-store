@@ -81,6 +81,16 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 		public string $cache_group;
 
 		/**
+		 * Note that `wp_kses_post` may not always provide the expected level of escaping.
+		 * For instance, `wp_kses_post` cannot use for escape SVG HTML.
+		 * To ensure security, the string should always be explicitly escaped if `$use_wp_kses_post` is not manually set to true by the developer on the client side.
+		 *
+		 * @since   1.0.0
+		 * @var    boolean
+		 */
+		public string $use_wp_kses_post;
+
+		/**
 		 * Get things started
 		 * placeholder only.
 		 *
@@ -234,23 +244,29 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 		 *
 		 * @since   1.0.0
 		 * @throws WP_Error||InvalidArgumentException If the function encounters a specific condition.
-		 * @param string $column id of row column.
+		 * @param string $column_where name of column.
 		 * @param mixed  $column_value column value.
+		 * @param string $select_columns *, column name or comma separated column names.
 		 * @return  object|null
 		 */
-		public function get_by( $column, $column_value ) {
+		public function get_by( $column_where, $column_value, $select_columns = '*' ) {
 			try {
 
-				$where_column = esc_sql( $column );
-				if ( ! $column || ! is_string( $column ) ) {
+				if ( ! $select_columns || ! is_string( $select_columns ) ) {
+					throw new InvalidArgumentException( esc_html__( '$select_columns must be a non-empty string', 'atomic-wp-custom-table-and-query' ) );
+				}
+				$select_columns = esc_sql( $select_columns );
+
+				if ( ! $column_where || ! is_string( $column_where ) ) {
 					throw new InvalidArgumentException(
 						sprintf(
 						// Translators: %s is a placeholder for the row ID.
-							esc_html__( '$column must be a non-empty string but provided "%s"', 'atomic-wp-custom-table-and-query' ),
+							esc_html__( '$column_where must be a non-empty string but provided "%s"', 'atomic-wp-custom-table-and-query' ),
 							$where_column
 						)
 					);
 				}
+				$where_column = esc_sql( $column_where );
 
 				// get placeholder for the column.
 				$column_placeholder = $this->get_column_format_specifiers( $where_column );
@@ -267,7 +283,15 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 				global $wpdb;
 
 				$sql = $wpdb->prepare(
-					"SELECT * FROM {$this->table_name} WHERE {$where_column} = {$column_placeholder} LIMIT 1;",
+				// The following line constructs a dynamic SQL query.
+				// - $this->table_name: The name of the table.
+				// - $select_columns: The columns to select, e.g., '*' for all columns, a single column name, or a comma-separated list of column names.
+				// - $where_column: The name of the column to query against.
+				// - $column_placeholder: The placeholder for the value (%s, %d, etc.).
+				// - $column_value: The actual value to be bound to the placeholder.
+				// PHPCS ignore next line for WordPress.DB.PreparedSQL.InterpolatedNotPrepared and WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare.
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+					"SELECT {$select_columns} FROM $this->table_name WHERE {$where_column} = {$column_placeholder} LIMIT 1;",
 					$column_value
 				);
 
@@ -306,86 +330,32 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 			}
 		}
 
-		/**
-		 * Retrieve a specific column's value by the primary key
-		 *
-		 * @since   1.0.0
-		 * @throws WP_Error||InvalidArgumentException If the function encounters a specific condition.
-		 * @param string $column id of row column.
-		 * @param int    $row_id id of table row.
-		 * @return  string|object|null
-		 */
-		public function get_column( $column, $row_id ) {
-			return $this->get_column_by( $column, $this->primary_key, $row_id );
-		}
 
 		/**
 		 * Retrieve a specific column's value by a specific column / value
 		 *
 		 * @since   1.0.0
 		 * @throws WP_Error||InvalidArgumentException If the function encounters a specific condition.
-		 * @param string $column id of row.
+		 * @param string $select_columns *, column name or comma separated column names.
 		 * @param string $column_where where column.
 		 * @param any    $column_value value of column.
 		 * @return  integer|object|null
 		 */
-		public function get_column_by( $column, $column_where, $column_value ) {
-			try {
+		public function get_column_by( $select_columns = '*', $column_where, $column_value ) {
+			return $this->get_by( $column_where, $column_value, $select_columns );
+		}
 
-				$column = esc_sql( $column );
-				if ( ! $column || ! is_string( $column ) ) {
-					throw new InvalidArgumentException( esc_html__( '$column must be a non-empty string', 'atomic-wp-custom-table-and-query' ) );
-				}
-
-				$where_column = esc_sql( $column_where );
-
-				// get placeholder for the column.
-				$column_placeholder = $this->get_column_format_specifiers( $where_column );
-				if ( ! $column_placeholder ) {
-					throw new InvalidArgumentException(
-						sprintf(
-						// Translators: %s is a placeholder for the row ID.
-							esc_html__( '"%s" must be a valid column', 'atomic-wp-custom-table-and-query' ),
-							$where_column
-						)
-					);
-				}
-
-				global $wpdb;
-
-				$sql = $wpdb->prepare(
-					"SELECT {$column} FROM {$this->table_name} WHERE {$where_column} = {$column_placeholder} LIMIT 1;",
-					$column_value
-				);
-
-				$cache_key   = $this->generate_cache_key( $sql );
-				$cache_value = $this->get_cache_value( $cache_key );
-
-				if ( false === $cache_value ) {
-					$cache_value = $wpdb->get_var( $sql );//phpcs:ignore
-					$this->add_cache_value( $cache_key, $cache_value );
-				}
-
-				return $this->escaping_column( $cache_value, $column );
-
-			} catch ( InvalidArgumentException $e ) {
-				$error_message = $this->get_error_message(
-					$e->getMessage(),
-					'get_column_by'
-				);
-
-				error_log( $error_message);//phpcs:ignore
-				return new WP_Error( 'invalid_argument', $error_message );
-
-			} catch ( Exception $e ) {
-				$error_message = $this->get_error_message(
-					$e->getMessage(),
-					'get_column_by'
-				);
-
-				error_log( $error_message );//phpcs:ignore
-				return new WP_Error( 'db_error', $error_message );
-			}
+		/**
+		 * Retrieve a specific column's value by the primary key
+		 *
+		 * @since   1.0.0
+		 * @throws WP_Error||InvalidArgumentException If the function encounters a specific condition.
+		 * @param string $select_columns id of row column.
+		 * @param int    $row_id id of table row.
+		 * @return  string|object|null
+		 */
+		public function get_column( $select_columns, $row_id ) {
+			return $this->get_column_by( $select_columns, $this->primary_key, $row_id );
 		}
 
 		/**
@@ -412,7 +382,7 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 								$escaped_data->$column = floatval( $data->$column );
 								break;
 							case '%s':
-								$escaped_data->$column = wp_kses_post( $data->$column );
+								$escaped_data->$column = true === $this->use_wp_kses_post ? wp_kses_post( $data->$column ) : $data->$column;
 								break;
 							case '%b':
 							case '%n':
