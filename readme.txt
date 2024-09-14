@@ -87,9 +87,13 @@ After installation, activate the plugin through WordPress's 'Plugins' menu.
 == Screenshots ==
 
 1. Dashboard - Getting started
-2. Dashboard - Settings
-3. Dashboard - Settings - General
-4. Dashboard - Settings - Advanced
+2. Dashboard - Settings - General
+3. Dashboard - Settings - Advanced
+4. Featured Query Grid
+5. Archive Query Grid
+6. Single Pattern
+7. Single Pattern Kit
+8. Preview Patterns
 
 
 == Changelog ==
