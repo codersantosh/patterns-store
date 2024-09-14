@@ -11,6 +11,7 @@ The ATOMIC WP CUSTOM TABLE AND QUERY project provides two classes: ATOMIC_WP_CUS
 - [ATOMIC WP CUSTOM TABLE AND QUERY](#atomic-wp-custom-table-and-query)
   - [Description](#description)
   - [Table of contents](#table-of-contents)
+  - [Projects using ATOMIC WP CUSTOM TABLE AND QUERY](#projects-using-atomic-wp-custom-table-and-query)
   - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -19,6 +20,19 @@ The ATOMIC WP CUSTOM TABLE AND QUERY project provides two classes: ATOMIC_WP_CUS
   - [Authors](#authors)
   - [Resources](#resources)
   - [License & Attribution](#license--attribution)
+
+## Projects using ATOMIC WP CUSTOM TABLE AND QUERY
+
+Here are some WordPress plugins that utilize ATOMIC WP Custom Table and Query. You can explore their codebases to understand how this functionality is implemented:
+
+- **Patterns Store – Creates a store for WordPress Patterns**
+
+  WordPress URL: [Patterns Store](https://wordpress.org/plugins/patterns-store/)
+  GitHub URL: [Patterns Store on Github](https://github.com/codersantosh/patterns-store)
+
+  This plugin creates a store for managing and displaying patterns, pattern kits, and theme JSON packages. It leverages ATOMIC WP CUSTOM TABLE AND QUERY for handling custom pattern metadata tables and performing CRUD operations via REST API. You can review its codebase to see how ATOMIC WP CUSTOM TABLE AND QUERY is applied in a real-world WordPress context.
+
+Feel free to explore these projects to gain valuable insights into using ATOMIC WP CUSTOM TABLE AND QUERY in WordPress plugin development.
 
 ## Getting Started
 
