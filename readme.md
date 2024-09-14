@@ -118,8 +118,9 @@ See also the list of [contributors](https://github.com/codersantosh/patterns-sto
 
 ## Resources
 
-- [WP React Plugin Boilerplate](https://github.com/codersantosh/wp-react-plugin-boilerplate)
+- [ATOMIC WP CUSTOM TABLE AND QUERY](https://github.com/codersantosh/atomic-wp-custom-table-and-query)
 - [Atrc (atrc) - Atomic React Components](https://www.npmjs.com/package/atrc)
+- [Atomic CSS](https://github.com/codersantosh/atomic-css)
 
 ## License & Attribution
 
