@@ -94,6 +94,9 @@ After installation, activate the plugin through WordPress's 'Plugins' menu.
 6. Single Pattern
 7. Single Pattern Kit
 8. Preview Patterns
+9. Pattern Copy
+10. Explore patterns within the Pattern Kit
+11. Pattern Copy-Paste guide
 
 
 == Changelog ==
