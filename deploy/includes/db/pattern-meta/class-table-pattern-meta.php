@@ -42,7 +42,6 @@ class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
 			'id'                   => '%d',
 			'image_sources'        => '%s',
 			'viewport_width'       => '%s',
-			'block_types'          => '%s',
 			'wp_locale'            => '%s',
 			'wp_version'           => '%s',
 			'contains_block_types' => '%s',
@@ -55,7 +54,6 @@ class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
 			'id'                   => 0,
 			'image_sources'        => '',
 			'viewport_width'       => '',
-			'block_types'          => '',
 			'wp_locale'            => '',
 			'wp_version'           => '',
 			'contains_block_types' => '',
@@ -129,7 +127,6 @@ class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
 
 					case 'image_sources':
 					case 'viewport_width':
-					case 'block_types':
 					case 'wp_locale':
 					case 'wp_version':
 					case 'contains_block_types':

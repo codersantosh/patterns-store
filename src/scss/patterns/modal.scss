@@ -5,6 +5,7 @@
 	&-modal {
 		&:not(#{$prjPrefix}-guide__modal) {
 			#{$varPrefix}-w: 900px;
+			#{$varPrefix}-gap: 30px 0;
 			width: var(#{$varPrefix}-w);
 		}
 		.components-modal__header {
@@ -16,6 +17,7 @@
 	&-modal {
 		&:not(#{$prjPrefix}-guide__modal) {
 			#{$varPrefix}-w: 900px;
+			#{$varPrefix}-gap: 30px 0;
 			width: var(#{$varPrefix}-w);
 		}
 		&__open {

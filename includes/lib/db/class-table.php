@@ -88,7 +88,7 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 		 * @since   1.0.0
 		 * @var    boolean
 		 */
-		public string $use_wp_kses_post;
+		public bool $use_wp_kses_post = true;
 
 		/**
 		 * Get things started
@@ -341,7 +341,7 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 		 * @param any    $column_value value of column.
 		 * @return  integer|object|null
 		 */
-		public function get_column_by( $select_columns = '*', $column_where, $column_value ) {
+		public function get_column_by( $select_columns = '*', $column_where = '', $column_value = '' ) {
 			return $this->get_by( $column_where, $column_value, $select_columns );
 		}
 

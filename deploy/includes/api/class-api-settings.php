@@ -134,6 +134,15 @@ if ( ! class_exists( 'Patterns_Store_Api_Settings' ) ) {
 			if ( isset( $sanitized_value['products']['pluginSlug'] ) ) {
 				$sanitized_value['products']['pluginSlug'] = sanitize_key( $sanitized_value['products']['pluginSlug'] );
 			}
+			if ( isset( $sanitized_value['products']['blockTypeSlug'] ) ) {
+				$sanitized_value['products']['blockTypeSlug'] = sanitize_key( $sanitized_value['products']['blockTypeSlug'] );
+			}
+			if ( isset( $sanitized_value['products']['templateTypeSlug'] ) ) {
+				$sanitized_value['products']['templateTypeSlug'] = sanitize_key( $sanitized_value['products']['templateTypeSlug'] );
+			}
+			if ( isset( $sanitized_value['products']['postTypeTaxSlug'] ) ) {
+				$sanitized_value['products']['postTypeTaxSlug'] = sanitize_key( $sanitized_value['products']['postTypeTaxSlug'] );
+			}
 			return $sanitized_value;
 		}
 

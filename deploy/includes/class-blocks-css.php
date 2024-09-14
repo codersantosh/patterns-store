@@ -93,9 +93,9 @@ class Patterns_Store_Blocks_Custom_Css {
 	 * @access public
 	 */
 	public function add_block_attribute() {
-		$block_types = WP_Block_Type_Registry::get_instance()->get_all_registered();
+		$all_registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
 
-		foreach ( $block_types as $block ) {
+		foreach ( $all_registered_blocks as $block ) {
 			$block->attributes['patternsStoreCustomCss'] = array(
 				'type'    => 'string',
 				'default' => '',

@@ -38,7 +38,7 @@ const PatternsStoreAddPatternsMeta = ({
 }) => {
     const [metaData, setMetaData] = useState({});
     const [timeoutId, setTimeoutId] = useState(null);
-    const [notice, setNotice] = useState();
+    const [notice, setNotice] = useState({});
     const [isSaving, setIsSaving] = useState(false);
     const [isOpenThemeJson, setIsOpenThemeJson] = useState(false);
 
@@ -80,7 +80,8 @@ const PatternsStoreAddPatternsMeta = ({
             if (response.code) {
                 setNotice({
                     status: 'error',
-                    message: __('Error saving metadata:', 'patterns-store') + response.message,
+                    message:
+                        __('Error saving metadata:', 'patterns-store') + response.message,
                 });
             } else {
                 setNotice({
@@ -136,7 +137,7 @@ const PatternsStoreAddPatternsMeta = ({
             className={classNames('ps-edit-pnl')}
             name='patterns-store-pattern-meta'
             title={__('Patterns metadata', 'patterns-store')}>
-            {isSaving || notice ? (
+            {isSaving || (notice && notice.message) ? (
                 <AtrcPanelRow
                     className={classNames(
                         'at-m',
@@ -146,11 +147,13 @@ const PatternsStoreAddPatternsMeta = ({
                         'ps-notice'
                     )}>
                     {isSaving ? <AtrcSpinner /> : null}
-                    {notice ? (
+                    {notice && notice.message ? (
                         <AtrcNotice
                             onRemove={() => setNotice('')}
-                            onAutoRemove={() => setNotice('')}>
-                            {notice}
+                            onAutoRemove={() => setNotice('')}
+                            status={notice.status}
+                        >
+                            {notice.message}
                         </AtrcNotice>
                     ) : null}
                 </AtrcPanelRow>
@@ -161,19 +164,11 @@ const PatternsStoreAddPatternsMeta = ({
                     onClick={() => {
                         setIsOpenThemeJson(true);
                     }}>
-                    {__('Set theme.json', 'patterns-store')}
+                    {__('Upload new theme.json package', 'patterns-store')}
                 </AtrcButton>
                 <AtrcReduxContextEditData.Provider value={{ ...dbProps }}>
                     <ModelThemeJson />
                 </AtrcReduxContextEditData.Provider>
-            </AtrcPanelRow>
-            <AtrcPanelRow className={classNames('at-m')}>
-                <AtrcControlTextarea
-                    allowReset={false}
-                    label={__('Block types', 'patterns-store')}
-                    value={metaData.block_types}
-                    onChange={(newVal) => handleInputChange(newVal, 'block_types')}
-                />
             </AtrcPanelRow>
 
             <AtrcPanelRow className={classNames('at-m')}>
@@ -238,7 +233,6 @@ const InitLocalStorageSettings = (props) => {
         lsUpdateSetting: updateSetting,
         lsSaveSettings: saveSettings,
     };
-
 
     return <PatternsStoreAddPatternsMeta {...dbProps} />;
 };

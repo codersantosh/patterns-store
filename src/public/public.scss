@@ -80,4 +80,14 @@
 			sans-serif
 		);
 	}
+	&-fl-btn {
+		&:hover {
+			background-color: var(--wp--preset--color--primary, #48b44f) !important;
+			color: var(--wp--preset--color--white, #fff) !important;
+		}
+	}
+	&-btn-active {
+		background-color: var(--wp--preset--color--primary, #48b44f) !important;
+		color: var(--wp--preset--color--white, #fff) !important;
+	}
 }

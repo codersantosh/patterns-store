@@ -139,7 +139,7 @@ class Patterns_Store {
 		require_once PATTERNS_STORE_PATH . 'includes/class-include.php';
 
 		/**Pattern post type manager*/
-		require_once PATTERNS_STORE_PATH . 'includes/class-post-type-manager.php';
+		require_once PATTERNS_STORE_PATH . 'includes/type-manager/index.php';
 
 		/**Pattern custom theme json manager*/
 		require_once PATTERNS_STORE_PATH . 'includes/class-custom-theme-json-manager.php';
@@ -231,6 +231,8 @@ class Patterns_Store {
 		$this->loader->add_action( 'pre_get_posts', $plugin_public, 'modify_patterns_query' );
 		$this->loader->add_filter( 'render_block_core/search', $plugin_public, 'add_additional_field_search_block' );
 		$this->loader->add_filter( 'render_block_core/query-title', $plugin_public, 'update_archive_title', 10, 3 );
+		$this->loader->add_filter( 'render_block_core/post-terms', $plugin_public, 'add_empty_text', 10, 3 );
+		$this->loader->add_filter( 'render_block_core/button', $plugin_public, 'button_variation', 10, 3 );
 	}
 
 	/**

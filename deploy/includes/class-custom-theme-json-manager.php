@@ -140,6 +140,22 @@ class Patterns_Store_Custom_Theme_Json_Manager {
 	public function run() {
 		/*Custom Rest Routes*/
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
+		add_action( 'upload_mimes', array( $this, 'add_upload_mime_types' ) );
+	}
+
+	/**
+	 * Add allowed MIME types.
+	 * We just need zip file to upload.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $existing_mimes A list of all the existing MIME types.
+	 * @return array A list of all the new MIME types appended.
+	 */
+	public function add_upload_mime_types( $existing_mimes = array() ) {
+		$existing_mimes['zip'] = 'application/zip';
+
+		return $existing_mimes;
 	}
 
 	/**
@@ -465,11 +481,15 @@ class Patterns_Store_Custom_Theme_Json_Manager {
 		if ( empty( $file ) || ! isset( $file['name'] ) || empty( $file['name'] ) ) {
 			return new WP_Error( 'no_file', __( 'No file provided.', 'patterns-store' ), array( 'status' => 400 ) );
 		}
+		if ( empty( $file['tmp_name'] ) || $file['error'] || ! $file['size'] ) {
+			return new WP_Error( 'no_file', __( 'Maximum upload file size exceeded or other system errors.', 'patterns-store' ), array( 'status' => 400 ) );
+		}
 
 		$valid_mime_types = array( 'application/zip', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed' );
 
 		$filetype = wp_check_filetype( $file['name'] );
-		if ( ! in_array( $file['type'], $valid_mime_types, true ) || 'zip' !== $filetype['ext'] ) {
+
+		if ( ! in_array( $filetype['type'], $valid_mime_types, true ) || 'zip' !== $filetype['ext'] ) {
 			return new WP_Error( 'invalid_file_type', __( 'Invalid file type or extension.', 'patterns-store' ), array( 'status' => 400 ) );
 		}
 

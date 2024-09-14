@@ -114,12 +114,12 @@ class Patterns_Store_Public {
 		$deps_file = PATTERNS_STORE_PATH . 'build/public/public.asset.php';
 
 		/*Fallback dependency array*/
-		$dependency = array();
+		$dependency = array( 'jquery' );
 
 		/*Set dependency and version*/
 		if ( file_exists( $deps_file ) ) {
 			$deps_file  = require $deps_file;
-			$dependency = $deps_file['dependencies'];
+			$dependency = array_merge( $dependency, $deps_file['dependencies'] );
 			$version    = $deps_file['version'];
 		}
 
@@ -403,6 +403,302 @@ class Patterns_Store_Public {
 				$title
 			);
 		}
+		return $block_content;
+	}
+
+	/**
+	 * Callback of render_block_core/post-terms.
+	 * Add empty text.
+	 *
+	 * @param string   $block_content The block content.
+	 * @param array    $block         The full block, including name and attributes.
+	 * @param WP_Block $instance      The block instance.
+	 */
+	public function add_empty_text( $block_content, $block, $instance ) { //phpcs:ignore
+        if ( ! $block_content ) {
+            $attributes = $block['attrs'];
+            if ( isset( $attributes['patterns-store-empty-text'] ) && $attributes['patterns-store-empty-text'] ) {
+                return '<p class="' . esc_attr( 'taxonomy-' . $attributes['term']  ) . '">' . esc_html( $attributes['patterns-store-empty-text'] ) . '</p>';
+            }
+        }
+        return $block_content;
+    }
+
+	/**
+	 * Add class to button.
+	 *
+	 * @param string $html_button Button HTML.
+	 * @param string $class_name Button Class Name.
+	 *
+	 * @return string HTML of block.
+	 */
+	public function add_button_class( $html_button, $class_name='ps-btn-active' ) {
+
+		// Create a DOMDocument object.
+		$dom = new DOMDocument();
+
+		// it loads the content without adding enclosing html/body tags and also the doctype declaration.
+		$dom->loadHTML( $html_button, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+
+		// Find the button element.
+		$button = $dom->getElementsByTagName( 'a' )->item( 0 );
+
+		if ( $button ) {
+			$existing_class = $button->getAttribute( 'class' );
+			$button->setAttribute( 'class', $existing_class . ' '. esc_attr($class_name) );
+		}
+
+		// Save the modified HTML.
+		$new_html_button = $dom->saveHTML();
+
+		return $new_html_button;
+	}
+
+	/**
+	 * Modify html of pattern parent link.
+	 *
+	 * @param string  $html_button Button HTML.
+	 * @param integer $post_id    Post id.
+	 * @param integer $parent_id    Post parent id.
+	 *
+	 * @return string HTML of block.
+	 */
+	public function parent_link_modify_html_button( $html_button, $post_id, $parent_id ) {
+
+		// Create a DOMDocument object.
+		$dom = new DOMDocument();
+
+		// it loads the content without adding enclosing html/body tags and also the doctype declaration.
+		$dom->loadHTML( $html_button, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+
+		// Find the button wrap div.
+		$button_wrap                = $dom->getElementsByTagName( 'div' )->item( 0 );
+		$button_wrap_existing_class = $button_wrap->getAttribute( 'class' );
+		$button_wrap->setAttribute( 'class', $button_wrap_existing_class . ' wp-block-patterns-store-parent-link' );
+
+		// Find the button element.
+		$button = $dom->getElementsByTagName( 'a' )->item( 0 );
+
+		if ( $button ) {
+			// Add extra class to the button.
+			$existing_class = $button->getAttribute( 'class' );
+			$button->setAttribute( 'class', $existing_class . ' pattern-store-parent-link' );
+
+			$button->setAttribute( 'href', esc_url( get_permalink( $parent_id ) ) );
+		}
+
+		// Save the modified HTML.
+		$new_html_button = $dom->saveHTML();
+
+		return $new_html_button;
+	}
+
+	/**
+	 * Modify html of pattern copy.
+	 *
+	 * @param string  $html_button Button HTML.
+	 * @param integer $post_id    Post id.
+	 *
+	 * @return string HTML of block.
+	 */
+	public function patterns_copy_modify_html_button( $html_button, $post_id ) {
+		$label         = '';
+		$label_success = '';
+
+		$classes        = array( 'pattern-store-button' );
+		$button_classes = 'pattern-store-button';
+
+		$item = get_post( $post_id );
+
+		/* Filter if user has pattern access */
+		$access       = apply_filters(
+			'patterns_store_has_pattern_access',
+			array(
+				'has_access' => true,
+			),
+			$post_id,
+			array(),
+		);
+		$product_type = $item->post_parent ? 'pattern' : 'pattern-kit';
+		if ( 'pattern-kit' === $product_type ) {
+			$label           = __( 'View Patterns', 'patterns-store' );
+			$button_classes .= ' pattern-store-button-pattern-kit';
+		} elseif ( ! $access['has_access'] ) {
+			$label           = __( 'Access Denied ! ', 'patterns-store' );
+			$button_classes .= ' pattern-store-button-no-access';
+		} elseif ( 'pattern' === $product_type ) {
+			$label           = __( 'Copy', 'patterns-store' );
+			$label_success   = __( 'Copied', 'patterns-store' );
+			$button_classes .= ' pattern-store-button-pattern';
+		}
+
+		if ( ! $label ) {
+			return '';
+		}
+
+		// Create a DOMDocument object.
+		$dom = new DOMDocument();
+
+		// it loads the content without adding enclosing html/body tags and also the doctype declaration.
+		$dom->loadHTML( $html_button, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+
+		// Find the button wrap div.
+		$button_wrap                = $dom->getElementsByTagName( 'div' )->item( 0 );
+		$button_wrap_existing_class = $button_wrap->getAttribute( 'class' );
+		$button_wrap->setAttribute( 'class', $button_wrap_existing_class . ' wp-block-patterns-store-pattern-copy' );
+
+		// Find the button element.
+		$button = $dom->getElementsByTagName( 'button' )->item( 0 );
+
+		if ( $button ) {
+			// Set the new text for the button.
+			$button->nodeValue = $label;//phpcs:ignore
+
+			// Add extra class to the button.
+			if ( $button_classes ) {
+				$existing_class = $button->getAttribute( 'class' );
+				$button->setAttribute( 'class', $existing_class . ' ' . $button_classes );
+			}
+			$button->setAttribute( 'disabled', 'disabled' );
+			$button->setAttribute( 'data-label', esc_attr( $label ) );
+			$button->setAttribute( 'data-id', esc_attr( $item->ID ) );
+			if ( $label_success ) {
+				$button->setAttribute( 'data-label-success', esc_attr( $label_success ) );
+			}
+
+			if ( $access['has_access'] && 'pattern' === $product_type ) {
+				// Create input field as sibling of the button.
+				$input = $dom->createElement( 'input' );
+				$input->setAttribute( 'class', 'wp-block-patterns-store-copy-button__content' );
+				$input->setAttribute( 'type', 'hidden' );
+				$input->setAttribute( 'value', rawurlencode( wp_json_encode( $item->post_content ) ) );
+				$button->parentNode->insertBefore( $input, $button->nextSibling );//phpcs:ignore
+			}
+		}
+
+		// Save the modified HTML.
+		$new_html_button = $dom->saveHTML();
+
+		return $new_html_button;
+	}
+
+
+	/**
+	 * Modify html of pattern preview.
+	 *
+	 * @param string  $html_button Button HTML.
+	 * @param integer $post_id    Post id.
+	 *
+	 * @return string HTML of block.
+	 */
+	public function patterns_preview_modify_html_button( $html_button, $post_id ) {
+
+		// Create a DOMDocument object.
+		$dom = new DOMDocument();
+
+		// it loads the content without adding enclosing html/body tags and also the doctype declaration.
+		$dom->loadHTML( $html_button, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+
+		// Find the button wrap div.
+		$button_wrap                = $dom->getElementsByTagName( 'div' )->item( 0 );
+		$button_wrap_existing_class = $button_wrap->getAttribute( 'class' );
+		$button_wrap->setAttribute( 'class', $button_wrap_existing_class . ' wp-block-patterns-store-pattern-preview' );
+
+		// Find the button element.
+		$button = $dom->getElementsByTagName( 'button' )->item( 0 );
+
+		if ( $button ) {
+			// Add extra class to the button.
+			$existing_class = $button->getAttribute( 'class' );
+			$button->setAttribute( 'class', $existing_class . ' pattern-store-button-preview' );
+
+			$button->setAttribute( 'disabled', 'disabled' );
+			$button->setAttribute( 'data-id', esc_attr( $post_id ) );
+		}
+
+		// Save the modified HTML.
+		$new_html_button = $dom->saveHTML();
+
+		return $new_html_button;
+	}
+
+
+	/**
+	 * Callback of render_block_core/button.
+	 * Add variation for adding active clas and pattern parent link, pattern copy and pattern preview.
+	 *
+	 * @link https://github.com/WordPress/gutenberg/issues/63626#issuecomment-2237121971
+	 *
+	 * @param string   $block_content The block content.
+	 * @param array    $block         The full block, including name and attributes.
+	 * @param WP_Block $instance      The block instance.
+	 */
+	public function button_variation( $block_content, $block, $instance ) { //phpcs:ignore
+		if ( ! $block_content ) {
+			return $block_content;
+		}
+		$attributes = $block['attrs'];
+		/* Add active class on all, pattern kits and patters filter link */
+		if ( isset( $attributes['metadata']['bindings']['url']['source'] ) && 'patterns-store/pattern-type-link' === $attributes['metadata']['bindings']['url']['source'] ) {
+			$key = $attributes['metadata']['bindings']['url']['args']['key'];
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$selected_filter = isset( $_GET['product-type'] ) ? sanitize_key( $_GET['product-type'] ) : 'all';
+            $block_content = $this->add_button_class( $block_content, 'ps-fl-btn' );
+
+			switch ( $key ) {
+				case 'all':
+					if ( 'all' === $selected_filter ) {
+						$block_content = $this->add_button_class( $block_content );
+					}
+					break;
+
+				case 'pattern-kits':
+					if ( 'pattern-kits' === $selected_filter ) {
+						$block_content = $this->add_button_class( $block_content );
+
+					}
+					break;
+
+				case 'patterns':
+					if ( 'patterns' === $selected_filter ) {
+						$block_content = $this->add_button_class( $block_content );
+					}
+					break;
+			}
+		}
+
+		/* parent link, copy and preview variations */
+		if ( ! isset( $instance->context ) || ! isset( $instance->context['postId'] ) ) {
+			return $block_content;
+		}
+		$current_post_id = $instance->context['postId'];
+		if ( ! $current_post_id ) {
+			return $block_content;
+		}
+
+		if ( isset( $attributes['patterns-store-pattern-button-type'] ) && $attributes['patterns-store-pattern-button-type'] ) {
+			$button_type = $attributes['patterns-store-pattern-button-type'];
+			if ( 'parent-link' === $button_type ) {
+				if ( is_singular( patterns_store_post_type_manager()->post_type ) ) {
+					$post = get_post( $current_post_id );
+					if ( $post->post_parent ) {
+						$block_content = $this->parent_link_modify_html_button( $block_content, $current_post_id, $post->post_parent );
+
+					} else {
+						$block_content = null;
+
+					}
+				} else {
+					$block_content = null;
+				}
+			} elseif ( 'pattern-copy' === $button_type ) {
+				$block_content = $this->patterns_copy_modify_html_button( $block_content, $current_post_id );
+
+			} elseif ( 'pattern-preview' === $button_type ) {
+				$block_content = $this->patterns_preview_modify_html_button( $block_content, $current_post_id );
+			}
+		}
+
 		return $block_content;
 	}
 }

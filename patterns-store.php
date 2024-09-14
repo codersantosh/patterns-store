@@ -10,7 +10,7 @@
  * Plugin URI:        https://github.com/codersantosh/patterns-store
  * Description:       Congratulations on choosing the Patterns Store for your website development. This plugin is designed to help you quickly and efficiently build your patters store ie patterns and pattern kits store.
  * Version:           1.0.0
- * Author:            codersantosh
+ * Author:            patternswp
  * Author URI:        https://github.com/codersantosh
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt

@@ -160,6 +160,9 @@ const MainContent = () => {
         categorySlug = '',
         tagSlug = '',
         pluginSlug = '',
+        blockTypeSlug = '',
+        templateTypeSlug = '',
+        postTypeTaxSlug = '',
         offKits = false,
         excluded = [],
     } = products;
@@ -257,7 +260,7 @@ const MainContent = () => {
                 <AtrcControlText
                     label={__('Customize patterns slug', 'patterns-store')}
                     help={__(
-                        'Modify the slug of post type for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it.',
+                        'Modify the slug of post type for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it. Default:"patterns"',
                         'patterns-store'
                     )}
                     value={patternSlug}
@@ -268,7 +271,7 @@ const MainContent = () => {
                 <AtrcControlText
                     label={__('Customize pattern category slug', 'patterns-store')}
                     help={__(
-                        'Modify the slug of category slug for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it.',
+                        'Modify the slug of category for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it. Default:"pattern-category"',
                         'patterns-store'
                     )}
                     value={categorySlug}
@@ -279,7 +282,7 @@ const MainContent = () => {
                 <AtrcControlText
                     label={__('Customize patterns tag slug', 'patterns-store')}
                     help={__(
-                        'Modify the slug of tag slug for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it.',
+                        'Modify the slug of tag for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it. Default:"pattern-category"',
                         'patterns-store'
                     )}
                     value={tagSlug}
@@ -290,11 +293,44 @@ const MainContent = () => {
                 <AtrcControlText
                     label={__('Customize patterns plugin slug', 'patterns-store')}
                     help={__(
-                        'Modify the slug of plugin slug for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it.',
+                        'Modify the slug of plugin for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it. Default:"pattern-plugin"',
                         'patterns-store'
                     )}
                     value={pluginSlug}
                     onChange={(newVal) => updateSettingKey('pluginSlug', newVal)}
+                />
+            </AtrcPanelRow>
+            <AtrcPanelRow className={classNames('at-m')}>
+                <AtrcControlText
+                    label={__('Customize patterns block type slug', 'patterns-store')}
+                    help={__(
+                        'Modify the slug of block type for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it. Default:"pattern-block-type"',
+                        'patterns-store'
+                    )}
+                    value={blockTypeSlug}
+                    onChange={(newVal) => updateSettingKey('blockTypeSlug', newVal)}
+                />
+            </AtrcPanelRow>
+            <AtrcPanelRow className={classNames('at-m')}>
+                <AtrcControlText
+                    label={__('Customize patterns template type slug', 'patterns-store')}
+                    help={__(
+                        'Modify the slug of template type for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it. Default:"pattern-template-type"',
+                        'patterns-store'
+                    )}
+                    value={templateTypeSlug}
+                    onChange={(newVal) => updateSettingKey('templateTypeSlug', newVal)}
+                />
+            </AtrcPanelRow>
+            <AtrcPanelRow className={classNames('at-m')}>
+                <AtrcControlText
+                    label={__('Customize patterns post type slug', 'patterns-store')}
+                    help={__(
+                        'Modify the slug of post type for pattern. This change will take effect if not explicitly set by other themes/plugins. Note: You may need to resave permalinks settings after changing it. Default:"pattern-post-type"',
+                        'patterns-store'
+                    )}
+                    value={postTypeTaxSlug}
+                    onChange={(newVal) => updateSettingKey('postTypeTaxSlug', newVal)}
                 />
             </AtrcPanelRow>
         </>

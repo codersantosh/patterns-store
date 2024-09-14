@@ -204,7 +204,6 @@ if ( ! class_exists( 'Patterns_Store_Api_Pattern_Meta' ) ) {
 			$data['id']                   = absint( $item->id );
 			$data['image_sources']        = esc_html( $item->image_sources );
 			$data['viewport_width']       = esc_html( $item->viewport_width );
-			$data['block_types']          = esc_html( $item->block_types );
 			$data['wp_locale']            = esc_html( $item->wp_locale );
 			$data['wp_version']           = esc_html( $item->wp_version );
 			$data['contains_block_types'] = esc_html( $item->contains_block_types );
@@ -277,11 +276,6 @@ if ( ! class_exists( 'Patterns_Store_Api_Pattern_Meta' ) ) {
 						'type'        => 'string',
 						'context'     => array( 'view', 'edit' ),
 					),
-					'block_types'          => array(
-						'description' => __( 'Pattern block types.', 'patterns-store' ),
-						'type'        => 'string',
-						'context'     => array( 'view', 'edit' ),
-					),
 					'wp_locale'            => array(
 						'description' => __( 'Pattern language.', 'patterns-store' ),
 						'type'        => 'string',
@@ -351,11 +345,6 @@ if ( ! class_exists( 'Patterns_Store_Api_Pattern_Meta' ) ) {
 			/*Viewport width.*/
 			if ( ! empty( $schema['properties']['viewport_width'] ) && isset( $request['viewport_width'] ) ) {
 				$prepared_pattern_meta->viewport_width = $request['viewport_width'];
-			}
-
-			/*Block types.*/
-			if ( ! empty( $schema['properties']['block_types'] ) && isset( $request['block_types'] ) ) {
-				$prepared_pattern_meta->block_types = $request['block_types'];
 			}
 
 			/*wp locale.*/

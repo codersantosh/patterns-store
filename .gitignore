@@ -4,3 +4,5 @@ node_modules.zip
 assets/blocks
 /vendor/
 git-source
+build
+deploy

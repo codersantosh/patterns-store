@@ -38,13 +38,15 @@ function patterns_store_relation_pre_render_block( $pre_render, $parsed_block ) 
 			function ( $query ) use ( $parsed_block ) {
 				$post_id = get_the_ID();
 				$post    = get_post( $post_id );
-
-				$query['posts_per_page'] = -1;
-				if ( $post->post_parent ) {
-					$query['post_parent'] = $post->post_parent;
-				} else {
-					$query['post_parent'] = $post_id;
+				if ( $post ) {
+					$query['posts_per_page'] = -1;
+					if ( $post->post_parent ) {
+						$query['post_parent'] = $post->post_parent;
+					} else {
+						$query['post_parent'] = $post_id;
+					}
 				}
+
 				return $query;
 			}
 		);

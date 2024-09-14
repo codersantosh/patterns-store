@@ -1,5 +1,5 @@
 === Patterns Store - Creates a store for WordPress Patterns ===
-Contributors: codersantosh
+Contributors: patternswp, codersantosh
 Tags: patterns, pattern kits, templates, gutenberg, blocks
 Requires at least: 6.5
 Tested up to: 6.6

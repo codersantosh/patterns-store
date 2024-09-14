@@ -7,14 +7,16 @@
 	"scripts": {
 		"build:admin": "wp-scripts build src/admin.js --webpack-src-dir='' --output-path=build/admin",
 		"build:public": "wp-scripts build src/public.js --webpack-src-dir='' --webpack-copy-php --output-path=build/public",
-		"build:editor": "wp-scripts build src/editor.js --webpack-src-dir='' --webpack-copy-php --output-path=build/editor",
+		"build:editorPattern": "wp-scripts build src/editor-pattern.js --webpack-src-dir='' --webpack-copy-php --output-path=build/editor-pattern",
+		"build:blocksExtra": "wp-scripts build src/blocks-extra.js --webpack-src-dir='' --webpack-copy-php --output-path=build/blocks-extra",
 		"build:blocks": "wp-scripts build --experimental-modules --webpack-src-dir=src/blocks --webpack-copy-php --output-path=build/blocks",
-		"build": "npm-run-all build:admin build:public build:editor build:blocks",
+		"build": "npm-run-all build:admin build:public build:editorPattern build:blocksExtra build:blocks",
 		"start:admin": "wp-scripts start src/admin.js --webpack-src-dir='' --output-path=build/admin",
 		"start:public": "wp-scripts start src/public.js --webpack-src-dir='' --webpack-copy-php --output-path=build/public",
-		"start:editor": "wp-scripts start src/editor.js --webpack-src-dir='' --webpack-copy-php --output-path=build/editor",
+		"start:editorPattern": "wp-scripts start src/editor-pattern.js --webpack-src-dir='' --webpack-copy-php --output-path=build/editor-pattern",
+		"start:blocksExtra": "wp-scripts start src/blocks-extra.js --webpack-src-dir='' --webpack-copy-php --output-path=build/blocks-extra",
 		"start:blocks": "wp-scripts start --experimental-modules --webpack-src-dir=src/blocks --webpack-copy-php --output-path=build/blocks",
-		"start": "npm-run-all --parallel start:admin start:public start:editor start:blocks",
+		"start": "npm-run-all --parallel start:admin start:public start:editorPattern start:blocksExtra start:blocks",
 		"copy": "node .bin/copy.js",
 		"replace": "node .bin/replace-texts.js",
 		"makejsstring": "node .bin/make-string.js",
@@ -48,6 +50,7 @@
 		"use-deep-compare-effect": "^1.8.1"
 	},
 	"devDependencies": {
+		"@wordpress/babel-plugin-makepot": "^6.7.0",
 		"@wordpress/scripts": "^28.6.0",
 		"autoprefixer": "^10.4.16",
 		"ncp": "^2.0.0",

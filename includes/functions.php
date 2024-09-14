@@ -25,14 +25,17 @@ if ( ! function_exists( 'patterns_store_default_options' ) ) :
 	function patterns_store_default_options() {
 		$default_options = array(
 			'products'  => array(
-				'postType'     => '',
-				'patternSlug'  => '',
-				'categorySlug' => '',
-				'tagSlug'      => '',
-				'pluginSlug'   => '',
-				'offKits'      => false, /* disable pattern kits and sell only patterns */
-				'excluded'     => array(), /*  Exclude from rest api */
-				'offRename'    => true, /* disable renaming downloads to pattern */
+				'postType'         => '',
+				'patternSlug'      => '',
+				'categorySlug'     => '',
+				'tagSlug'          => '',
+				'pluginSlug'       => '',
+				'blockTypeSlug'    => '',
+				'templateTypeSlug' => '',
+				'postTypeTaxSlug'  => '',
+				'offKits'          => false, /* disable pattern kits and sell only patterns */
+				'excluded'         => array(), /*  Exclude from rest api */
+				'offRename'        => true, /* disable renaming downloads to pattern */
 			),
 			'deleteAll' => false,
 		);

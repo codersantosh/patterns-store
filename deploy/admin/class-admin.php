@@ -185,31 +185,40 @@ class Patterns_Store_Admin {
 				'products'  => array(
 					'type'       => 'object',
 					'properties' => array(
-						'postType'     => array(
+						'postType'         => array(
 							'type' => 'string',
 						),
-						'offRename'    => array(
+						'offRename'        => array(
 							'type' => 'boolean',
 						),
-						'offKits'      => array(
+						'offKits'          => array(
 							'type' => 'boolean',
 						),
-						'excluded'     => array(
+						'excluded'         => array(
 							'type'  => 'array',
 							'items' => array(
 								'type' => 'integer',
 							),
 						),
-						'patternSlug'  => array(
+						'patternSlug'      => array(
 							'type' => 'string',
 						),
-						'categorySlug' => array(
+						'categorySlug'     => array(
 							'type' => 'string',
 						),
-						'tagSlug'      => array(
+						'tagSlug'          => array(
 							'type' => 'string',
 						),
-						'pluginSlug'   => array(
+						'pluginSlug'       => array(
+							'type' => 'string',
+						),
+						'blockTypeSlug'    => array(
+							'type' => 'string',
+						),
+						'templateTypeSlug' => array(
+							'type' => 'string',
+						),
+						'postTypeTaxSlug'  => array(
 							'type' => 'string',
 						),
 					),
@@ -266,12 +275,33 @@ class Patterns_Store_Admin {
 		wp_enqueue_script( 'wp-theme-plugin-editor' );
 		wp_enqueue_style( 'wp-codemirror' );
 
+		/* ===== Blocks Extra  ===== */
+		$unique_id = PATTERNS_STORE_PLUGIN_NAME . '-blocks-extra';
+
+		/*Scripts dependency files*/
+		$deps_file = PATTERNS_STORE_PATH . 'build/blocks-extra/blocks-extra.asset.php';
+
+		/*Fallback dependency array*/
+		$dependency = array();
+		$version    = PATTERNS_STORE_VERSION;
+
+		/*Set dependency and version*/
+		if ( file_exists( $deps_file ) ) {
+			$deps_file  = require $deps_file;
+			$dependency = $deps_file['dependencies'];
+			$version    = $deps_file['version'];
+		}
+
+		wp_enqueue_script( $unique_id, PATTERNS_STORE_URL . 'build/blocks-extra/blocks-extra.js', $dependency, $version, true );
+
+		/* ===== Editor pattern  ===== */
 		if ( get_post_type() === patterns_store_post_type_manager()->post_type ) {
 			/* Atomic CSS */
 			wp_enqueue_style( 'atomic' );
 
+			$unique_id = PATTERNS_STORE_PLUGIN_NAME . '-editor-pattern';
 			/*Scripts dependency files*/
-			$deps_file = PATTERNS_STORE_PATH . 'build/editor/editor.asset.php';
+			$deps_file = PATTERNS_STORE_PATH . 'build/editor-pattern/editor-pattern.asset.php';
 
 			/*Fallback dependency array*/
 			$dependency = array();
@@ -284,15 +314,15 @@ class Patterns_Store_Admin {
 				$version    = $deps_file['version'];
 			}
 
-			wp_enqueue_script( PATTERNS_STORE_PLUGIN_NAME, PATTERNS_STORE_URL . 'build/editor/editor.js', $dependency, $version, true );
+			wp_enqueue_script( $unique_id, PATTERNS_STORE_URL . 'build/editor-pattern/editor-pattern.js', $dependency, $version, true );
 
-			wp_enqueue_style( PATTERNS_STORE_PLUGIN_NAME, PATTERNS_STORE_URL . 'build/editor/editor.css', array(), $version );
+			wp_enqueue_style( $unique_id, PATTERNS_STORE_URL . 'build/editor-pattern/editor-pattern.css', array(), $version );
 
 			$localize = apply_filters(
 				'patterns_store_admin_localize',
 				array(
 					'version'            => $version,
-					'root_id'            => PATTERNS_STORE_PLUGIN_NAME,
+					'root_id'            => $unique_id,
 					'nonce'              => wp_create_nonce( 'wp_rest' ),
 					'store'              => 'patterns-store',
 					'rest_url'           => get_rest_url(),
@@ -308,9 +338,8 @@ class Patterns_Store_Admin {
 				)
 			);
 
-			wp_set_script_translations( PATTERNS_STORE_PLUGIN_NAME, PATTERNS_STORE_PLUGIN_NAME );
-			wp_localize_script( PATTERNS_STORE_PLUGIN_NAME, 'PatternsStoreLocalize', $localize );
-
+			wp_set_script_translations( $unique_id, PATTERNS_STORE_PLUGIN_NAME );
+			wp_localize_script( $unique_id, 'PatternsStoreLocalize', $localize );
 		}
 	}
 }
