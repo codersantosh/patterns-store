@@ -1,4 +1,4 @@
-=== Patterns Store - Creates a store for WordPress Patterns ===
+=== Patterns Store - Patterns Store - Creates a store to manage and display patterns & pattern kits ===
 Contributors: patternswp, codersantosh
 Tags: patterns, pattern kits, templates, gutenberg, blocks
 Requires at least: 6.5
