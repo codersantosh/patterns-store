@@ -4,7 +4,6 @@
  * Slug: patterns-store/query-pattern-header
  * Categories: query
  * Block Types: core/query
- * Post Types: pattern, download
  * Description: A template layout for displaying a pattern header within the Query loop, placed before the post template, with multiple filter options.
  *
  * @package    Patterns_Store

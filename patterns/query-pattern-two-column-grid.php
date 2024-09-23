@@ -11,7 +11,7 @@
  */
 
 ?>
-<!-- wp:query {"query":{"inherit":true},"align":"wide","layout":{"type":"constrained"}} -->
+<!-- wp:query {"query":{"postType":'<?php echo esc_attr( patterns_store_post_type_manager()->post_type ); ?>'},"align":"wide","layout":{"type":"constrained"}} -->
 <div class="wp-block-query alignwide">
 	<!-- wp:post-template {"align":"full","layout":{"type":"grid","columnCount":2}} -->
 		<!-- wp:pattern {"slug":"patterns-store/hidden-query-pattern-post-template-content"} /-->
