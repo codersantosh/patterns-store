@@ -91,6 +91,40 @@ class Patterns_Store_Admin {
 	}
 
 	/**
+	 * Check if current menu page.
+	 *
+	 * @access public
+	 *
+	 * @since    1.0.0
+	 * @return boolean ture if current menu page else false.
+	 */
+	public function is_menu_page() {
+		$screen              = get_current_screen();
+		$admin_scripts_bases = array( 'toplevel_page_' . PATTERNS_STORE_PLUGIN_NAME );
+		if ( ! ( isset( $screen->base ) && in_array( $screen->base, $admin_scripts_bases, true ) ) ) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Add class "at-has-hdr-stky".
+	 *
+	 * @access public
+	 * @since    1.0.0
+	 * @param string $classes  a space-separated string of class names.
+	 * @return string $classes with added class if confition meet.
+	 */
+	public function add_has_sticky_header( $classes ) {
+
+		if ( ! $this->is_menu_page() ) {
+			return $classes;
+		}
+
+		return $classes . ' at-has-hdr-stky ';
+	}
+
+	/**
 	 * Add Root Div For React.
 	 *
 	 * @since    1.0.0
@@ -108,14 +142,13 @@ class Patterns_Store_Admin {
 	 */
 	public function enqueue_resources() {
 
-		$screen              = get_current_screen();
-		$admin_scripts_bases = array( 'toplevel_page_' . PATTERNS_STORE_PLUGIN_NAME );
-		if ( ! ( isset( $screen->base ) && in_array( $screen->base, $admin_scripts_bases, true ) ) ) {
+		if ( ! $this->is_menu_page() ) {
 			return;
 		}
 
 		/* Atomic CSS */
 		wp_enqueue_style( 'atomic' );
+		wp_style_add_data( 'atomic', 'rtl', 'replace' );
 
 		/*Scripts dependency files*/
 		$deps_file = PATTERNS_STORE_PATH . 'build/admin/admin.asset.php';
@@ -134,7 +167,9 @@ class Patterns_Store_Admin {
 		wp_enqueue_script( PATTERNS_STORE_PLUGIN_NAME, PATTERNS_STORE_URL . 'build/admin/admin.js', $dependency, $version, true );
 
 		wp_enqueue_style( 'google-fonts-open-sans', PATTERNS_STORE_URL . 'assets/library/fonts/open-sans.css', '', $version );
+
 		wp_enqueue_style( PATTERNS_STORE_PLUGIN_NAME, PATTERNS_STORE_URL . 'build/admin/admin.css', array( 'wp-components' ), $version );
+		wp_style_add_data( PATTERNS_STORE_PLUGIN_NAME, 'rtl', 'replace' );
 
 		$localize = apply_filters(
 			'patterns_store_admin_localize',
@@ -293,11 +328,22 @@ class Patterns_Store_Admin {
 		}
 
 		wp_enqueue_script( $unique_id, PATTERNS_STORE_URL . 'build/blocks-extra/blocks-extra.js', $dependency, $version, true );
+		wp_set_script_translations( $unique_id, PATTERNS_STORE_PLUGIN_NAME );
+
+		$localize = apply_filters(
+			'patterns_store_editor_localize',
+			array(
+				'postType' => patterns_store_post_type_manager()->post_type,
+				'has_pro'  => function_exists( 'patterns_store_pro_run' ),
+			)
+		);
+		wp_localize_script( $unique_id, 'PatternsStoreEditorLocalize', $localize );
 
 		/* ===== Editor pattern  ===== */
 		if ( get_post_type() === patterns_store_post_type_manager()->post_type ) {
 			/* Atomic CSS */
 			wp_enqueue_style( 'atomic' );
+			wp_style_add_data( 'atomic', 'rtl', 'replace' );
 
 			$unique_id = PATTERNS_STORE_PLUGIN_NAME . '-editor-pattern';
 			/*Scripts dependency files*/
@@ -317,6 +363,7 @@ class Patterns_Store_Admin {
 			wp_enqueue_script( $unique_id, PATTERNS_STORE_URL . 'build/editor-pattern/editor-pattern.js', $dependency, $version, true );
 
 			wp_enqueue_style( $unique_id, PATTERNS_STORE_URL . 'build/editor-pattern/editor-pattern.css', array(), $version );
+			wp_style_add_data( $unique_id, 'rtl', 'replace' );
 
 			$localize = apply_filters(
 				'patterns_store_admin_localize',

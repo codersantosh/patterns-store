@@ -151,8 +151,7 @@ const PatternsStoreAddPatternsMeta = ({
                         <AtrcNotice
                             onRemove={() => setNotice('')}
                             onAutoRemove={() => setNotice('')}
-                            status={notice.status}
-                        >
+                            status={notice.status}>
                             {notice.message}
                         </AtrcNotice>
                     ) : null}
@@ -193,6 +192,15 @@ const PatternsStoreAddPatternsMeta = ({
                     label={__('Footnotes', 'patterns-store')}
                     value={metaData.footnotes}
                     onChange={(newVal) => handleInputChange(newVal, 'footnotes')}
+                />
+            </AtrcPanelRow>
+            <AtrcPanelRow className={classNames('at-m')}>
+                <AtrcControlText
+                    allowReset={false}
+                    label={__('Demo URL', 'patterns-store')}
+                    help={__('Demo URL will replace the current preview url of the pattern.', 'patterns-store')}
+                    value={metaData.demo_url}
+                    onChange={(newVal) => handleInputChange(newVal, 'demo_url')}
                 />
             </AtrcPanelRow>
             <AtrcPanelRow className={classNames('at-m')}>

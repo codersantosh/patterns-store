@@ -1,10 +1,10 @@
-=== Patterns Store - Patterns Store - Creates a store to manage and display patterns & pattern kits ===
+=== Patterns Store - Creates a store to manage and display patterns & pattern kits ===
 Contributors: patternswp, codersantosh
 Tags: patterns, pattern kits, templates, gutenberg, blocks
 Requires at least: 6.5
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 5.6.20
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,8 +19,6 @@ With Patterns Store, you can manage theme JSON packages globally, by pattern kit
 Whether you are developing custom patterns for specific niche or building a public repository of design elements for a broader audience, Patterns Store provides the tools and flexibility you need to succeed.
 
 We hope you enjoy using Patterns Store and look forward to seeing the amazing designs you create with it. Your feedback and suggestions are always welcome as we strive to improve and expand the capabilities of this plugin.
-
-The plugin is open source and developing on [GitHub](https://github.com/codersantosh/patterns-store/)
 
 == Patterns ==
 
@@ -100,6 +98,23 @@ After installation, activate the plugin through WordPress's 'Plugins' menu.
 
 
 == Changelog ==
+
+= 1.0.2 =
+* Added: Demo URL on the CURD and rest API response
+* Updated: Some links to `https://patternswp.com/wp-plugins/patterns-store/`
+* Fixed:  Block variations button issues on singular pages.
+* Fixed: https://github.com/codersantosh/patterns-store/issues/1
+* Fixed: Typo `pattern-store` to `patterns-store`
+
+= 1.0.1 =
+* Added: Tested with the latest WordPress
+* Added: RTL support
+* Added: Introduced preview support for posts utilizing the custom field `patterns_store_demo_url`
+* Added: Added patterns for Archive and Single Pages for the plugin's custom post type
+* Updated: npm packages
+* Fixed: Resolved issues with truncated responses
+* Fixed: Improved preview functionality for more than 10 items
+* Fixed: Admin Notices Hidden by Sticky Header on Plugin Settings Page
 
 = 1.0.0 =
 * Initial release

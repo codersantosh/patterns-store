@@ -2,6 +2,11 @@
 
 > The Patterns Store plugin allows you to create a comprehensive store for managing and displaying patterns pattern kits, and theme JSON packages. Perfect for designers and crafters, this plugin helps you showcase your collection with ease.
 
+## Demos
+
+- [Default](https://demo.patternswp.com/patterns-store/) - Demo with the default post type
+- [EDD](https://demo.patternswp.com/patterns-store-edd/) - Demo using the Easy Digital Downloads plugin
+
 ## Description
 
 The Patterns Store plugin caters to WordPress developers and designers seeking to create and display patterns and pattern kits for their users or clients. It is specifically crafted to facilitate the development and showcasing of various design elements within the WordPress platform. If you decide to sell patterns, you can upgrade to the premium version of Patterns Store. The premium version seamlessly integrates with the Easy Digital Download Plugin (EDD). We hope you enjoy using Patterns Store and we cannot wait to see the amazing designs you offer with it.
@@ -9,6 +14,7 @@ The Patterns Store plugin caters to WordPress developers and designers seeking t
 ## Table of contents
 
 - [Patterns Store - Creates a store to manage and display patterns, pattern kits and theme JSON package](#patterns-store---creates-a-store-to-manage-and-display-patterns-pattern-kits-and-theme-json-package)
+  - [Demos](#demos)
   - [Description](#description)
   - [Table of contents](#table-of-contents)
   - [Getting Started](#getting-started)

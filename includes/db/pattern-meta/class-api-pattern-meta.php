@@ -203,6 +203,7 @@ if ( ! class_exists( 'Patterns_Store_Api_Pattern_Meta' ) ) {
 
 			$data['id']                   = absint( $item->id );
 			$data['image_sources']        = esc_html( $item->image_sources );
+			$data['demo_url']             = esc_url( $item->demo_url );
 			$data['viewport_width']       = esc_html( $item->viewport_width );
 			$data['wp_locale']            = esc_html( $item->wp_locale );
 			$data['wp_version']           = esc_html( $item->wp_version );
@@ -270,6 +271,12 @@ if ( ! class_exists( 'Patterns_Store_Api_Pattern_Meta' ) ) {
 						'description' => __( 'Image sources used in pattern.', 'patterns-store' ),
 						'type'        => 'string',
 						'context'     => array( 'view', 'edit' ),
+					),
+					'demo_url'             => array(
+						'description' => __( 'Pattern demo url.', 'patterns-store' ),
+						'type'        => 'string',
+						'context'     => array( 'view', 'edit' ),
+						'format'      => 'uri',
 					),
 					'viewport_width'       => array(
 						'description' => __( 'Pattern view port width.', 'patterns-store' ),
@@ -340,6 +347,11 @@ if ( ! class_exists( 'Patterns_Store_Api_Pattern_Meta' ) ) {
 			/*Image sources.*/
 			if ( ! empty( $schema['properties']['image_sources'] ) && isset( $request['image_sources'] ) ) {
 				$prepared_pattern_meta->image_sources = $request['image_sources'];
+			}
+
+			/*Demo url.*/
+			if ( ! empty( $schema['properties']['demo_url'] ) && isset( $request['demo_url'] ) ) {
+				$prepared_pattern_meta->demo_url = $request['demo_url'];
 			}
 
 			/*Viewport width.*/

@@ -768,74 +768,6 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 		}
 
 		/**
-		 * Alter the table
-		 * ->alter_table('ADD','alter_test','date');
-		 *
-		 * Description.
-		 *
-		 * @ignore or delete it
-		 * @since 1.0.0
-		 * @access public
-		 *
-		 * @param string $action ADD, DROP, ALTER, MODIFY.
-		 * @param string $column_name Column name.
-		 * @param string $data_type Data type.
-		 * @param string $suffix Suffix.
-		 * @param string $suffix_column Suffix column.
-		 *
-		 * @throws Exception When error occurs on databse.
-		 *
-		 * @return boolean
-		 */
-		public function alter_table( $action, $column_name = '', $data_type = '', $suffix = '', $suffix_column = '' ) {
-			try {
-				// Validate action.
-				if ( ! in_array( $action, array( 'ADD', 'DROP', 'ALTER', 'MODIFY' ), true ) ) {
-					throw new Exception( esc_html__( 'Invalid ALTER TABLE action', 'atomic-wp-custom-table-and-query' ) );
-				}
-
-				$table = $this->table_name;
-				global $wpdb;
-
-				$query = "SELECT * FROM {$this->table_name}";
-
-				$table_columns = $wpdb->get_row( $query, ARRAY_A );//phpcs:ignore
-				if ( ! $table_columns ) {
-					throw new Exception( esc_html__( 'No table columns found!', 'atomic-wp-custom-table-and-query' ) );
-				}
-				$sql = '';
-				switch ( $action ) {
-					case 'ADD':
-						if ( ! array_key_exists( $column_name, $table_columns ) ) {
-							$sql = "ALTER TABLE {$table} ADD {$column_name} {$data_type} {$suffix} {$suffix_column}";
-						}
-						break;
-
-					case 'DROP':
-					case 'ALTER':
-					case 'MODIFY':
-						if ( array_key_exists( $column_name, $table_columns ) ) {
-							$sql = "ALTER TABLE {$table} {$action} {$column_name} {$data_type} {$suffix} {$suffix_column}";
-						}
-				}
-				if ( $sql ) {
-					$result = $wpdb->query( $sql );//phpcs:ignore
-					if ( $wpdb->last_error ) {
-						throw new Exception( $wpdb->last_error );
-					}
-
-					return true;
-				} else {
-					throw new Exception( esc_html__( 'Invalid column or operation for ALTER TABLE', 'atomic-wp-custom-table-and-query' ) );
-				}
-			} catch ( Exception $e ) {
-				error_log( $e->getMessage() );//phpcs:ignore
-
-				return new WP_Error( 'db_error', $e->getMessage() );
-			}
-		}
-
-		/**
 		 * Create a new table.
 		 *
 		 * @since 1.0.0
@@ -881,7 +813,7 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 					throw new Exception( $wpdb->last_error );
 				}
 
-				update_option( $this->table_name . '_db_version', $this->version );
+				$this->update_version();
 
 				return true;
 			} catch ( InvalidArgumentException $e ) {
@@ -891,6 +823,220 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 			} catch ( Exception $e ) {
 
 				error_log( $e->getMessage() );//phpcs:ignore
+				return new WP_Error( 'db_error', $e->getMessage() );
+			}
+		}
+
+		/**
+		 * Save current version of table.
+		 *
+		 * @since 1.0.0
+		 * @access public
+		 *
+		 * @throws Exception When error occurs on databse.
+		 *
+		 * @return void
+		 */
+		public function update_version() {
+			update_option( $this->table_name . '_db_version', $this->version );
+		}
+
+		/**
+		 * Get current version of table.
+		 *
+		 * @since 1.0.0
+		 * @access public
+		 *
+		 * @throws Exception When error occurs on databse.
+		 *
+		 * @return string
+		 */
+		public function get_current_version() {
+			return get_option( $this->table_name . '_db_version' );
+		}
+
+		/**
+		 * Alter the table by adding, dropping, or modifying a column.
+		 *
+		 * Usage:
+		 * ->alter_table('ADD','alter_test','date');
+		 *
+		 * @since 1.0.0
+		 * @access public
+		 *
+		 * @param string $action ADD, DROP, ALTER, MODIFY.
+		 * @param string $column_name Column name.
+		 * @param string $data_type Data type.
+		 * @param string $suffix Suffix.
+		 * @param string $suffix_column Suffix column.
+		 *
+		 * @throws Exception When error occurs on database.
+		 *
+		 * @return boolean
+		 */
+		public function alter_table( $action, $column_name = '', $data_type = '', $suffix = '', $suffix_column = '' ) {
+			return $this->run_transaction(
+				function () use ( $action, $column_name, $data_type, $suffix, $suffix_column ) {
+					try {
+						if ( ! in_array( $action, array( 'ADD', 'DROP', 'ALTER', 'MODIFY' ), true ) ) {
+							throw new Exception( esc_html__( 'Invalid ALTER TABLE action', 'atomic-wp-custom-table-and-query' ) );
+						}
+
+						global $wpdb;
+
+						// - $this->table_name: The name of the table.
+						$query         = $wpdb->prepare( "SHOW COLUMNS FROM {$this->table_name} LIKE %s", $column_name ); //phpcs:ignore
+						$column_exists = $wpdb->get_row( $query );//phpcs:ignore
+
+						$sql = '';
+						switch ( $action ) {
+							case 'ADD':
+								if ( ! $column_exists ) {
+									$sql = "ALTER TABLE {$this->table_name} ADD {$column_name} {$data_type} {$suffix} {$suffix_column}";
+								}
+								break;
+
+							case 'DROP':
+							case 'ALTER':
+							case 'MODIFY':
+								if ( $column_exists ) {
+									$sql = "ALTER TABLE {$this->table_name} {$action} {$column_name} {$data_type} {$suffix} {$suffix_column}";
+								}
+						}
+
+						if ( $sql ) {
+							$result = $wpdb->query( $sql ); // phpcs:ignore
+							if ( $wpdb->last_error ) {
+								throw new Exception( $wpdb->last_error );
+							}
+
+                            error_log( "Altered {$this->table_name}: {$action} {$column_name}" ); // phpcs:ignore
+							return true;
+						} else {
+							throw new Exception( esc_html__( 'Invalid column or operation for ALTER TABLE', 'atomic-wp-custom-table-and-query' ) );
+						}
+					} catch ( Exception $e ) {
+					    error_log( $e->getMessage() ); // phpcs:ignore
+						return new WP_Error( 'db_error', $e->getMessage() );
+					}
+				}
+			);
+		}
+
+		/**
+		 * Alter multiple columns in the table.
+		 *
+		 * Usage:
+		 * $columns = array(
+		 *     array('action' => 'ADD', 'column_name' => 'new_column', 'data_type' => 'VARCHAR(255)'),
+		 *     array('action' => 'DROP', 'column_name' => 'old_column'),
+		 * );
+		 * ->alter_tables($columns);
+		 *
+		 * @since 1.0.0
+		 * @access public
+		 *
+		 * @param array $columns Array of column properties.
+		 *
+		 * @throws Exception When error occurs on database.
+		 *
+		 * @return boolean
+		 */
+		public function alter_tables( $columns = array() ) {
+			return $this->run_transaction(
+				function () use ( $columns ) {
+					try {
+						if ( empty( $columns ) ) {
+							throw new Exception( esc_html__( 'No columns provided for alteration.', 'atomic-wp-custom-table-and-query' ) );
+						}
+
+						foreach ( $columns as $column ) {
+							if ( ! isset( $column['action'], $column['column_name'] ) ) {
+								throw new Exception( esc_html__( 'Each column definition must have an action and column name.', 'atomic-wp-custom-table-and-query' ) );
+							}
+
+							$action        = $column['action'];
+							$column_name   = $column['column_name'];
+							$data_type     = isset( $column['data_type'] ) ? $column['data_type'] : '';
+							$suffix        = isset( $column['suffix'] ) ? $column['suffix'] : '';
+							$suffix_column = isset( $column['suffix_column'] ) ? $column['suffix_column'] : '';
+
+							$result = $this->alter_table( $action, $column_name, $data_type, $suffix, $suffix_column );
+
+							if ( is_wp_error( $result ) ) {
+								throw new Exception( $result->get_error_message() );
+							}
+						}
+
+						return true;
+					} catch ( Exception $e ) {
+					    error_log( $e->getMessage() ); // phpcs:ignore
+						return new WP_Error( 'db_error', $e->getMessage() );
+					}
+				}
+			);
+		}
+
+
+		/**
+		 * Handle adding or dropping indexes.
+		 *
+		 * @param string $action ADD or DROP.
+		 * @param string $index_name Index name.
+		 * @param string $columns Columns for the index.
+		 *
+		 * @throws Exception When error occurs on database.
+		 *
+		 * @return boolean
+		 */
+		public function handle_indexes( $action, $index_name, $columns ) {
+			global $wpdb;
+			try {
+				if ( ! in_array( $action, array( 'ADD', 'DROP' ), true ) ) {
+					throw new Exception( esc_html__( 'Invalid INDEX action', 'atomic-wp-custom-table-and-query' ) );
+				}
+
+				$sql = "ALTER TABLE {$this->table_name} ";
+
+				if ( 'ADD' === $action ) {
+					$sql .= "ADD INDEX {$index_name} ({$columns})";
+				} elseif ( 'DROP' === $action ) {
+					$sql .= "DROP INDEX {$index_name}";
+				}
+
+				$result = $wpdb->query( $sql ); // phpcs:ignore
+				if ( $wpdb->last_error ) {
+					throw new Exception( $wpdb->last_error );
+				}
+
+				return true;
+			} catch ( Exception $e ) {
+				error_log( $e->getMessage() ); // phpcs:ignore
+				return new WP_Error( 'db_error', $e->getMessage() );
+			}
+		}
+
+		/**
+		 * Run a database transaction.
+		 *
+		 * @param callable $callback The callback to execute within the transaction.
+		 *
+		 * @throws Exception When error occurs on database.
+		 *
+		 * @return mixed The result of the callback.
+		 */
+		public function run_transaction( $callback ) {
+			global $wpdb;
+
+			$wpdb->query( 'START TRANSACTION;' );
+
+			try {
+				$result = call_user_func( $callback );
+				$wpdb->query( 'COMMIT;' );
+				return $result;
+			} catch ( Exception $e ) {
+				$wpdb->query( 'ROLLBACK;' );
+				error_log( $e->getMessage() ); // phpcs:ignore
 				return new WP_Error( 'db_error', $e->getMessage() );
 			}
 		}

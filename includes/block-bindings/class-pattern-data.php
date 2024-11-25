@@ -223,7 +223,7 @@ if ( ! class_exists( 'Patterns_Store_Bb_Pattern_Data' ) ) {
 					);
 				}
 			}
-			return null;
+			return __( 'No related patterns', 'patterns-store' );
 		}
 
 		/**

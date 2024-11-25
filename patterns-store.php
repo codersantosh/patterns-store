@@ -2,16 +2,16 @@
 /**
  * The plugin main file.
  *
- * @link              https://github.com/codersantosh/patterns-store
+ * @link              https://patternswp.com/wp-plugins/patterns-store
  * @since             1.0.0
  * @package           Patterns_Store
  *
  * Plugin Name:       Patterns Store - Creates a store to manage and display patterns & pattern kits
- * Plugin URI:        https://github.com/codersantosh/patterns-store
+ * Plugin URI:        https://patternswp.com/wp-plugins/patterns-store
  * Description:       Congratulations on choosing the Patterns Store for your website development. This plugin is designed to help you quickly and efficiently build your patters store ie patterns and pattern kits store.
- * Version:           1.0.0
+ * Version:           1.0.2
  * Author:            patternswp
- * Author URI:        https://github.com/codersantosh
+ * Author URI:        https://patternswp.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       patterns-store
@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'PATTERNS_STORE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PATTERNS_STORE_URL', plugin_dir_url( __FILE__ ) );
-define( 'PATTERNS_STORE_VERSION', '1.0.0' );
+define( 'PATTERNS_STORE_VERSION', '1.0.2' );
 define( 'PATTERNS_STORE_PLUGIN_NAME', 'patterns-store' );
 define( 'PATTERNS_STORE_OPTION_NAME', 'patterns_store_options' );
 

@@ -33,24 +33,45 @@ addFilter('blocks.registerBlockType', 'patterns-store/core-blocks-extra-attribut
 const PatternsRelationControls = ({ props: { attributes, setAttributes } }) => {
     const { query } = attributes;
     return (
-        <PanelBody title={__('Patterns relations', 'patterns-store')}>
-            <AtrcControlToggle
-                label={__('Enable pattern relationships in query', 'patterns-store')}
-                help={__(
-                    'Use this option in a single pattern template to display pattern relationships. For pattern kits, it will show the patterns within the kit, and for individual patterns, it will show related patterns. It will only work on a single pattern page.',
-                    'patterns-store'
-                )}
-                checked={query?.patternsStoreRelation || false}
-                onChange={() => {
-                    setAttributes({
-                        query: {
-                            ...query,
-                            patternsStoreRelation: !query.patternsStoreRelation,
-                        },
-                    });
-                }}
-            />
-        </PanelBody>
+        <>
+            <PanelBody title={__('Patterns relations', 'patterns-store')}>
+                <AtrcControlToggle
+                    label={__('Enable pattern relationships in query', 'patterns-store')}
+                    help={__(
+                        'Use this option in a single pattern template to display pattern relationships. For pattern kits, it will show the patterns within the kit, and for individual patterns, it will show related patterns. It will only work on a single pattern page.',
+                        'patterns-store'
+                    )}
+                    checked={query?.patternsStoreRelation || false}
+                    onChange={() => {
+                        setAttributes({
+                            query: {
+                                ...query,
+                                patternsStoreRelation: !query.patternsStoreRelation,
+                            },
+                        });
+                    }}
+                />
+            </PanelBody>
+            {PatternsStoreEditorLocalize.has_pro ? <PanelBody title={__('Purchased items', 'patterns-store')}>
+                <AtrcControlToggle
+                    label={__('Show purchased items in query', 'patterns-store')}
+                    help={__(
+                        'Use this option to display items purchased by the logged-in user.',
+                        'patterns-store'
+                    )}
+                    checked={query?.patternsStorePurchasedItems || false}
+                    onChange={() => {
+                        setAttributes({
+                            query: {
+                                ...query,
+                                patternsStorePurchasedItems: !query.patternsStorePurchasedItems,
+                            },
+                        });
+                    }}
+                />
+            </PanelBody> : null}
+
+        </>
     );
 };
 

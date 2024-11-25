@@ -5,6 +5,7 @@
 	"title": "Query Total",
 	"icon": "chart-area",
 	"category": "layout",
+	"parent": ["core/query"],
 	"description": "Display the total items found in the current query.",
 	"textdomain": "patterns-store",
 	"supports": {
