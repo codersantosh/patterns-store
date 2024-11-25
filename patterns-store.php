@@ -2,12 +2,12 @@
 /**
  * The plugin main file.
  *
- * @link              https://patternswp.com//patterns-store
+ * @link              https://patternswp.com/wp-plugins/patterns-store
  * @since             1.0.0
  * @package           Patterns_Store
  *
  * Plugin Name:       Patterns Store - Creates a store to manage and display patterns & pattern kits
- * Plugin URI:        https://patternswp.com//patterns-store
+ * Plugin URI:        https://patternswp.com/wp-plugins/patterns-store
  * Description:       Congratulations on choosing the Patterns Store for your website development. This plugin is designed to help you quickly and efficiently build your patters store ie patterns and pattern kits store.
  * Version:           1.0.2
  * Author:            patternswp

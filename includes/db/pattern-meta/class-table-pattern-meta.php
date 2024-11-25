@@ -65,7 +65,7 @@ class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
 		);
 
 		$this->primary_key = 'id';
-		$this->version     = '1.0.1.1';
+		$this->version     = '1.0.2';
 		$this->cache_group = 'patterns-store-pattern-meta';
 
 		/*  @since 1.0.1 */

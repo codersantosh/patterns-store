@@ -1034,7 +1034,7 @@ msgid "Patterns Store - Creates a store to manage and display patterns & pattern
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://patternswp.com//patterns-store"
+msgid "https://patternswp.com/wp-plugins/patterns-store"
 msgstr ""
 
 #. Description of the plugin

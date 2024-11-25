@@ -223,19 +223,19 @@ if ( ! function_exists( 'patterns_store_get_white_label' ) ) :
 							array(
 								'icon'    => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="at-svg" viewBox="0 0 16 16"><path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/></svg>',
 								'text'    => esc_html__( 'Get started', 'patterns-store' ),
-								'url'     => 'https://patternswp.com//patterns-store',
+								'url'     => 'https://patternswp.com/wp-plugins/patterns-store',
 								'variant' => 'primary',
 							),
 							array(
 								'icon'    => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="at-svg" viewBox="0 0 16 16"><path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1M3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>',
 								'text'    => esc_html__( 'Docmentation', 'patterns-store' ),
-								'url'     => 'https://patternswp.com//patterns-store',
+								'url'     => 'https://patternswp.com/wp-plugins/patterns-store',
 								'variant' => 'outline-primary',
 							),
 							array(
 								'icon'    => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="at-svg" viewBox="0 0 16 16"><path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6zm11.386 3.785-1.806-2.41-.776 2.413zm-3.633.004.961-2.989H4.186l.963 2.995zM5.47 5.495 8 13.366l2.532-7.876zm-1.371-.999-.78-2.422-1.818 2.425zM1.499 5.5l5.113 6.817-2.192-6.82zm7.889 6.817 5.123-6.83-2.928.002z"/></svg>',
 								'text'    => esc_html__( 'Get support', 'patterns-store' ),
-								'url'     => 'https://patternswp.com//patterns-store',
+								'url'     => 'https://patternswp.com/wp-plugins/patterns-store',
 								'variant' => 'secondary',
 
 							),
@@ -249,13 +249,13 @@ if ( ! function_exists( 'patterns_store_get_white_label' ) ) :
 						'buttons' => array(
 							array(
 								'text'    => esc_html__( 'Visit site', 'patterns-store' ),
-								'url'     => 'https://patternswp.com//patterns-store',
+								'url'     => 'https://patternswp.com/wp-plugins/patterns-store',
 								'variant' => 'primary',
 
 							),
 							array(
 								'text'    => esc_html__( 'Get Support', 'patterns-store' ),
-								'url'     => 'https://patternswp.com//patterns-store',
+								'url'     => 'https://patternswp.com/wp-plugins/patterns-store',
 								'variant' => 'light',
 							),
 						),
@@ -267,7 +267,7 @@ if ( ! function_exists( 'patterns_store_get_white_label' ) ) :
 								'icon'    => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="at-svg" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/><path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/></svg>',
 								'title'   => esc_html__( 'Support', 'patterns-store' ),
 								'text'    => esc_html__( 'Get Support', 'patterns-store' ),
-								'url'     => 'https://patternswp.com//patterns-store',
+								'url'     => 'https://patternswp.com/wp-plugins/patterns-store',
 								'variant' => 'link',
 							),
 							array(
@@ -324,7 +324,7 @@ if ( ! function_exists( 'patterns_store_get_white_label' ) ) :
 								'patterns-store'
 							),
 							'buttonText' => esc_html__( 'Visit knowledge base', 'patterns-store' ),
-							'buttonLink' => 'https://patternswp.com//patterns-store',
+							'buttonLink' => 'https://patternswp.com/wp-plugins/patterns-store',
 
 						),
 						array(
@@ -339,7 +339,7 @@ if ( ! function_exists( 'patterns_store_get_white_label' ) ) :
 								$plugin_name,
 							),
 							'buttonText' => esc_html__( 'Visit community page', 'patterns-store' ),
-							'buttonLink' => 'https://patternswp.com//patterns-store',
+							'buttonLink' => 'https://patternswp.com/wp-plugins/patterns-store',
 						),
 						array(
 							'icon'       => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="at-svg" viewBox="0 0 16 16"><path d="M2.678 11.894a1 1 0 0 1 .287.801 11 11 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8 8 0 0 0 8 14c3.996 0 7-2.807 7-6s-3.004-6-7-6-7 2.808-7 6c0 1.468.617 2.83 1.678 3.894m-.493 3.905a22 22 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a10 10 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105"/></svg>',
@@ -353,7 +353,7 @@ if ( ! function_exists( 'patterns_store_get_white_label' ) ) :
 								$plugin_name,
 							),
 							'buttonText' => esc_html__( 'Create a support thread', 'patterns-store' ),
-							'buttonLink' => 'https://patternswp.com//patterns-store',
+							'buttonLink' => 'https://patternswp.com/wp-plugins/patterns-store',
 
 						),
 						array(
@@ -368,7 +368,7 @@ if ( ! function_exists( 'patterns_store_get_white_label' ) ) :
 								$plugin_name,
 							),
 							'buttonText' => esc_html__( 'View video guide', 'patterns-store' ),
-							'buttonLink' => 'https://patternswp.com//patterns-store',
+							'buttonLink' => 'https://patternswp.com/wp-plugins/patterns-store',
 
 						),
 					),
