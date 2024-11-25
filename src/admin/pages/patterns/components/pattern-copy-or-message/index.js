@@ -13,76 +13,76 @@ import ActionGuide from './action-guide';
 Message type copy, patterns, access-denied
 */
 const PatternCopyOrMessage = ({ pattern, showGuide = true }) => {
-	const {
-		id,
-		access,
-		pattern_content,
-		link,
-		'product-type': productType,
-		patterns,
-	} = pattern;
+    const {
+        id,
+        access,
+        pattern_content,
+        link,
+        'product-type': productType,
+        patterns,
+    } = pattern;
 
-	const [msgType, setMessageType] = useState('');
-	const [guideType, setGuideType] = useState(false);
+    const [msgType, setMessageType] = useState('');
+    const [guideType, setGuideType] = useState(false);
 
-	return (
-		<AtrcWrap className='ps-ls-itm-actions at-pos at-z-idx at-vis at-opa at-trs at-tf'>
-			<CopyOrBuy
-				setMessageType={(type) => setMessageType(type)}
-				access={access}
-				content={pattern_content}
-				productType={productType}
-				link={link}
-				showGuide={showGuide}
-			/>
-			{msgType ? (
-				<ActionMsg
-					type={msgType}
-					setGuideType={(type) => setGuideType(type)}
-					setMessageType={(type) => setMessageType(type)}
-				/>
-			) : null}
-			{guideType ? (
-				<ActionGuide
-					type={guideType}
-					setGuideType={(type) => setGuideType(type)}
-					patterns={patterns}
-					id={id}
-				/>
-			) : null}
-		</AtrcWrap>
-	);
+    return (
+        <AtrcWrap className='ps-ls-itm-actions at-pos at-z-idx at-vis at-opa at-trs at-tf'>
+            <CopyOrBuy
+                setMessageType={(type) => setMessageType(type)}
+                access={access}
+                content={pattern_content}
+                productType={productType}
+                link={link}
+                showGuide={showGuide}
+            />
+            {msgType ? (
+                <ActionMsg
+                    type={msgType}
+                    setGuideType={(type) => setGuideType(type)}
+                    setMessageType={(type) => setMessageType(type)}
+                />
+            ) : null}
+            {guideType ? (
+                <ActionGuide
+                    type={guideType}
+                    setGuideType={(type) => setGuideType(type)}
+                    patterns={patterns}
+                    id={id}
+                />
+            ) : null}
+        </AtrcWrap>
+    );
 };
 
 export default PatternCopyOrMessage;
 
 export const BlocksPatternCopyOrMessage = ({
-	pattern = {},
-	messageType = '',
-	popupType = '',
+    pattern = {},
+    messageType = '',
+    popupType = '',
 }) => {
-	const { id, patterns } = pattern;
+    const { id, patterns } = pattern;
 
-	const [msgType, setMessageType] = useState(messageType);
-	const [guideType, setGuideType] = useState(popupType);
+    const [msgType, setMessageType] = useState(messageType);
+    const [guideType, setGuideType] = useState(popupType);
 
-	return (
-		<>
-			{msgType ? (
-				<ActionMsg
-					type={msgType}
-					setGuideType={(type) => setGuideType(type)}
-					setMessageType={(type) => setMessageType(type)}
-				/>
-			) : null}
-			{guideType ? (
-				<ActionGuide
-					type={guideType}
-					setGuideType={(type) => setGuideType(type)}
-					patterns={patterns}
-					id={id}
-				/>
-			) : null}
-		</>
-	);
+    return (
+        <>
+            {msgType ? (
+                <ActionMsg
+                    type={msgType}
+                    setGuideType={(type) => setGuideType(type)}
+                    setMessageType={(type) => setMessageType(type)}
+                />
+            ) : null}
+            {guideType ? (
+                <ActionGuide
+                    type={guideType}
+                    setGuideType={(type) => setGuideType(type)}
+                    patterns={patterns}
+                    id={id}
+                />
+            ) : null}
+        </>
+    );
 };

@@ -25,6 +25,18 @@ import Canvas from './canvas';
 import PatternCopyOrMessage from '../pattern-copy-or-message';
 import Pattern from '../patterns-grid/pattern';
 
+/* Get demo url */
+const getDemoUrl = (pattern) => {
+    if (pattern.demo_url) {
+        return pattern.demo_url
+    }
+    if (pattern.patterns_meta && pattern.patterns_meta.demo_url) {
+        return pattern.patterns_meta.demo_url
+    }
+    return addQueryArgs(pattern.link, {
+        view: 'patterns-store-pattern-only',
+    });
+}
 
 /* Local 
 Initial product is the product which first trigger this component.
@@ -340,9 +352,7 @@ const PatternSinglePreview = ({
                         deviceControl ? 'at-m' : ''
                     )}>
                     <Canvas
-                        url={addQueryArgs(currentPattern.link, {
-                            view: 'patterns-store-pattern-only',
-                        })}
+                        url={getDemoUrl(currentPattern)}
                     />
                 </AtrcWrap>
             </AtrcWrap>

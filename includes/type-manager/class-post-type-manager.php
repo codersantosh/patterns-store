@@ -196,6 +196,17 @@ class Patterns_Store_Post_Type_Manager {
 	 */
 	public $product_data;
 
+
+	/**
+	 * Response ids.
+	 * To fix : Response has been truncated
+	 *
+	 * @since    1.0.1
+	 * @access   public
+	 * @var      array    $response_ids    array of ids.
+	 */
+	public $response_ids = array();
+
 	/**
 	 * Getting thing started.
 	 *
@@ -636,7 +647,7 @@ class Patterns_Store_Post_Type_Manager {
 				'public'            => ! $this->is_download(),
 				'show_ui'           => true,
 				'show_admin_column' => true,
-				'query_var'         => 'pattern-store-categories',
+				'query_var'         => 'patterns-store-categories',
 				'rewrite'           => array(
 					'slug' => $cat_slug,
 				),
@@ -703,7 +714,7 @@ class Patterns_Store_Post_Type_Manager {
 				'public'            => ! $this->is_download(),
 				'show_ui'           => true,
 				'show_admin_column' => true,
-				'query_var'         => 'pattern-store-tags',
+				'query_var'         => 'patterns-store-tags',
 				'rewrite'           => array(
 					'slug' => $tag_slug,
 				),
@@ -787,7 +798,7 @@ class Patterns_Store_Post_Type_Manager {
 				'public'            => true,
 				'show_ui'           => true,
 				'show_admin_column' => true,
-				'query_var'         => 'pattern-store-plugins',
+				'query_var'         => 'patterns-store-plugins',
 				'rewrite'           => array(
 					'slug' => $plugin_slug,
 				),
@@ -865,7 +876,7 @@ class Patterns_Store_Post_Type_Manager {
 				'public'            => true,
 				'show_ui'           => true,
 				'show_admin_column' => true,
-				'query_var'         => 'pattern-store-block-types',
+				'query_var'         => 'patterns-store-block-types',
 				'rewrite'           => array(
 					'slug' => $block_type_slug,
 				),
@@ -943,7 +954,7 @@ class Patterns_Store_Post_Type_Manager {
 				'public'            => true,
 				'show_ui'           => true,
 				'show_admin_column' => true,
-				'query_var'         => 'pattern-store-template-types',
+				'query_var'         => 'patterns-store-template-types',
 				'rewrite'           => array(
 					'slug' => $template_type_slug,
 				),
@@ -1021,7 +1032,7 @@ class Patterns_Store_Post_Type_Manager {
 				'public'            => true,
 				'show_ui'           => true,
 				'show_admin_column' => true,
-				'query_var'         => 'pattern-store-post-types',
+				'query_var'         => 'patterns-store-post-types',
 				'rewrite'           => array(
 					'slug' => $post_type_tax_slug,
 				),
@@ -1127,50 +1138,72 @@ class Patterns_Store_Post_Type_Manager {
 			)
 		);
 
-		/*
-		 * Get the all image sizes.
-		 */
-		register_rest_field(
-			$this->post_type,
-			'featured_images',
-			array(
-				'get_callback' => function ( $post ) {
-					$featured_images = array();
+		/* Added support on post since 1.0.1 */
+		$feature_image_posts = array( $this->post_type, 'post' );
+		foreach ( $feature_image_posts as $fi_post ) {
+			/*
+			* Get the all image sizes.
+			*/
+			register_rest_field(
+				$fi_post,
+				'featured_images',
+				array(
+					'get_callback' => function ( $post ) {
+						$featured_images = array();
 
-					$featured_image_id = get_post_thumbnail_id( $post['id'] );
+						$featured_image_id = get_post_thumbnail_id( $post['id'] );
 
-					if ( $featured_image_id ) {
-						$full_size_image = wp_get_attachment_image_src( $featured_image_id, 'full' );
+						if ( $featured_image_id ) {
+							$full_size_image = wp_get_attachment_image_src( $featured_image_id, 'full' );
 
-						$featured_images['full'] = array(
-							'url'    => $full_size_image[0],
-							'width'  => $full_size_image[1],
-							'height' => $full_size_image[2],
-						);
+							$featured_images['full'] = array(
+								'url'    => $full_size_image[0],
+								'width'  => $full_size_image[1],
+								'height' => $full_size_image[2],
+							);
 
-						$image_sizes = get_intermediate_image_sizes();
+							$image_sizes = get_intermediate_image_sizes();
 
-						foreach ( $image_sizes as $size_name ) {
-							$size_image = wp_get_attachment_image_src( $featured_image_id, $size_name );
+							foreach ( $image_sizes as $size_name ) {
+								$size_image = wp_get_attachment_image_src( $featured_image_id, $size_name );
 
-							$featured_images[ $size_name ] = array(
-								'url'    => $size_image[0],
-								'width'  => $size_image[1],
-								'height' => $size_image[2],
+								$featured_images[ $size_name ] = array(
+									'url'    => $size_image[0],
+									'width'  => $size_image[1],
+									'height' => $size_image[2],
+								);
+							}
+						} else {
+							$featured_images['full'] = array(
+								'url'    => PATTERNS_STORE_URL . 'assets/img/logo.png',
+								'width'  => 200,
+								'height' => 200,
 							);
 						}
-					} else {
-						$featured_images['full'] = array(
-							'url'    => PATTERNS_STORE_URL . 'assets/img/logo.png',
-							'width'  => 200,
-							'height' => 200,
-						);
-					}
-					return $featured_images;
-				},
-				'schema'       => null,
-			)
-		);
+						return $featured_images;
+					},
+					'schema'       => null,
+				)
+			);
+		}
+
+		/* Add support for demo url on post since 1.0.1 */
+		$feature_image_posts = array( 'post' );
+		foreach ( $feature_image_posts as $fi_post ) {
+			/*
+			* Get the all image sizes.
+			*/
+			register_rest_field(
+				$fi_post,
+				'demo_url',
+				array(
+					'get_callback' => function ( $post ) {
+						return get_post_meta( $post['id'], 'patterns_store_demo_url', true );
+					},
+					'schema'       => null,
+				)
+			);
+		}
 	}
 
 	/**
@@ -1276,7 +1309,7 @@ class Patterns_Store_Post_Type_Manager {
 
 	/**
 	 * Filter the query args.
-	 * The rest request should have `pattern-store` param to apply this filter.
+	 * The rest request should have `patterns-store` param to apply this filter.
 	 *
 	 * @access public
 	 * @since 1.0.0
@@ -1285,7 +1318,7 @@ class Patterns_Store_Post_Type_Manager {
 	 * @return array Filtered args.
 	 */
 	public function filter_patterns_query_rest_args( $args, $request ) {
-		if ( ! $request->get_param( 'pattern-store' ) ) {
+		if ( ! $request->get_param( 'patterns-store' ) ) {
 			return $args;
 		}
 
@@ -1350,6 +1383,18 @@ class Patterns_Store_Post_Type_Manager {
 			unset( $response->data['modified'] );
 			unset( $response->data['modified_gmt'] );
 			unset( $response->data['type'] );
+			unset( $response->data['content'] );
+			unset( $response->data['author'] );
+			unset( $response->data['featured_media'] );
+			unset( $response->data['menu_order'] );
+			unset( $response->data['template'] );
+			unset( $response->data['edd-categories'] );
+			unset( $response->data['edd-tags'] );
+			unset( $response->data['patterns-store-plugins'] );
+			unset( $response->data['patterns-store-block-types'] );
+			unset( $response->data['patterns-store-template-types'] );
+			unset( $response->data['patterns-store-post-types'] );
+			unset( $response->data['class_list'] );
 
 			foreach ( $response->get_links() as $key => $val ) {
 				$response->remove_link( $key );
@@ -1404,6 +1449,7 @@ class Patterns_Store_Post_Type_Manager {
 		$pattern_meta = patterns_store_table_pattern_meta()->get( $post->ID );
 		if ( ! is_wp_error( $pattern_meta ) && $pattern_meta && isset( $pattern_meta->id ) ) {
 			$response->data['patterns_meta'] = array(
+				'demo_url'             => esc_url( $pattern_meta->demo_url ),
 				'viewport_width'       => esc_html( $pattern_meta->viewport_width ),
 				'wp_locale'            => esc_html( $pattern_meta->wp_locale ),
 				'wp_version'           => esc_html( $pattern_meta->wp_version ),
@@ -1467,6 +1513,20 @@ class Patterns_Store_Post_Type_Manager {
 				}
 			}
 		}
+
+		if ( in_array( $post->ID, $this->response_ids, true ) ) {
+			$old_data                       = $response->data;
+			$response->data                 = array();
+			$response->data['reference-id'] = $old_data['id'];
+			if ( isset( $old_data['patterns'] ) ) {
+				$response->data['patterns'] = $old_data['patterns'];
+			}
+			if ( isset( $old_data['pattern-kit'] ) ) {
+				$response->data['pattern-kit'] = $old_data['pattern-kit'];
+			}
+			return $response;
+		}
+		$this->response_ids[] = $post->ID;
 
 		return $response;
 	}

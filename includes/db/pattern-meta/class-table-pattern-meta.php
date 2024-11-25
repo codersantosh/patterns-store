@@ -41,6 +41,7 @@ class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
 		$this->table_columns = array(
 			'id'                   => '%d',
 			'image_sources'        => '%s',
+			'demo_url'             => '%s',
 			'viewport_width'       => '%s',
 			'wp_locale'            => '%s',
 			'wp_version'           => '%s',
@@ -53,6 +54,7 @@ class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
 		$this->table_columns_defaults = array(
 			'id'                   => 0,
 			'image_sources'        => '',
+			'demo_url'             => '',
 			'viewport_width'       => '',
 			'wp_locale'            => '',
 			'wp_version'           => '',
@@ -63,8 +65,11 @@ class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
 		);
 
 		$this->primary_key = 'id';
-		$this->version     = '1.0';
+		$this->version     = '1.0.1.1';
 		$this->cache_group = 'patterns-store-pattern-meta';
+
+		/*  @since 1.0.1 */
+		add_action( 'init', array( $this, 'add_missing_columns' ) );
 	}
 
 	/**
@@ -126,6 +131,7 @@ class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
 						break;
 
 					case 'image_sources':
+					case 'demo_url':
 					case 'viewport_width':
 					case 'wp_locale':
 					case 'wp_version':
@@ -145,6 +151,24 @@ class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
 		$column_defs[] = 'KEY created_at (created_at)';
 
 		parent::create_table( $column_defs );
+	}
+
+	/**
+	 * Adding missing columns on table
+	 *
+	 * @since 1.0.1
+	 *
+	 * @return void
+	 */
+	public function add_missing_columns() {
+		$db_version = $this->get_current_version();
+		if ( version_compare( $this->version, $db_version, '>' ) ) {
+
+			$column = 'demo_url';
+			$this->alter_table( 'ADD', $column, 'varchar(255)', 'NOT NULL default ""', "COMMENT 'Meta $column'" );
+
+			$this->update_version();
+		}
 	}
 }
 

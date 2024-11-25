@@ -11,35 +11,35 @@ import ModalGuideCopy from '../pattern-copy-or-message/modal-guide-copy';
 
 /* Local */
 const Pricing = ({ pattern }) => {
-	const [showModal, setShowModal] = useState(false);
-	if (pattern.price) {
-		return (
-			<>
-				<AtrcButton onClick={() => setShowModal(true)}>
-					{__('Pricing', 'patterns-store')}
-				</AtrcButton>
-				{showModal && (
-					<ModalPricing
-						id={pattern.id}
-						setShowModal={setShowModal}
-					/>
-				)}
-			</>
-		);
-	}
-	return (
-		<>
-			<AtrcButton onClick={() => setShowModal(true)}>
-				{__('Get Free', 'patterns-store')}
-			</AtrcButton>
-			{showModal && (
-				<ModalGuideCopy
-					setGuideType={() => setShowModal(false)}
-					title={__('Just copy and paste the Patterns', 'patterns-store')}
-				/>
-			)}
-		</>
-	);
+    const [showModal, setShowModal] = useState(false);
+    if (pattern.price) {
+        return (
+            <>
+                <AtrcButton onClick={() => setShowModal(true)}>
+                    {__('Pricing', 'patterns-store')}
+                </AtrcButton>
+                {showModal && (
+                    <ModalPricing
+                        id={pattern.id}
+                        setShowModal={setShowModal}
+                    />
+                )}
+            </>
+        );
+    }
+    return (
+        <>
+            <AtrcButton onClick={() => setShowModal(true)}>
+                {__('Get Free', 'patterns-store')}
+            </AtrcButton>
+            {showModal && (
+                <ModalGuideCopy
+                    setGuideType={() => setShowModal(false)}
+                    title={__('Just copy and paste the Patterns', 'patterns-store')}
+                />
+            )}
+        </>
+    );
 };
 
 export default Pricing;

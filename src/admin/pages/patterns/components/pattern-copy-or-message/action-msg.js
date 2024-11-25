@@ -89,7 +89,6 @@ const ActionMsg = ({ type, setMessageType, setGuideType }) => {
 						{msgContent.subTitle}
 					</AtrcText>
 					<AtrcButton
-						isPrimary
 						onClick={() => setGuideType(type)}>
 						{msgContent.btnText}
 					</AtrcButton>

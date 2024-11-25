@@ -30,12 +30,12 @@ const InitBlocksPatternCopyOrMessage = ({ element, button }) => {
             }
             setDynamicPattern(patternInfo)
         }
-        if (button.classList.contains('pattern-store-button-pattern-kit')) {
+        if (button.classList.contains('patterns-store-button-pattern-kit') || button.classList.contains('patterns-store-button-no-access')) {
             getDynamicPattern();
         }
     }, [patternInfo.id, button.classList]);
 
-    if (button.classList.contains('pattern-store-button-pattern')) {
+    if (button.classList.contains('patterns-store-button-pattern')) {
         const input = element.querySelector(
             '.wp-block-patterns-store-copy-button__content'
         );
@@ -55,12 +55,12 @@ const InitBlocksPatternCopyOrMessage = ({ element, button }) => {
             }, 5000);
         }
     } else if (
-        button.classList.contains('pattern-store-button-pattern-kit')
+        button.classList.contains('patterns-store-button-pattern-kit')
     ) {
         popupType = 'patterns';
 
     } else if (
-        button.classList.contains('pattern-store-button-no-access')
+        button.classList.contains('patterns-store-button-no-access')
     ) {
         messageType = 'access-denied';
     }
@@ -91,7 +91,6 @@ const PatternsStorePatternCopyInit = () => {
 
             button.disabled = false;
             button.onclick = async () => {
-
 
                 // Add element to dom/body
                 const patternStoreDynamicDiv = PatternsStoreDynamicElement();

@@ -2,7 +2,8 @@
 /**
  * Title: Query Pattern Two Column Grid
  * Slug: patterns-store/query-pattern-two-column-grid
- * Categories: posts
+ * Categories: query
+ * Block Types: core/query
  * Description: Display a query block in a grid layout.
  *
  * @package    Patterns_Store

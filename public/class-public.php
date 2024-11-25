@@ -105,10 +105,12 @@ class Patterns_Store_Public {
 
 		/* Atomic CSS */
 		wp_enqueue_style( 'atomic' );
+		wp_style_add_data( 'atomic', 'rtl', 'replace' );
 
 		$version = PATTERNS_STORE_VERSION;
 
 		wp_enqueue_style( PATTERNS_STORE_PLUGIN_NAME, PATTERNS_STORE_URL . 'build/public/public.css', array( 'wp-components' ), $version );
+		wp_style_add_data( PATTERNS_STORE_PLUGIN_NAME, 'rtl', 'replace' );
 
 		/*Scripts dependency files*/
 		$deps_file = PATTERNS_STORE_PATH . 'build/public/public.asset.php';
@@ -131,7 +133,7 @@ class Patterns_Store_Public {
 			array(
 				'PATTERNS_STORE_URL' => PATTERNS_STORE_URL,
 				'site_url'           => esc_url( home_url() ),
-				'currentPattternId'  => is_singular( patterns_store_post_type_manager()->post_type ) ? intval( get_the_ID() ) : null,
+				'currentPattternId'  => is_singular() ? intval( get_the_ID() ) : null,
 				'rest_url'           => get_rest_url(),
 				'category_rest_url'  => rest_get_route_for_taxonomy_items( patterns_store_post_type_manager()->category ),
 				'post_type_rest_url' => rest_get_route_for_post_type_items( patterns_store_post_type_manager()->post_type ),
@@ -415,14 +417,14 @@ class Patterns_Store_Public {
 	 * @param WP_Block $instance      The block instance.
 	 */
 	public function add_empty_text( $block_content, $block, $instance ) { //phpcs:ignore
-        if ( ! $block_content ) {
-            $attributes = $block['attrs'];
-            if ( isset( $attributes['patterns-store-empty-text'] ) && $attributes['patterns-store-empty-text'] ) {
-                return '<p class="' . esc_attr( 'taxonomy-' . $attributes['term']  ) . '">' . esc_html( $attributes['patterns-store-empty-text'] ) . '</p>';
-            }
-        }
-        return $block_content;
-    }
+		if ( ! $block_content ) {
+			$attributes = $block['attrs'];
+			if ( isset( $attributes['patterns-store-empty-text'] ) && $attributes['patterns-store-empty-text'] ) {
+				return '<p class="' . esc_attr( 'taxonomy-' . $attributes['term'] ) . '">' . esc_html( $attributes['patterns-store-empty-text'] ) . '</p>';
+			}
+		}
+		return $block_content;
+	}
 
 	/**
 	 * Add class to button.
@@ -432,7 +434,7 @@ class Patterns_Store_Public {
 	 *
 	 * @return string HTML of block.
 	 */
-	public function add_button_class( $html_button, $class_name='ps-btn-active' ) {
+	public function add_button_class( $html_button, $class_name = 'ps-btn-active' ) {
 
 		// Create a DOMDocument object.
 		$dom = new DOMDocument();
@@ -445,7 +447,7 @@ class Patterns_Store_Public {
 
 		if ( $button ) {
 			$existing_class = $button->getAttribute( 'class' );
-			$button->setAttribute( 'class', $existing_class . ' '. esc_attr($class_name) );
+			$button->setAttribute( 'class', $existing_class . ' ' . esc_attr( $class_name ) );
 		}
 
 		// Save the modified HTML.
@@ -482,7 +484,7 @@ class Patterns_Store_Public {
 		if ( $button ) {
 			// Add extra class to the button.
 			$existing_class = $button->getAttribute( 'class' );
-			$button->setAttribute( 'class', $existing_class . ' pattern-store-parent-link' );
+			$button->setAttribute( 'class', $existing_class . ' patterns-store-parent-link' );
 
 			$button->setAttribute( 'href', esc_url( get_permalink( $parent_id ) ) );
 		}
@@ -505,8 +507,8 @@ class Patterns_Store_Public {
 		$label         = '';
 		$label_success = '';
 
-		$classes        = array( 'pattern-store-button' );
-		$button_classes = 'pattern-store-button';
+		$classes        = array( 'patterns-store-button' );
+		$button_classes = 'patterns-store-button';
 
 		$item = get_post( $post_id );
 
@@ -522,14 +524,14 @@ class Patterns_Store_Public {
 		$product_type = $item->post_parent ? 'pattern' : 'pattern-kit';
 		if ( 'pattern-kit' === $product_type ) {
 			$label           = __( 'View Patterns', 'patterns-store' );
-			$button_classes .= ' pattern-store-button-pattern-kit';
+			$button_classes .= ' patterns-store-button-pattern-kit';
 		} elseif ( ! $access['has_access'] ) {
-			$label           = __( 'Access Denied ! ', 'patterns-store' );
-			$button_classes .= ' pattern-store-button-no-access';
+			$label           = __( 'Copy Denied ! ', 'patterns-store' );
+			$button_classes .= ' patterns-store-button-no-access';
 		} elseif ( 'pattern' === $product_type ) {
 			$label           = __( 'Copy', 'patterns-store' );
 			$label_success   = __( 'Copied', 'patterns-store' );
-			$button_classes .= ' pattern-store-button-pattern';
+			$button_classes .= ' patterns-store-button-pattern';
 		}
 
 		if ( ! $label ) {
@@ -562,6 +564,8 @@ class Patterns_Store_Public {
 			$button->setAttribute( 'disabled', 'disabled' );
 			$button->setAttribute( 'data-label', esc_attr( $label ) );
 			$button->setAttribute( 'data-id', esc_attr( $item->ID ) );
+			$button->setAttribute( 'data-rest-url', esc_attr( rest_get_route_for_post_type_items( $item->post_type ) ) );
+
 			if ( $label_success ) {
 				$button->setAttribute( 'data-label-success', esc_attr( $label_success ) );
 			}
@@ -610,10 +614,11 @@ class Patterns_Store_Public {
 		if ( $button ) {
 			// Add extra class to the button.
 			$existing_class = $button->getAttribute( 'class' );
-			$button->setAttribute( 'class', $existing_class . ' pattern-store-button-preview' );
+			$button->setAttribute( 'class', $existing_class . ' patterns-store-button-preview' );
 
 			$button->setAttribute( 'disabled', 'disabled' );
 			$button->setAttribute( 'data-id', esc_attr( $post_id ) );
+			$button->setAttribute( 'data-rest-url', esc_attr( rest_get_route_for_post_type_items( get_post_type( $post_id ) ) ) );
 		}
 
 		// Save the modified HTML.
@@ -643,7 +648,7 @@ class Patterns_Store_Public {
 			$key = $attributes['metadata']['bindings']['url']['args']['key'];
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$selected_filter = isset( $_GET['product-type'] ) ? sanitize_key( $_GET['product-type'] ) : 'all';
-            $block_content = $this->add_button_class( $block_content, 'ps-fl-btn' );
+			$block_content   = $this->add_button_class( $block_content, 'ps-fl-btn' );
 
 			switch ( $key ) {
 				case 'all':
@@ -667,11 +672,15 @@ class Patterns_Store_Public {
 			}
 		}
 
+		$current_post_id = 0;
 		/* parent link, copy and preview variations */
-		if ( ! isset( $instance->context ) || ! isset( $instance->context['postId'] ) ) {
-			return $block_content;
+		if ( isset( $instance->context ) && isset( $instance->context['postId'] ) ) {
+			$current_post_id = $instance->context['postId'];
+
+		} elseif ( is_singular() ) {
+			$current_post_id = get_the_ID();
 		}
-		$current_post_id = $instance->context['postId'];
+
 		if ( ! $current_post_id ) {
 			return $block_content;
 		}

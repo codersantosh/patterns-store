@@ -16,8 +16,10 @@ import { ModalLoading } from '../admin/components/molecules';
 const patternRestUrl = AtrcRemoveDoubleSlashesFromUrl(
     PatternsStoreLocalize.rest_url + PatternsStoreLocalize.post_type_rest_url
 );
+
+window.PatternsStoreGlobalItems = {};
 const PatternsStoreGlobalRelatedItems = {};
-async function PatternsStoreGetCurrentPageItems({ currentPattern, postIds }) {
+async function PatternsStoreGetCurrentPageItems({ currentPattern, postIds, restUrl }) {
     try {
         const cacheKey =
             postIds && postIds.length ? 'ps-' + postIds.join('-') : null;
@@ -27,17 +29,75 @@ async function PatternsStoreGetCurrentPageItems({ currentPattern, postIds }) {
         }
 
         if (!PatternsStoreGlobalRelatedItems.hasOwnProperty(cacheKey)) {
-            const urlObject = new URL(patternRestUrl);
+            const urlObject = new URL(restUrl ? restUrl : patternRestUrl);
             urlObject.searchParams.append('include', postIds.join(','));
             urlObject.searchParams.append('orderby', 'include');
-            const response = await fetch(urlObject.toString());
+            urlObject.searchParams.append('per_page', postIds.length);
+            const response = await fetch(urlObject.toString(), {
+                method: 'GET',
+                headers: {
+                    'X-WP-Nonce': PatternsStoreLocalize.nonce
+                }
+            });
+
             if (!response.ok) {
                 throw new Error(__('Error fetching posts:', 'patterns-store') + `${response.statusText}`);
             }
+
             const data = await response.json();
 
+            /* 
+            * Set these items in window.PatternsStoreGlobalItems for global access
+            */
+            if (data) {
+                data.forEach(item => {
+                    if (item.id) {
+                        window.PatternsStoreGlobalItems[item.id] = item;
+
+                        if (item.patterns && Array.isArray(item.patterns)) {
+                            item.patterns.forEach(pattern => {
+                                if (pattern.id) {
+                                    window.PatternsStoreGlobalItems[pattern.id] = pattern;
+                                }
+                            });
+                        }
+
+                        if (item['pattern-kit'] && item['pattern-kit'].id) {
+                            window.PatternsStoreGlobalItems[item['pattern-kit'].id] = item['pattern-kit'];
+                        }
+                    }
+                });
+            }
+
+            // Clone the data to create newData for processing references
+            const newData = JSON.parse(JSON.stringify(data)); // Deep clone using JSON methods
+
+            data.forEach((item, iDx) => {
+                // Check and replace with reference-id if exists
+                if (item['reference-id'] && window.PatternsStoreGlobalItems.hasOwnProperty(item['reference-id'])) {
+                    newData[iDx] = window.PatternsStoreGlobalItems[item['reference-id']];
+                }
+
+                // Handle patterns in each item
+                if (item.patterns && Array.isArray(item.patterns)) {
+                    item.patterns.forEach((pattern, iDx1) => {
+                        if (pattern['reference-id'] && window.PatternsStoreGlobalItems.hasOwnProperty(pattern['reference-id'])) {
+                            if (!newData[iDx]['patterns']) {
+                                newData[iDx]['patterns'] = [];
+                            }
+                            newData[iDx]['patterns'][iDx1] = window.PatternsStoreGlobalItems[pattern['reference-id']];
+                        }
+                    });
+                } else if (item['pattern-kit']) {
+                    // Handle pattern kit reference
+                    if (item['pattern-kit']['reference-id'] && window.PatternsStoreGlobalItems.hasOwnProperty(item['pattern-kit']['reference-id'])) {
+                        newData[iDx]['pattern-kit'] = window.PatternsStoreGlobalItems[item['pattern-kit']['reference-id']];
+                    }
+                }
+            });
+
             /* Caching */
-            PatternsStoreGlobalRelatedItems[cacheKey] = data;
+            PatternsStoreGlobalRelatedItems[cacheKey] = newData;
         }
         return PatternsStoreGlobalRelatedItems[cacheKey];
     } catch (error) {
@@ -68,7 +128,12 @@ export async function PatternsStoreGetPatterData({ id }) {
             } else {
                 const urlObject = new URL(`${patternRestUrl}/${id}`);
 
-                const response = await fetch(urlObject.toString());
+                const response = await fetch(urlObject.toString(), {
+                    method: 'GET',
+                    headers: {
+                        'X-WP-Nonce': PatternsStoreLocalize.nonce
+                    }
+                });
                 if (!response.ok) {
                     throw new Error(`${response.statusText}`);
                 }
@@ -92,7 +157,7 @@ function PatternsStoreGetPostIdsFromPreviewButtons(element) {
     const postTemplates = element.closest('.wp-block-post-template');
     if (postTemplates) {
         const previewButtons = postTemplates.querySelectorAll(
-            '.pattern-store-button-preview'
+            '.patterns-store-button-preview'
         );
         if (previewButtons) {
             // Convert NodeList to an array and sort by DOM position
@@ -117,8 +182,15 @@ const InitPatternPreview = ({ element }) => {
 
     useEffect(() => {
         const getPosts = async () => {
+            let restUrl = '';
+            if (element.getAttribute('data-rest-url')) {
+                restUrl = AtrcRemoveDoubleSlashesFromUrl(
+                    PatternsStoreLocalize.rest_url + element.getAttribute('data-rest-url')
+                );
+            }
             const gotPosts = await PatternsStoreGetCurrentPageItems({
                 postIds,
+                restUrl
             });
             setPosts(gotPosts);
         };
@@ -141,9 +213,9 @@ const InitPatternPreview = ({ element }) => {
     );
 };
 const PatternsStorePatternPreviewInit = () => {
-    const containers = document.querySelectorAll('.pattern-store-button-preview');
-    if (containers) {
-        containers.forEach((element) => {
+    const previewButtons = document.querySelectorAll('.patterns-store-button-preview');
+    if (previewButtons) {
+        previewButtons.forEach((element) => {
             element.disabled = false;
             element.onclick = () => {
                 // Add element to dom/body

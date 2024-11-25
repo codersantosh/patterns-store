@@ -1,7 +1,7 @@
 <?php
 /**
- * Title: Section Title 5
- * Slug: patterns-store/section-title-5
+ * Title: Featured Section Title
+ * Slug: patterns-store/featured-section-title
  * Categories: text, featured
  * Description: A layout featuring a title, content, and button group in centered alignment, commonly used for section titles in dark feature areas.
  *

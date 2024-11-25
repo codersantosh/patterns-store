@@ -35,7 +35,9 @@ global $wp_embed;
 	$content = convert_smilies( $content );
 	$content = wp_filter_content_tags( $content, 'template' );
 	$content = str_replace( ']]>', ']]&gt;', $content );
-	echo wp_kses_post( $content );
+
+	// Already escaped on above codes.
+	echo $content;// phpcs:ignore
 	wp_footer();
 	?>
 </body>

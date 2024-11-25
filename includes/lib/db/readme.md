@@ -28,7 +28,7 @@ Here are some WordPress plugins that utilize ATOMIC WP Custom Table and Query. Y
 - **Patterns Store – Creates a store for WordPress Patterns**
 
   WordPress URL: [Patterns Store](https://wordpress.org/plugins/patterns-store/)
-  GitHub URL: [Patterns Store on Github](https://github.com/codersantosh/patterns-store)
+  GitHub URL: [Patterns Store on Github](https://patternswp.com//patterns-store)
 
   This plugin creates a store for managing and displaying patterns, pattern kits, and theme JSON packages. It leverages ATOMIC WP CUSTOM TABLE AND QUERY for handling custom pattern metadata tables and performing CRUD operations via REST API. You can review its codebase to see how ATOMIC WP CUSTOM TABLE AND QUERY is applied in a real-world WordPress context.
 
@@ -104,11 +104,11 @@ Thank you for contributing to this project!
 
 - **Santosh Kunwar** - [codersantosh](https://twitter.com/codersantosh)
 
-See also the list of [contributors](https://github.com/codersantosh/patterns-store/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://patternswp.com//patterns-store/graphs/contributors) who participated in this project.
 
 ## Recommendations
 
-- [WP React Plugin Boilerplate](https://github.com/codersantosh/wp-react-plugin-boilerplate)
+- [WP React Plugin Boilerplate](https://patternswp.com//wp-react-plugin-boilerplate)
 - [Atrc (atrc) - Atomic React Components](https://www.npmjs.com/package/atrc)
 
 ## License & Attribution
