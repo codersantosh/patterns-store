@@ -100,7 +100,6 @@ After installation, activate the plugin through WordPress's 'Plugins' menu.
 == Changelog ==
 
 = 1.0.2 =
-* Added: RTL support
 * Added: Demo URL on the CURD and rest API response
 * Updated: Some links to `https://patternswp.com/wp-plugins/patterns-store/`
 * Fixed:  Block variations button issues on singular pages.
