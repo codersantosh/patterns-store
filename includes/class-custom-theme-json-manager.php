@@ -363,38 +363,13 @@ class Patterns_Store_Custom_Theme_Json_Manager {
 		}
 
 		try {
-			$theme_json_package = $this->get_theme_json_package( $package_suffix, true );
+			$theme_json_package      = patterns_store_custom_theme_json_manager()->get_theme_json_package_path( $package_suffix ) . 'theme.json';
+			$theme_json_package_data = patterns_store_get_theme_json_data( $theme_json_package );
 
-			if ( is_wp_error( $theme_json_package ) ) {
-				throw new Exception( esc_html__( 'The issue on getting the theme JSON package.', 'patterns-store' ) );
-			}
-
-			if ( ! isset( $theme_json_package[0]['url'] ) || basename( $theme_json_package[0]['url'] ) !== 'theme.json' ) {
-				throw new Exception( esc_html__( 'The theme JSON package does not have a theme.json file.', 'patterns-store' ) );
-			}
-
-			$get_theme_json_file_data = wp_remote_get( $theme_json_package[0]['url'] );
-
-			if ( is_wp_error( $get_theme_json_file_data ) ) {
-				throw new Exception( esc_html__( 'Failed to fetch the theme JSON file.', 'patterns-store' ) );
-			}
-
-			$get_theme_json_file_body = wp_remote_retrieve_body( $get_theme_json_file_data );
-
-			if ( empty( $get_theme_json_file_body ) ) {
-				throw new Exception( esc_html__( 'The theme JSON package is empty.', 'patterns-store' ) );
-			}
-
-			$theme_json_raw = json_decode( stripslashes( $get_theme_json_file_body ), true );
-
-			if ( json_last_error() !== JSON_ERROR_NONE ) {
-				throw new Exception( esc_html__( 'Invalid JSON in the theme JSON package.', 'patterns-store' ) );
-			}
-
-			$theme_json_obj = new WP_Theme_JSON( $theme_json_raw, 'custom' );
-			if ( ! $theme_json_raw ) {
-				throw new Exception( esc_html__( 'Invalid or empty theme.json.', 'patterns-store' ) );
-			}
+			// @see get_merged_data of WP_Theme_JSON_Resolver.
+			$theme_json_obj = new WP_Theme_JSON();
+			$theme_json_obj->merge( WP_Theme_JSON_Resolver::get_core_data() );
+			$theme_json_obj->merge( $theme_json_package_data );
 
 			$theme_json = $theme_json_obj->get_raw_data();
 
@@ -638,7 +613,7 @@ class Patterns_Store_Custom_Theme_Json_Manager {
 	 * @param string $package_suffix Folder path suffix.
 	 * @return string folder path.
 	 */
-	private function get_theme_json_package_path( $package_suffix ) {
+	public function get_theme_json_package_path( $package_suffix ) {
 
 		$upload_dir = wp_upload_dir();
 

@@ -5,29 +5,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * ATOMIC_WP_CUSTOM_TABLE_AND_QUERY
+ * Atomic WP Custom Table and Query
  *
  * This class is for interacting with database query
  *
- * @package ATOMIC_WP_CUSTOM_TABLE_AND_QUERY
- * @subpackage ATOMIC_WP_CUSTOM_QUERY
+ * @package Atomic WP Custom Table and Query
+ * @subpackage Atomic_WP_Custom_Query
  * @since 1.0.0
  */
 
-if ( ! class_exists( 'ATOMIC_WP_CUSTOM_QUERY' ) ) {
+if ( ! class_exists( 'Atomic_WP_Custom_Query' ) ) {
 	/**
-	 * ATOMIC_WP_CUSTOM_QUERY base class
+	 * Atomic_WP_Custom_Query base class
 	 *
 	 * Everything related to the custom query
 	 *
-	 * Extend this class and  define query_var_defaults, extra parse and where queries specific to the specific table query,
-	 * This class ATOMIC_WP_CUSTOM_QUERY does the real work
+	 * Extend this class and define query_var_defaults, extra parse and where queries specific to the specific table query,
+	 * This class Atomic_WP_Custom_Query does the real work
 	 *
-	 * @package    ATOMIC_WP_CUSTOM_TABLE_AND_QUERY
-	 * @subpackage ATOMIC_WP_CUSTOM_QUERY
+	 * @package    Atomic WP Custom Table and Query
+	 * @subpackage Atomic_WP_Custom_Query
 	 * @author     codersantosh <codersantosh@gmail.com>
 	 */
-	abstract class ATOMIC_WP_CUSTOM_QUERY {
+	abstract class Atomic_WP_Custom_Query {
 
 		/**
 		 * Table name.
@@ -157,13 +157,13 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_QUERY' ) ) {
 		 * @since  1.0.0
 		 * @var object
 		 */
-		public ATOMIC_WP_CUSTOM_TABLE $db_instance;
+		public Atomic_WP_Custom_Table $db_instance;
 
 		/**
 		 * Get things started
 		 *
 		 * @param array  $query query args parameter.
-		 * @param Object $db_instance database instance of ATOMIC_WP_CUSTOM_TABLE.
+		 * @param Object $db_instance database instance of Atomic_WP_Custom_Table.
 		 * @since   1.0.0
 		 */
 		public function __construct( $query = '', $db_instance = null ) {
@@ -185,7 +185,7 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_QUERY' ) ) {
 		 *
 		 * @since  1.0.0
 		 *
-		 * @see ATOMIC_WP_CUSTOM_QUERY::__construct()
+		 * @see Atomic_WP_Custom_Query::__construct()
 		 *
 		 * @param string|array $query Array or query string of parameters.
 		 * @return array|int List of data, or per_page of data when 'count' is passed as a query var.
@@ -287,7 +287,7 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_QUERY' ) ) {
 		/**
 		 * Retrieves a list of data matching the query vars.
 		 *
-		 * Tries to use a cached value and otherwise uses `ATOMIC_WP_CUSTOM_QUERY::query_items()`.
+		 * Tries to use a cached value and otherwise uses `Atomic_WP_Custom_Query::query_items()`.
 		 *
 		 * @access public
 		 * @since  1.0.0
@@ -466,7 +466,7 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_QUERY' ) ) {
 			 *
 			 * @param object|false     $item         User query result. False if no $item is found.
 			 * @param array            $args             Arguments used to query the $item.
-			 * @param ATOMIC_WP_CUSTOM_QUERY query.
+			 * @param Atomic_WP_Custom_Query query.
 			 */
 			return apply_filters( "atomic_wp_custom_table_and_query_get_item_by_{$field}", $item, $args, $this );
 		}
@@ -516,7 +516,7 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_QUERY' ) ) {
 				 * @since 1.0.0
 				 *
 				 * @param string             $found_data_query SQL query. Default 'SELECT FOUND_ROWS()'.
-				 * @param ATOMIC_WP_CUSTOM_QUERY $data_query        The `ATOMIC_WP_CUSTOM_QUERY` instance.
+				 * @param Atomic_WP_Custom_Query $data_query        The `Atomic_WP_Custom_Query` instance.
 				 */
 				$found_items_query = apply_filters( 'atomic_wp_custom_table_and_query_found_rows_query', 'SELECT FOUND_ROWS()', $this );
 

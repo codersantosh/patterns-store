@@ -2,7 +2,7 @@
 /**
  * Includes necessary files
  *
- * @package ATOMIC_WP_CUSTOM_TABLE_AND_QUERY
+ * @package Atomic WP Custom Table and Query
  * @since 1.0.0
  */
 

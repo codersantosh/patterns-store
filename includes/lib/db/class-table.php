@@ -5,17 +5,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * ATOMIC_WP_CUSTOM_TABLE_AND_QUERY
+ * Atomic WP Custom Table and Query
  *
  * This class is for interacting with database tables
  *
- * @package ATOMIC_WP_CUSTOM_TABLE_AND_QUERY
- * @subpackage ATOMIC_WP_CUSTOM_TABLE
+ * @package Atomic WP Custom Table and Query
+ * @subpackage Atomic_WP_Custom_Table
  * @since 1.0.0
  */
-if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
+if ( ! class_exists( 'Atomic_WP_Custom_Table' ) ) {
 	/**
-	 * ATOMIC_WP_CUSTOM_TABLE base class
+	 * Atomic_WP_Custom_Table base class
 	 *
 	 * This class provides a set of methods for creating table in a database,and also creating, reading, updating, and deleting rows in a database table in WordPress.
 	 * It defines the name of the table, the primary key column, the version of the table, cache_group and $global $wbdb.
@@ -26,11 +26,11 @@ if ( ! class_exists( 'ATOMIC_WP_CUSTOM_TABLE' ) ) {
 	 *
 	 * This class could be used as a base for creating custom database tables in a WordPress plugin or customization.
 	 *
-	 * @package    ATOMIC_WP_CUSTOM_TABLE_AND_QUERY
-	 * @subpackage ATOMIC_WP_CUSTOM_TABLE
+	 * @package    Atomic WP Custom Table and Query
+	 * @subpackage Atomic_WP_Custom_Table
 	 * @author     codersantosh <codersantosh@gmail.com>
 	 */
-	abstract class ATOMIC_WP_CUSTOM_TABLE {
+	abstract class Atomic_WP_Custom_Table {
 
 		/**
 		 * The name of our database table.

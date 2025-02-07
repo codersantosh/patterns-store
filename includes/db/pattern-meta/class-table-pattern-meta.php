@@ -21,9 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Patterns_Store_Table_Pattern_Meta
  * @author     codersantosh <codersantosh@gmail.com>
  *
- * @see ATOMIC_WP_CUSTOM_TABLE
+ * @see Atomic_WP_Custom_Table
  */
-class Patterns_Store_Table_Pattern_Meta extends ATOMIC_WP_CUSTOM_TABLE {
+class Patterns_Store_Table_Pattern_Meta extends Atomic_WP_Custom_Table {
 
 	/**
 	 * Constructor method
