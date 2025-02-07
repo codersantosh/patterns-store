@@ -1,17 +1,17 @@
-# ATOMIC WP CUSTOM TABLE AND QUERY
+# Atomic WP Custom Table and Query
 
 > WordPress utility classes for streamlined custom table creation, database querying, and CRUD (Create, Read, Update, Delete) operations.
 
 ## Description
 
-The ATOMIC WP CUSTOM TABLE AND QUERY project provides two classes: ATOMIC_WP_CUSTOM_TABLE and ATOMIC_WP_CUSTOM_QUERY. These classes simplify the interaction with custom database tables, enabling developers to perform CRUD operations effectively within WordPress products or projects.
+The Atomic WP Custom Table and Query project provides two classes: Atomic_WP_Custom_Table and Atomic_WP_Custom_Query. These classes simplify the interaction with custom database tables, enabling developers to perform CRUD operations effectively within WordPress products or projects.
 
 ## Table of contents
 
-- [ATOMIC WP CUSTOM TABLE AND QUERY](#atomic-wp-custom-table-and-query)
+- [Atomic WP Custom Table and Query](#atomic-wp-custom-table-and-query)
   - [Description](#description)
   - [Table of contents](#table-of-contents)
-  - [Projects using ATOMIC WP CUSTOM TABLE AND QUERY](#projects-using-atomic-wp-custom-table-and-query)
+  - [Projects using Atomic WP Custom Table and Query](#projects-using-atomic-wp-custom-table-and-query)
   - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -21,7 +21,7 @@ The ATOMIC WP CUSTOM TABLE AND QUERY project provides two classes: ATOMIC_WP_CUS
   - [Resources](#resources)
   - [License & Attribution](#license--attribution)
 
-## Projects using ATOMIC WP CUSTOM TABLE AND QUERY
+## Projects using Atomic WP Custom Table and Query
 
 Here are some WordPress plugins that utilize ATOMIC WP Custom Table and Query. You can explore their codebases to understand how this functionality is implemented:
 
@@ -30,13 +30,13 @@ Here are some WordPress plugins that utilize ATOMIC WP Custom Table and Query. Y
   WordPress URL: [Patterns Store](https://wordpress.org/plugins/patterns-store/)
   GitHub URL: [Patterns Store on Github](https://github.com/codersantosh/patterns-store)
 
-  This plugin creates a store for managing and displaying patterns, pattern kits, and theme JSON packages. It leverages ATOMIC WP CUSTOM TABLE AND QUERY for handling custom pattern metadata tables and performing CRUD operations via REST API. You can review its codebase to see how ATOMIC WP CUSTOM TABLE AND QUERY is applied in a real-world WordPress context.
+  This plugin creates a store for managing and displaying patterns, pattern kits, and theme JSON packages. It leverages Atomic WP Custom Table and Query for handling custom pattern metadata tables and performing CRUD operations via REST API. You can review its codebase to see how Atomic WP Custom Table and Query is applied in a real-world WordPress context.
 
-Feel free to explore these projects to gain valuable insights into using ATOMIC WP CUSTOM TABLE AND QUERY in WordPress plugin development.
+Feel free to explore these projects to gain valuable insights into using Atomic WP Custom Table and Query in WordPress plugin development.
 
 ## Getting Started
 
-Follow these instructions to utilize the ATOMIC WP CUSTOM TABLE AND QUERY classes:
+Follow these instructions to utilize the Atomic WP Custom Table and Query classes:
 
 ## Installation
 
@@ -46,7 +46,7 @@ Follow these instructions to utilize the ATOMIC WP CUSTOM TABLE AND QUERY classe
 
 ## Usage
 
-Use the ATOMIC_WP_CUSTOM_TABLE AND QUERY classes for:
+Use the Atomic WP Custom Table and Query classes for:
 
 - Creating and managing custom database tables.
 - Executing custom database queries.
@@ -54,8 +54,8 @@ Use the ATOMIC_WP_CUSTOM_TABLE AND QUERY classes for:
 
 ## Features
 
-- **ATOMIC_WP_CUSTOM_TABLE Class:** simplifies custom table creation, management, and CRUD operations.
-- **ATOMIC_WP_CUSTOM_QUERY Class:** simplifies custom database querying.
+- **Atomic_WP_Custom_Table Class:** simplifies custom table creation, management, and CRUD operations.
+- **Atomic_WP_Custom_Query Class:** simplifies custom database querying.
 - **Security Handling:** Sanitization and validation are taken care of..
 - **Cache Handling:** Caching is handled efficiently using cache group, cache key, wp_cache_get and wp_cache_add.
 - **Error Handling:** Errors are managed using try-catch blocks. Custom error messages are returned using WP_Error.

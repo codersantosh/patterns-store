@@ -4,7 +4,7 @@ Tags: patterns, pattern kits, templates, gutenberg, blocks
 Requires at least: 6.5
 Tested up to: 6.7
 Requires PHP: 5.6.20
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,9 @@ After installation, activate the plugin through WordPress's 'Plugins' menu.
 
 
 == Changelog ==
+
+= 1.0.3 =
+* Updated: Combined theme.json with the default theme.json before generating CSS.
 
 = 1.0.2 =
 * Added: Demo URL on the CURD and rest API response

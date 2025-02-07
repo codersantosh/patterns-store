@@ -294,8 +294,6 @@ const ModelThemeJson = () => {
             ) : (
                 <AtrcWireFrameSidebarContentSidebar
                     wrapProps={{
-                        allowContainer: true,
-                        type: 'fluid',
                         tag: 'section',
                         className: 'at-p',
                     }}

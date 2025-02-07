@@ -484,3 +484,38 @@ if ( ! function_exists( 'patterns_store_sanitize_date' ) ) {
 		return '';
 	}
 }
+
+if ( ! function_exists( 'patterns_store_get_theme_json_data' ) ) {
+
+	/**
+	 * Sanitize the date and time format Y-m-d H:i:s.
+	 *
+	 * @see get_core_data of WP_Theme_JSON_Resolver.
+	 * @param string $theme_json_path path of theme file.
+	 * @return WP_Theme_JSON data.
+	 */
+	function patterns_store_get_theme_json_data( $theme_json_path ) {
+		static $cache = array();
+
+		if ( isset( $cache[ $theme_json_path ] ) ) {
+			return $cache[ $theme_json_path ];
+		}
+
+		if ( ! file_exists( $theme_json_path ) ) {
+			return null;
+		}
+
+		$decoded_file = wp_json_file_decode( $theme_json_path, array( 'associative' => true ) );
+
+		$theme_json = apply_filters( 'patterns_store_theme_json_data', new WP_Theme_JSON_Data( $decoded_file, 'default' ), $theme_json_path );
+
+		if ( $theme_json instanceof WP_Theme_JSON_Data ) {
+			$cache[ $theme_json_path ] = $theme_json->get_theme_json();
+		} else {
+			$config                    = $theme_json->get_data();
+			$cache[ $theme_json_path ] = new WP_Theme_JSON( $config, 'default' );
+		}
+
+		return $cache[ $theme_json_path ];
+	}
+}
